@@ -1,0 +1,757 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="google-site-verification" content="NbE4iPIA40rbTuYgLZpmL77qzueExhzjXgCSnXA8Rt0" />
+  <title>Rite Surgery | Rite Time Rite Surgery </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="{% static 'js/popup.js' %}"></script>
+  <script src="{% static 'js/option.js' %}"></script>
+
+  
+
+</head>
+
+<body>
+
+  
+  <div class="hero">
+
+
+    <nav class="navbar">
+      <div class="left">
+        <img src="{%static  'images/logo.png' %}" alt="Logo">
+      </div>
+
+      <div class="center-wrapper">
+       
+          <div class="center">
+            <a href="{% url 'home' %}">Home</a>
+            
+            <div class="dropdown">
+              <a  class="toggle-dropdown">surgery</a>
+
+              <div class="dropdown-content">
+                
+                <div class="sub-dropdown">
+                  <a class="toggle-dropdown sub-dropdown-toggle">Proctology</a>
+                  <div class="sub-dropdown-content">
+                    <a href="{% url 'piles' %}">Piles</a>
+                    <a href="{% url 'fissure' %}">Fissure</a>
+                    <a href="javascript:void(0);" onclick="openPopup()">Fistula</a>
+                  </div>
+                  <a  class="toggle-dropdown sub-dropdown-toggle">Laparoscopy</a>
+                  <div class="sub-dropdown-content">
+                    <a href="{% url 'hernia' %}">Hernia</a>
+                    <a href="{% url 'appendic' %}">Appendicitis</a>
+                    <a href="javascript:void(0);" onclick="openPopup()">Gallbladder Stone</a>
+                  </div>
+                  <a class="toggle-dropdown sub-dropdown-toggle">Urology</a>
+                  <div class="sub-dropdown-content">
+                    <a href="{% url 'circumcision' %}">Circumcision</a>
+                    <a href="{% url 'kidney_stone' %}">Kidney Stone</a>
+                   <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Stapler Circumcision</a>
+                  <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Hydrocele</a>
+                  <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Frenuloplasty</a>
+                  <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Genitourinary fistula</a>
+                  <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Kidney transplant</a>
+                  <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Prostate enlargement</a>
+                  </div>
+                  <a class="toggle-dropdown sub-dropdown-toggle">Cosmetic</a>
+                    <div class="sub-dropdown-content">
+                    <a href="{% url 'gynecomastia' %}">Gynecomastia</a>
+                    <a href="{% url 'lipoma' %}">Lipoma</a>
+                    <a href="javascript:void(0);" onclick="openPopup()">Mole Removal</a>
+                  </div>
+                  <a class="toggle-dropdown sub-dropdown-toggle">Orthopedics</a>
+                    <div class="sub-dropdown-content">
+                      <a href="{% url 'knee_replacement' %}">Knee replacement</a>
+                      <a href="{% url 'hip_replacement' %}">Hip replacement</a> 
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">ACL tear</a>
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Disc injury</a>
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Joint replacement</a>
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Knee Arthroscopy</a>
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Rotator cuff repair</a>
+                    </div>
+                  <a class="toggle-dropdown sub-dropdown-toggle">Ophthalmology</a>
+                    <div class="sub-dropdown-content">
+                      <a href="{% url 'cataract' %}">Cataract</a>
+                      <a href="{% url 'lasik' %}">Lasik Surgery</a> 
+                    </div>
+
+                  <a class="toggle-dropdown sub-dropdown-toggle">vascular</a>
+                   <div class="sub-dropdown-content">
+                      <a href="{% url 'varicocele' %}">Varicocele</a>
+                      <a href="{% url 'varicose_vein' %}">Varicose vein</a>
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Deep vein thrombosis (DVT)</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <a href="{% url 'laboratory_Investigation' %}">Laboratory Investigation</a>
+            <a href="{% url 'scan' %}">Scan</a>
+            <a href="{% url 'about' %}">About us</a>
+            <a href="{% url 'aushman' %}">Ayushman</a>
+          </div>
+        </div>
+
+      <div class="right">
+        <button onclick="openPopup()">Book Now</button>
+      </div>
+      <div>
+        <a href="tel:+917204099115" class="call-btn"><i class="fas fa-phone"></i> +917204099115</a>
+      </div>
+    </nav>
+
+
+
+    <!-- Hero Content -->
+    <div class="hero-content"><br><br><br>
+      <h1>Rite Time Rite Surgery</h1>
+      <p>Empowering Lives with Quality Care</p>
+      <div class="search-bar">
+        <input type="text" id="searchInput" ... />
+        <datalist id="searchSuggestions">
+          <option value="Home">
+          <option value="Surgery">
+          <option value="Laboratory Investigation">
+          <option value="Scan">
+          <option value="About us">
+          <option value="Ayushman">
+          <option value="Piles">
+          <option value="Fissure">
+          <option value="Fistula">
+          <option value="Hernia">
+          <option value="Appendicitis">
+          <option value="Gallbladder Stone">
+          <option value="Kidney Stone">
+          <option value="Circumcision">
+          <option value="Stapler Circumcision">
+          <option value="Hydrocele">
+          <option value="Frenuloplasty">
+          <option value="Prostate enlargement">
+          <option value="Genitourinary fistula">
+          <option value="Hip replacement">
+          <option value="Knee replacement">
+          <option value="ACL tear">
+          <option value="Disc injury">
+          <option value="Joint replacement">
+          <option value="Knee Arthroscopy">
+          <option value="Rotator cuff repair">
+          <option value="Cataract">
+          <option value="Lasik Surgery">
+          <option value="Varicose Vein">
+          <option value="Varicocele">
+          <option value="Deep vein thrombosis (DVT)">
+        </datalist>
+        <button onclick="performSearch()">Search</button>
+
+    </div>
+  </div>
+
+    <div class="cards">
+
+    <div class="card">
+      <img src="{%static 'images/image_5.png' %}" alt="Wellness" />
+      <h3>Schedule Your Surgery</h3>
+      <div class="card-footer">
+        <a href="javascript:void(0);" onclick="openPopup()">Book Now</a>
+        <span class="arrow">➔</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{%static 'images/image_6.png'%}" alt="Health Checkup" />
+      <h3>Set Up a Health Assessment</h3>
+      <div class="card-footer">
+        <a href="javascript:void(0);" onclick="openPopup()">Book Now</a>
+        <span class="arrow">➔</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{%static 'images/image_8.png' %}" alt="Diagnostics" />
+      <h3>Schedule a Wellness Visit</h3>
+      <div class="card-footer">
+        <a href="javascript:void(0);" onclick="openPopup()">Book Now</a>
+        <span class="arrow">➔</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{%static 'images/image_11.png' %}" alt="Scans" />
+      <h3>Get Your Scans at Affordable Rates</h3>
+      <div class="card-footer">
+        <a href="javascript:void(0);" onclick="openPopup()">Book Now</a>
+        <span class="arrow">➔</span>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  
+
+  <!-- Expert Care Section -->
+  <section class="expert-section">
+    <h2>Healthy Smiles, Happy Hearts — That’s Our Greatest Reward</h2>
+    <div class="expert-cards">
+      <div class="expert-card">
+        <div class="expert-img">
+          <img src="{%static 'images/healthcare.png' %}" alt="Doctor Icon" />
+        </div>
+        <div class="expert-card-content">
+          <h3>Expert Care Made Simple</h3>
+          <p>We guide you to the most trusted doctors and premier healthcare facilities.</p>
+        </div>
+      </div>
+      <div class="expert-card">
+        <div class="expert-img">
+          <img src="{%static 'images/Hassle.png' %}" alt="Doctor Icon" />
+        </div>
+        <div class="expert-card-content">
+          <h3>Hassle-Free Process</h3>
+          <p>We handle all the paperwork, letting you stay stress-free.</p>
+        </div>
+      </div>
+      <div class="expert-card">
+        <div class="expert-img">
+          <img src="{%static 'images/Insurance.png' %}" alt="Doctor Icon" />
+        </div>
+        <div class="expert-card-content">
+          <h3>Smooth Insurance Processing</h3>
+          <p>We coordinate with your insurer to ensure quick and easy approvals.</p>
+        </div>
+      </div>
+      <div class="expert-card">
+        <div class="expert-img">
+          <img src="{%static 'images/Money.png' %}" alt="Doctor Icon" />
+        </div>
+        <div class="expert-card-content">
+          <h3>Flexible Payment Options</h3>
+          <p>Get the care you need with easy monthly instalments.</p>
+        </div>
+      </div>
+      <div class="expert-card">
+        <div class="expert-img">
+          <img src="{%static 'images/EmI.png' %}" alt="Doctor Icon" />
+        </div>
+        <div class="expert-card-content">
+          <h3>Quick & Safe Discharge</h3>
+          <p>Experience faster recovery with our advanced medical procedures.</p>
+        </div>
+      </div>
+      <div class="expert-card">
+        <div class="expert-img">
+          <img src="{%static 'images/Pickup.png' %}" alt="Doctor Icon" />
+        </div>
+        <div class="expert-card-content">
+          <h3>Complimentary Pick-up & Drop-off</h3>
+          <p>We take care of your travel on the day of your procedure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scroll-section">
+    <h2>Specialized in 50+ Advanced Surgeries, Delivered With Precision and Care</h2>
+    <div class="scroll-container">
+      <div class="scroll-item">
+        <div class="circle-img">
+          <img src="{%static 'images/Varicosevein.png' %} " alt="Disease 1" />
+        </div>
+        <p>Varicosevein</p>
+      </div>
+      <div class="scroll-item">
+        <div class="circle-img">
+          <img src="{%static 'images/KneeReplacement.png' %}" alt="Disease 2" />
+        </div>
+        <p>Knee Replacement</p>
+      </div>
+      <div class="scroll-item">
+        <div class="circle-img">
+          <img src="{%static 'images/Hernia1.png' %}" alt="Disease 3" />
+        </div>
+        <p>Hernia</p>
+      </div>
+      <div class="scroll-item">
+        <div class="circle-img">
+          <img src="{%static 'images/Hipreplacement.png' %}" alt="Disease 3" />
+        </div>
+        <p>Hip replacement</p>
+      </div>
+      <div class="scroll-item">
+        <div class="circle-img">
+          <img src="{%static 'images/Fistula_1.png' %}" alt="Disease 3" />
+        </div>
+        <p>Fistula</p>
+      </div>
+      <div class="scroll-item">
+        <div class="circle-img">
+          <img src="{%static 'images/Gynecomastia.png' %}" alt="Disease 3" />
+        </div>
+        <p>Gynecomastia</p>
+      </div>
+      <div class="scroll-item">
+        <div class="circle-img">
+          <img src="{%static 'images/Kidneystones.png' %}" alt="Disease 3" />
+        </div>
+        <p>Kidneystones</p>
+      </div>
+      <div class="scroll-item">
+        <div class="circle-img">
+          <img src="{%static 'images/Moleremoval.png' %}" alt="Disease 3" />
+        </div>
+        <p>Mole removal</p>
+      </div>
+      <div class="scroll-item">
+        <div class="circle-img">
+          <img src="{%static 'images/Circumcision.png' %}" alt="Disease 3" />
+        </div>
+        <p>Circumcision</p>
+      </div>
+      <div class="scroll-item">
+        <div class="circle-img">
+          <img src="{%static 'images/Piles_1.png' %}" alt="Disease 3" />
+        </div>
+        <p>Piles</p>
+      </div>
+
+      <!-- Repeat as needed -->
+    </div>
+  </section>
+
+
+  <section class="service-section">
+    <h2>Healthy Smiles, Happy Hearts — That’s Our Greatest Reward</h2>
+
+    <div class="service-cards-wrapper">
+      <div class="service-card">
+        <div class="service-text">
+          <h3>Proctology</h3>
+          <p>Specialized care for rectal and anal conditions such as hemorrhoids, fissures, and fistulas.</p>
+        </div>
+        <div class="service-icon">
+          <img src="{%static 'images/Laparoscopy.jpg' %}" alt="Proctology Icon" />
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-text">
+          <h3>Ophthalmology</h3>
+          <p>Comprehensive eye care including vision correction, eye diseases, and surgical treatments.</p>
+        </div>
+        <div class="service-icon">
+          <img src="{%static 'images/Ophthalmology.jpg' %}" alt="Proctology Icon" />
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-text">
+          <h3>Vascular</h3>
+          <p>Specialized care for diseases of the blood vessels and circulatory system.</p>
+        </div>
+        <div class="service-icon">
+          <img src="{%static 'images/Orthopaedics.jpg' %}" alt="Proctology Icon" />
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-text">
+          <h3>Laparoscopy</h3>
+          <p>Minimally invasive procedure for diagnosing and treating digestive system disorders.</p>
+        </div>
+        <div class="service-icon">
+          <img src="{%static 'images/Proctology.jpg' %}" alt="Proctology Icon" />
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-text">
+          <h3>Urology</h3>
+          <p>Specialized care for urinary tract conditions and male reproductive health.</p>
+        </div>
+        <div class="service-icon">
+          <img src="{%static 'images/Urology.jpg' %}" alt="Proctology Icon" />
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-text">
+          <h3>Orthopaedics</h3>
+          <p>Expert care for bones, joints, muscles, and injuries affecting the musculoskeletal system.</p>
+        </div>
+        <div class="service-icon">
+          <img src="{%static 'images/Vascular.jpg' %}" alt="Proctology Icon" />
+        </div>
+      </div>
+      <!-- Repeat 5 more cards like above -->
+    </div>
+  </section>
+
+  <section class="consult-section" id="consultationForm">
+    <div class="consult-container">
+      <!-- Left: Form -->
+      <div class="consult-form-box">
+        <h3>Book Your Consultant</h3>
+        <div class="consult-icons">
+          <span>✅ Expert Doctors</span>
+          <span>✅ Insurance support</span>
+          <span>✅ Free transportation</span>
+        </div>
+
+        <form class="consult-form">
+          <label>Name</label>
+          <input type="text" placeholder="Enter your Name" />
+
+          <label>Mobile</label>
+          <input type="text" placeholder="+91 | phone number" />
+
+          <label>Location</label>
+          <select>
+            <option>Select Location</option>
+            <option>Bangalore</option>
+            <option>other</option>
+
+          </select>
+
+          <label>Treatment</label>
+          <input type="text" placeholder="Enter your surgery" />
+
+          <button type="submit">Book Your Consultant →</button>
+          <br>
+          <h6>Easy EMI Options Available</h6>
+        </form>
+      </div>
+
+      <!-- Right: Image -->
+      <div class="consult-image-area">
+        <img src="{%static 'images/female_doctor.png' %}" alt="Doctor" class="consult-doctor" />
+        <div class="bg-circle"></div>
+        <img src="{%static 'images/fluent_doctor-20-regular.png' %}" class="symbol plus" />
+        <img src="{%static 'images/game-icons_love_injection.png' %}" class="symbol inject" />
+        <img src="{%static 'images/ri_heart_fill.png' %}" class="symbol heart" />
+      </div>
+    </div>
+  </section>
+
+  <section class="specialist-section">
+    <h2>MEET OUR RENOWNED SPECIALISTS</h2>
+    <p>Consult With The Finest Doctors In Your City</p>
+
+
+
+      <div class="specialist-cards">
+        <div class="specialist-card">
+          <img src="{% static 'images/Dr_Giridhar_MBBS_MD.jpeg' %}" alt="Doctor 1" />
+          <h3>Dr GIRIGHAR</h3>
+          <p> MBBS MD</p>
+          <button class="call-btn_1" onclick="window.location.href='tel:+917204099115'">📞 Call Us</button>
+        </div>
+
+        <div class="specialist-card">
+          <img src="{% static 'images/Dr_Venkatesh_MBBS_MD.jpeg' %}" alt="Doctor 2" />
+          <h3>Dr VENKATESH </h3>
+          <p>MBBS MD</p>
+          <button class="call-btn_1" onclick="window.location.href='tel:+917204099115'">📞 Call Us</button>
+        </div>
+
+        <div class="specialist-card">
+          <img src="{% static 'images/DR_KEERTHI_RAJ_MBBS_MS.jpeg' %}" alt="Doctor 3" />
+          <h3>DR KEERTHI RAJ </h3>
+          <p>MBBS MS</p>
+          <button class="call-btn_1" onclick="window.location.href='tel:+917204099115'" >📞 Call Us</button>
+        </div>
+
+        <div class="specialist-card">
+          <img src="{% static 'images/founder.jpeg' %}" alt="Doctor 4" />
+          <h3>Dr. Javaji Ravi Prasad</h3>
+          <p>MBBS, MD</p>
+          <button class="call-btn_1" onclick="window.location.href='tel:+917204099115'">📞 Call Us</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="roadmap-image-section">
+  <picture>
+    <source media="(max-width: 768px)" srcset="{% static 'images/roadmap_vertical.png' %}" />
+    <img src="{% static 'images/roadmap2.png' %}" alt="Roadmap" class="roadmap-image" />
+  </picture>
+</section>
+
+  <section class="testimonials-section">
+  <h2>Testimonials</h2>
+  <div class="testimonial-scroll">
+    <div class="testimonial-card">
+      <img src="{% static 'images/user1.png' %}" alt="User">
+      <h4> Shruthi R.<span>• JP Nagar</span></h4>
+      <div class="stars">★★★★★</div>
+      <p>"Quick, clean, and professional!"
+I visited Rite Surgery for a full-body lab scan. The process was smooth and timely. The staff were polite and explained each step. I got my results the same day, and everything was neatly documented. Highly recommend them for diagnostic scans in Bangalore!</p>
+    </div>
+
+    <div class="testimonial-card">
+      <img src="{% static 'images/user1.png' %}" alt="User">
+      <h4>Amit R.<span>Indiranagar</span></h4>
+      <div class="stars">★★★★★</div>
+      <p>"Affordable and stress-free surgery experience"
+Had my gynecomastia surgery done through Rite Surgery, and I’m extremely happy with the results. The team coordinated everything — from doctor appointments to insurance — and it was all done near my home in Bangalore. Plus, they offer No Cost EMI!</p>
+    </div>
+
+    <div class="testimonial-card">
+      <img src="{% static 'images/user1.png' %}" alt="User">
+      <h4>Ankita M. <span>Whitefield</span></h4>
+      <div class="stars">★★★★★</div>
+      <p>"Best lab test facility with doorstep service"
+I booked a blood test with Rite Surgery’s lab partner, and they came right to my house in the morning. The technician was punctual and professional. Reports came digitally in less than 24 hours. Great convenience for working professionals in Bangalore!</p>
+    </div>
+       <div class="testimonial-card">
+      <img src="{% static 'images/user1.png' %}" alt="User">
+      <h4>Ravi K<span>Rajajinagar</span></h4>
+      <div class="stars">★★★★★</div>
+      <p>"Seamless surgery and insurance help"
+I had to undergo varicose vein surgery and was worried about costs. Rite Surgery helped me claim insurance and even found a nearby hospital in Bangalore. The doctors were excellent, and the recovery has been great so far.</p>
+    </div>
+       <div class="testimonial-card">
+      <img src="{% static 'images/user1.png' %}" alt="User">
+      <h4>ಅನಿಲ್ ಕುಮಾರ್ <span>ಬಸವನಗುಡಿ</span></h4>
+      <div class="stars">★★★★★</div>
+      <p>"ಸರ್ಜರಿ ಎಂದರೆ Rite Surgery!"
+ನಾನು ಹೊಟ್ಟೆಯಲ್ಲಿ ಲಿಪೋಮಾ ಸರ್ಜರಿ ಮಾಡಿಸಿಕೊಳ್ಳಬೇಕಾಯಿತು. Rite Surgery ನನ್ನ ಇನ್ಶುರೆನ್ಸ್ ಮೂಲಕ ಹಾಸ್ಪಿಟಲ್ ಅರೆಂಜ್ ಮಾಡಿತು. ಡಾಕ್ಟರ್‌ಗಳು ಬಹಳ ಅನುಭವಿ, ಮತ್ತು ಟ್ರೀಟ್ಮೆಂಟ್ ಬಹಳ ಚೆನ್ನಾಗಿ ಆಯ್ತು...</p>
+    </div>
+
+ 
+  </div>
+</section>
+
+  <section class="freq_question_contain">
+        <h1>Frequently Asked Questions</h1>
+
+        <div class="faq-item">
+            <div class="faq-question">Does Rite Surgery Health own any hospitals?</div>
+            <div class="faq-answer">
+                No, Rite Surgery Health does not own any hospitals. We are a healthcare facilitation platform that partners with a wide network of accredited hospitals and clinics to provide you with access to quality medical care. Our focus is on connecting you with the best facilities and doctors for your specific needs.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How does Rite Surgery make surgeries more affordable for me?</div>
+            <div class="faq-answer">
+               Rite Surgery helps make surgeries more affordable through several mechanisms:
+                <ul>
+                    <li>Negotiated Rates: We leverage our network and relationships with hospitals to negotiate competitive pricing on your behalf.</li>
+                    <li>Transparent Pricing: We provide you with clear, upfront cost estimates, helping you avoid hidden fees.</li>
+                    <li>Financial Guidance: We can assist you in understanding different payment options, including EMI facilities and insurance benefits, to manage your expenses effectively.</li>
+                    <li>Package Deals: Often, we can facilitate access to comprehensive surgery packages that include various services at a bundled rate, offering better value.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Do I have to pay any fees for using Rite Surgery’s services?</div>
+            <div class="faq-answer">
+                No, Rite Surgery's core facilitation services for finding doctors, hospitals, and getting initial consultations are generally free for patients. We aim to make healthcare access seamless and burden-free. Any charges related to the medical procedures themselves will be clearly communicated by the hospital or clinic.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How does Rite Surgery find the best doctor and hospital for me?</div>
+            <div class="faq-answer">
+               Rite Surgery employs a multi-faceted approach to recommend the best doctor and hospital:
+                <ul>
+                    <li>Detailed Needs Assessment: We start by understanding your specific medical condition, preferences, location, and budget.</li>
+                    <li>Vast Network: We have a comprehensive database of highly-rated doctors and accredited hospitals across various specialties.</li>
+                    <li>Expert Matching: Our healthcare experts analyze your needs against our network, considering factors like doctor's specialization, experience, patient reviews, hospital facilities, and success rates.</li>
+                    <li>Personalized Recommendations: We provide you with a curated list of options, allowing you to make an informed decision with all the necessary information.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How can Rite Surgery help me once I find my hospital and doctor of choice?</div>
+            <div class="faq-answer">
+                Once you've selected your hospital and doctor, Rite Surgery continues to support you by:
+                <ul>
+                    <li>Appointment Scheduling: We help you book appointments and manage your medical calendar.</li>
+                    <li>Pre-operative Assistance: We can guide you through any pre-operative instructions, tests, or documentation required.</li>
+                    <li>Logistics Support: If needed, we can assist with travel and accommodation arrangements, especially for out-of-town patients.</li>
+                    <li>Seamless Coordination: We act as a liaison between you and the hospital, ensuring smooth communication and addressing any queries.</li>
+                    <li>Post-operative Follow-up: We may offer support for follow-up appointments and general guidance during your recovery period.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Will Rite Surgery help me file my insurance claim?</div>
+            <div class="faq-answer">
+                Yes, Rite Surgery can absolutely assist you with your insurance claim process. Our team can:
+                <ul>
+                    <li>Provide Documentation Guidance: Help you understand what documents are required for your claim.</li>
+                    <li>Facilitate Communication: Act as a bridge between you and the hospital's insurance desk to ensure all necessary paperwork is submitted correctly.</li>
+                    <li>Answer Queries: Guide you through common insurance questions and procedures.</li>
+                    <li>While we don't directly process claims, we empower you with the information and support needed to navigate the insurance landscape efficiently.</li>
+                </ul>
+            </div>
+        </div>
+
+      </section>
+
+
+
+
+     <script>
+  document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+      const answer = question.nextElementSibling;
+
+      // Close others
+      document.querySelectorAll('.faq-answer.active').forEach(openAnswer => {
+        if (openAnswer !== answer) openAnswer.classList.remove('active');
+      });
+      document.querySelectorAll('.faq-question.active').forEach(openQuestion => {
+        if (openQuestion !== question) openQuestion.classList.remove('active');
+      });
+
+      // Toggle current
+      question.classList.toggle('active');
+      answer.classList.toggle('active');
+    });
+  });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.querySelector('.hamburger');
+  const centerWrapper = document.querySelector('.center-wrapper');
+
+  hamburger.addEventListener('click', () => {
+    centerWrapper.classList.toggle('active');
+  });
+
+  const toggles = document.querySelectorAll('.toggle-dropdown');
+
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', e => {
+      e.preventDefault();
+      const dropdown = toggle.nextElementSibling;
+      if (!dropdown) return;
+
+      // Close other open dropdowns except this one
+      document.querySelectorAll('.dropdown-content.show, .sub-dropdown-content.show').forEach(openDropdown => {
+        if (openDropdown !== dropdown) {
+          openDropdown.classList.remove('show');
+        }
+      });
+
+      dropdown.classList.toggle('show');
+    });
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.dropdown') && !e.target.closest('.sub-dropdown') && !e.target.closest('.toggle-dropdown') && !e.target.closest('.hamburger')) {
+      document.querySelectorAll('.dropdown-content.show, .sub-dropdown-content.show').forEach(openDropdown => {
+        openDropdown.classList.remove('show');
+      });
+    }
+  });
+});
+
+
+
+
+</script>
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <!-- Left: Logo & Description -->
+      <div class="footer-left">
+        <img src="{%static 'images/logo.png' %}" alt="Logo" class="footer-logo" />
+        <p>Your trusted healthcare partner delivering top-quality services with compassion and care.</p>
+      </div>
+
+       <div class="footer-links">
+        <h4>Popular Treatments</h4>
+        <ul>
+          <li><a href={% url 'lipoma' %}>Lipoma Removal</a></li>
+          <li><a href={% url 'varicose_vein' %}>Varicose Vein</a></li>
+          <li><a href={% url 'kidney_stone' %}>Kidney Stone</a></li>
+          <li> <a href={% url 'circumcision' %}>Circumcision</a></li>
+          <li> <a href={% url 'fissure_complete' %}>Fistula</a></li>
+           <li> <a href={% url 'gynecomastia' %}>Gynecomastia</a></li>
+
+        </ul>
+      </div>
+
+      <!-- Center: Links -->
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href={% url 'piles' %} >Surgery</a></li>
+          <li><a href={% url 'scan' %}>Scan</a></li>
+          <li> <a href="{% url 'about' %}">About us</a></li>
+          <li> <a href = "{% url 'aushman' %}">Ayushman</a></li>
+
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="{% url 'privacyview' %}">Privacy Policy</a></li>
+          <li><a href="{% url 'Term_condition' %}">Terms and conditions</a></li>
+
+        </ul>
+      </div>
+
+      <!-- Right: Contact + Social + Email -->
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>1388,4th Cross Rd,Vijaynagar,Chandra Layout,Attigupee,Bangalore, Karnataka 560040</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/share/1LeXVmTe3B/"><img src="{%static 'images/Vector_1.png' %}" alt="Facebook" /></a>
+          <!-- <a href="href="javascript:void(0);" onclick="openPopup()""><img src="{%static 'images/Group_31.png'%}" alt="Twitter" /></a> -->
+          <a href="https://www.instagram.com/rite.surgery_1?igsh=YXFvcjBvM2tiNjNy"><img src="{%static 'images/Group_32.png' %}" alt="Instagram" /></a>
+        </div>
+        <form class="email-form">
+          <input type="email" placeholder="Your email address" />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+      <a href="https://wa.me/7624845408" target="_blank" class="whatsapp-link" aria-label="Chat on WhatsApp">
+        <div class="icon-label">
+          <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 258">
+            <path fill="#25D366" d="M5.46 127.46c-.01 21.68 5.66 42.84 16.43 61.5L4.43 252.7l65.23-17.1a123 123 0 0 0 58.8 14.97h.05c67.82 0 123.02-55.18 123.05-123.01c.01-32.87-12.78-63.77-36.01-87.03c-23.23-23.25-54.13-36.06-87.04-36.08c-67.82 0-123.02 55.18-123.05 123.01z"/>
+            <path fill="#FFF" d="M96.68 74.15c-2.39-5.3-4.9-5.41-7.17-5.5c-1.86-.08-3.98-.07-6.1-.07c-2.12 0-5.58.8-8.49 3.98c-2.92 3.19-11.15 10.89-11.15 26.56s11.41 30.81 13 32.94c1.6 2.12 22.03 35.31 54.41 48.07c26.9 10.61 32.38 8.5 38.22 7.97c5.84-.53 18.84-7.7 21.5-15.14c2.65-7.44 2.65-13.81 1.86-15.14c-.8-1.33-2.92-2.12-6.11-3.72c-3.19-1.6-18.84-9.3-21.76-10.36c-2.92-1.06-5.04-1.59-7.17 1.6c-2.12 3.18-8.22 10.36-10.08 12.48c-1.86 2.13-3.72 2.39-6.9.8c-3.19-1.6-13.44-4.96-25.61-15.81c-9.47-8.44-15.86-18.87-17.72-22.06c-1.86-3.18-.2-4.91 1.4-6.5c1.43-1.43 3.19-3.72 4.78-5.58c1.59-1.86 2.12-3.19 3.18-5.31c1.06-2.13.53-3.99-.27-5.58c-.79-1.6-6.98-17.34-9.82-23.64z"/>
+          </svg>
+          <span class="blinking-border">Chat with us</span>
+        </div>
+      </a>
+
+
+    </div>
+
+    <!-- Divider + Copyright -->
+    <hr />
+    <div class="footer-bottom">
+      <p>© 2025 Your Company. All rights reserved.</p>
+    </div>
+  </footer>
+<div id="searchPopup" style="display:none; position:fixed; top:100px; left:50%; transform:translateX(-50%);
+background:white; padding:20px; box-shadow:0 4px 20px rgba(0,0,0,0.2); border-radius:10px;
+z-index:9999; max-width:500px; width:90%; text-align:left;">
+  <h3 id="popupTitle" style="margin-top:0;"></h3>
+  <p id="popupDescription"></p>
+  <button id="popupConsult" style="margin-top:10px; padding:10px 15px; background:#007bff; color:#fff;
+border:none; border-radius:5px; cursor:pointer;">Book Consultation</button>
+  <br><br>
+  <button onclick="closePopup()" style="background:none; border:none; color:#999; cursor:pointer;">Close</button>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  {% include 'booknow.html' %}
+</body>
+
+
+</html>

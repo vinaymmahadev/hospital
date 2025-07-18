@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Treatments Dropdown</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+  <header class="header">
+    <nav class="navbar">
+      <div class="logo">🏥 RITE SURGERY</div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li class="dropdown">
+          <a href="#">Treatments <i class="fa-solid fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li class="has-submenu">
+              <a href="#">Proctology <i class="fa-solid fa-chevron-right"></i></a>
+              <ul class="submenu">
+                <li><a href="piles.html">Piles</a></li>
+                <li><a href="fissure_complete.html">Fissure</a></li>
+                <li><a href="#" class="popup-link">Fistula</a></li>
+              </ul>
+            </li>
+            <li class="has-submenu">
+              <a href="#">Laparoscopy <i class="fa-solid fa-chevron-right"></i></a>
+              <ul class="submenu">
+                <li><a href="hernia.html">Hernia</a></li>
+                <li><a href="appendicitis.html">Appendicitis</a></li>
+                <li><a href="#" class="popup-link">Gallbladder Stone</a></li>
+              </ul>
+            </li>
+            <li class="has-submenu">
+              <a href="#">Urology <i class="fa-solid fa-chevron-right"></i></a>
+              <ul class="submenu">
+                <li><a href="circumcision.html">Circumcision</a></li>
+                <li><a href="kidney_stone.html">Kidney stone</a></li>
+                <li><a href="#" class="popup-link">Stapler Circumcision</a></li>
+                <li><a href="#" class="popup-link">Hydrocele</a></li>
+                <li><a href="#" class="popup-link">Frenuloplasty</a></li>
+                <li><a href="#" class="popup-link">Genitourinary fistula</a></li>
+                <li><a href="#" class="popup-link">Kidney transplant</a></li>
+                <li><a href="#" class="popup-link">Prostate enlargement</a></li>
+              </ul>
+            </li>
+            <li class="has-submenu">
+              <a href="#">Cosmetic <i class="fa-solid fa-chevron-right"></i></a>
+              <ul class="submenu">
+                <li><a href="gynecomastia.html">Gynecomastia</a></li>
+                <li><a href="lipoma.html">Lipoma</a></li>
+                <li><a href="#" class="popup-link">Mole Removal</a></li>
+              </ul>
+            </li>
+            <li class="has-submenu">
+              <a href="#">Orthopedics <i class="fa-solid fa-chevron-right"></i></a>
+              <ul class="submenu">
+                <li><a href="hip_replacement.html">Hip replacement</a></li>
+                <li><a href="knee_replacement.html">Knee replacement</a></li>
+                <li><a href="#" class="popup-link">ACL tear</a></li>
+                <li><a href="#" class="popup-link">Disc injury</a></li>
+                <li><a href="#" class="popup-link">Joint replacement</a></li>
+                <li><a href="#" class="popup-link">Knee Arthroscopy</a></li>
+                <li><a href="#" class="popup-link">Rotator cuff repair</a></li>
+              </ul>
+            </li>
+            <li class="has-submenu">
+              <a href="#">Ophthalmology <i class="fa-solid fa-chevron-right"></i></a>
+              <ul class="submenu">
+                <li><a href="cataract.html">Cataract</a></li>
+                <li><a href="lasik_surgery.html">Lasik Surgery</a></li>
+              </ul>
+            </li>
+            <li class="has-submenu">
+              <a href="#">Vascular <i class="fa-solid fa-chevron-right"></i></a>
+              <ul class="submenu">
+                <li><a href="varicose_vein.html">Varicose Vein</a></li>
+                <li><a href="varicocele.html">Varicocele</a></li>
+                <li><a href="#" class="popup-link">Deep vein thrombosis (DVT)</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="scan.html">Scan</a></li>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="#">Ayushman</a></li>
+        <li><a class="book-now" href="#">Book Now</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Popup Modal -->
+  <div class="popup-overlay" id="popup">
+    <div class="popup-box">
+      <span class="popup-close" id="popupClose">&times;</span>
+      <h2>Book Your Consultation</h2>
+      <form id="popupForm">
+        <input type="text" id="name" placeholder="Name">
+        <input type="email" id="email" placeholder="Email ID">
+        <input type="tel" id="mobile" placeholder="Mobile No">
+        <p class="error-message" id="formError"></p>
+        <button type="submit">Book</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const popupLinks = document.querySelectorAll('.popup-link');
+    const popup = document.getElementById('popup');
+    const popupClose = document.getElementById('popupClose');
+    const popupForm = document.getElementById('popupForm');
+    const errorMsg = document.getElementById('formError');
+
+    popupLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        popup.style.display = 'flex';
+        errorMsg.textContent = '';
+        popupForm.reset();
+      });
+    });
+
+    popupClose.addEventListener('click', () => {
+      popup.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === popup) popup.style.display = 'none';
+    });
+
+    popupForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const mobile = document.getElementById('mobile').value.trim();
+      if (!name || !email || !mobile) {
+        errorMsg.textContent = "All fields are required!";
+        return;
+      }
+      alert("Booking confirmed!");
+      popup.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

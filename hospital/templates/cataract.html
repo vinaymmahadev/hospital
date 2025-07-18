@@ -1,0 +1,477 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cataract Treatment</title>
+  <link rel="stylesheet" href="{% static 'css/all_subdropdowns.css' %}" />
+  <script src="{% static 'js/option.js' %}"></script>
+  <script src="{% static 'js/popup.js' %}" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .popup-box {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      position: relative;
+      text-align: center;
+    }
+    .popup-box input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .popup-box button {
+      background: #3b0a77;
+      color: white;
+      padding: 10px;
+      border: none;
+      width: 100%;
+      border-radius: 6px;
+    }
+    .popup-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .error-message {
+      color: red;
+      font-size: 14px;
+    }
+    .faq-section details {
+      margin-bottom: 10px;
+    }
+    .faq-section summary {
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .faq-section p {
+      margin: 5px 0 15px;
+    }
+  </style>
+</head>
+<body>
+  <section class="treatment-section">
+    <nav class="navbar">
+      <div class="left">
+        <img src="{% static 'images/logo.png' %}" alt="Logo" />
+      </div>
+
+      <div class="center-wrapper">
+       
+          <div class="center">
+            <a href="{% url 'home' %}">Home</a>
+            
+            <div class="dropdown">
+              <a  class="toggle-dropdown">surgery</a>
+
+              <div class="dropdown-content">
+                
+                <div class="sub-dropdown">
+                  <a class="toggle-dropdown sub-dropdown-toggle">Proctology</a>
+                  <div class="sub-dropdown-content">
+                    <a href="{% url 'piles' %}">Piles</a>
+                    <a href="{% url 'fissure' %}">Fissure</a>
+                    <a href="javascript:void(0);" onclick="openPopup()">Fistula</a>
+                  </div>
+                  <a  class="toggle-dropdown sub-dropdown-toggle">Laparoscopy</a>
+                  <div class="sub-dropdown-content">
+                    <a href="{% url 'hernia' %}">Hernia</a>
+                    <a href="{% url 'appendic' %}">Appendicitis</a>
+                    <a href="javascript:void(0);" onclick="openPopup()">Gallbladder Stone</a>
+                  </div>
+                  <a class="toggle-dropdown sub-dropdown-toggle">Urology</a>
+                  <div class="sub-dropdown-content">
+                    <a href="{% url 'circumcision' %}">Circumcision</a>
+                    <a href="{% url 'kidney_stone' %}">Kidney Stone</a>
+                   <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Stapler Circumcision</a>
+                  <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Hydrocele</a>
+                  <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Frenuloplasty</a>
+                  <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Genitourinary fistula</a>
+                  <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Kidney transplant</a>
+                  <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Prostate enlargement</a>
+                  </div>
+                  <a class="toggle-dropdown sub-dropdown-toggle">Cosmetic</a>
+                    <div class="sub-dropdown-content">
+                    <a href="{% url 'gynecomastia' %}">Gynecomastia</a>
+                    <a href="{% url 'lipoma' %}">Lipoma</a>
+                    <a href="javascript:void(0);" onclick="openPopup()">Mole Removal</a>
+                  </div>
+                  <a class="toggle-dropdown sub-dropdown-toggle">Orthopedics</a>
+                    <div class="sub-dropdown-content">
+                      <a href="{% url 'knee_replacement' %}">Knee replacement</a>
+                      <a href="{% url 'hip_replacement' %}">Hip replacement</a> 
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">ACL tear</a>
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Disc injury</a>
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Joint replacement</a>
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Knee Arthroscopy</a>
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Rotator cuff repair</a>
+                    </div>
+                  <a class="toggle-dropdown sub-dropdown-toggle">Ophthalmology</a>
+                    <div class="sub-dropdown-content">
+                      <a href="{% url 'cataract' %}">Cataract</a>
+                      <a href="{% url 'lasik' %}">Lasik Surgery</a> 
+                    </div>
+
+                  <a class="toggle-dropdown sub-dropdown-toggle">vascular</a>
+                   <div class="sub-dropdown-content">
+                      <a href="{% url 'varicocele' %}">Varicocele</a>
+                      <a href="{% url 'varicose_vein' %}">Varicose vein</a>
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Deep vein thrombosis (DVT)</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <a href="{% url 'laboratory_Investigation' %}">Laboratory Investigation</a>
+            <a href="{% url 'scan' %}">Scan</a>
+            <a href="{% url 'about' %}">About us</a>
+            <a href="{% url 'aushman' %}">Ayushman</a>
+          </div>
+        </div>
+
+      <div class="right">
+        <button onclick="openPopup()" class="book-now-btn">Book Now</button>
+      </div>
+    </nav>
+
+    <div class="treatment-container">
+      <div class="treatment-form">
+        <h3>Book Your Consultant</h3>
+        <input type="text" placeholder="Enter your name" />
+        <input type="text" placeholder="📞 Phone Number" />
+        <input type="text" placeholder="Location" />
+        <input type="text" placeholder="Treatments" />
+        <button class="primary-btn book-now-btn">Book Now</button>
+      </div>
+
+      <div class="treatment-content">
+        <h2>Get Best Cataract Treatment in Bangalore:<br>Find Top Doctors at Affordable Costs</h2>
+        <p>
+          Is your vision becoming blurry or cloudy? Cataracts can gradually interfere with your ability to see clearly, making everyday tasks difficult. At Rite Surgery, we offer precise and advanced cataract removal surgeries that restore clear vision and enhance your quality of life.
+        </p>
+        <p>
+          Our ophthalmologists use cutting-edge laser and phacoemulsification techniques for safe, scar-free procedures with quick recovery. We ensure a smooth experience from consultation to post-op care — with full insurance support and free pickup/drop included for your convenience.
+        </p>
+         <ul style="list-style: none; padding: 0; margin-top: 25px; color: #333; font-size: 16px;">
+      <li style="margin-bottom: 10px;">✔️ Laser-Assisted, Blade-Free Surgery</li>
+      <li style="margin-bottom: 10px;">✔️ Fast Recovery & Painless Procedure</li>
+      <li style="margin-bottom: 10px;">✔️ Performed by Expert Eye Surgeons</li>
+      <li style="margin-bottom: 10px;">✔️ Complete Insurance & EMI Options</li>
+      <li style="margin-bottom: 10px;">✔️ Free Transportation Services</li>
+    </ul>
+        <div class="cta-buttons">
+          <button class="book-btn book-now-btn">Book Now</button>
+          <a href="tel:+919709706555"><button class="secondary-btn">Call Us</button></a>
+        </div>
+      </div>
+
+      <div class="treatment-image">
+        <img src="{% static 'images/Cataract_Treatment.jpeg' %}" alt="Cataract Treatment" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Modern Popup Modal -->
+  <div class="popup-overlay" id="popup">
+    <div class="popup-box">
+      <span class="popup-close" id="popupClose">&times;</span>
+      <h2>Book Your Consultation</h2>
+      <form id="popupForm">
+        {% csrf_token %}
+        <input type="text" id="name" placeholder="Name">
+        <input type="email" id="email" placeholder="Email ID">
+        <input type="tel" id="mobile" placeholder="Mobile No">
+        <p class="error-message" id="formError"></p>
+        <button type="submit">Book</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- What is Cataract continues... -->
+  <section class="about-cataract" style="padding: 40px;">
+    <h2 style="text-align: center;">What is Cataract?</h2>
+    <p style="max-width: 900px; margin: auto; font-size: 17px;">A cataract is a clouding of the eye's natural lens, leading to blurry vision. Surgery to replace the cloudy lens with a clear artificial one is the most effective treatment.</p>
+  </section>
+
+  <!-- 2 Banners -->
+ <section class="varicose_vein-banners">
+  <div class="card-banner-row">
+    <div class="card-banner">
+      <img src="{% static 'images/insurance.jpg' %}" alt="Insurance Banner">
+    </div>
+    <div class="card-banner">
+      <img src="{% static 'images/emi1.png' %}" alt="EMI Banner">
+    </div>
+  </div>
+</section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section-modern" style="padding: 60px 20px; background: #f9fbfc;">
+  <h2 style="text-align: center; font-size: 28px; font-weight: bold; color: #00384e; margin-bottom: 40px;">
+    Frequently Asked Questions
+  </h2>
+
+  <div class="faq-container" style="max-width: 900px; margin: auto;">
+
+
+
+  
+    <details class="faq-item">
+      <summary>What causes cataract?</summary>
+      <p>
+        Cataracts are caused by clouding of the eye's natural lens due to protein buildup.  
+        The most common cause is aging, but it can also result from trauma, prolonged steroid use, diabetes, or UV exposure.  
+        Genetic factors and smoking may increase the risk.  
+        The cloudiness gradually reduces vision and can lead to blindness if untreated.  
+        Early detection allows for timely correction with surgery.
+      </p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Is cataract dangerous?</summary>
+      <p>
+        Cataracts are not immediately dangerous, but they can significantly affect daily life.  
+        If untreated, vision continues to deteriorate, making it hard to read, drive, or recognize faces.  
+        Over time, complete vision loss can occur.  
+        Surgery is a safe and effective treatment that restores clear vision.  
+        Early diagnosis ensures better outcomes with minimal risks.
+      </p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Can cataract go away on their own?</summary>
+      <p>
+        No, cataracts do not go away or reverse naturally.  
+        They usually progress slowly and worsen over time.  
+        While glasses or brighter lighting may help initially, surgery is the only long-term solution.  
+        The lens must be replaced to restore vision.  
+        Regular eye checkups can help monitor progression and determine the right time for surgery.
+      </p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Is laser surgery safe?</summary>
+      <p>
+        Yes, laser-assisted cataract surgery is safe and widely practiced.  
+        It offers enhanced precision and reduces the risk of complications.  
+        The procedure is minimally invasive and typically completed in under 20 minutes.  
+        Recovery is faster and more comfortable than traditional methods.  
+        It is one of the safest eye surgeries available with a high success rate.
+      </p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Will there be pain after surgery?</summary>
+      <p>
+        Most patients experience little to no pain after cataract surgery.  
+        Some mild irritation, dryness, or light sensitivity may occur for a day or two.  
+        These symptoms are temporary and manageable with prescribed eye drops.  
+        Avoid rubbing your eyes and follow all post-op care instructions.  
+        Contact your surgeon if discomfort persists beyond a few days.
+      </p>
+    </details>
+
+    <details class="faq-item">
+      <summary>How long is the recovery?</summary>
+      <p>
+        Initial vision improvement is often noticed within 24–48 hours.  
+        Most patients resume normal activities within 2–3 days.  
+        Full recovery may take 2–4 weeks as the eye completely adjusts.  
+        Follow-up visits ensure proper healing.  
+        It's important to avoid water entering the eye and heavy exertion during early recovery.
+      </p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Is the surgery covered by insurance?</summary>
+      <p>
+        Yes, cataract surgery is usually covered by most health insurance plans, including government schemes.  
+        This includes the cost of surgery, lenses, and hospital stay.  
+        Premium lens options may require an additional payment.  
+        Our team assists with claim approvals, documentation, and cashless coordination.  
+        Check with your insurer for exact coverage details.
+      </p>
+    </details>
+
+    <details class="faq-item">
+      <summary>How long is the hospital stay?</summary>
+      <p>
+        Cataract surgery is a short outpatient procedure.  
+        You will be discharged within a few hours after surgery.  
+        No overnight stay is required unless there are unusual complications.  
+        A brief recovery period at the hospital is followed by home rest.  
+        Patients are advised to be accompanied by a caregiver on the day of surgery.
+      </p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Can it come back?</summary>
+      <p>
+        Once a cataract is removed, it cannot come back.  
+        However, a condition called posterior capsule opacification (PCO) can occur in some cases.  
+        This can cause cloudy vision but is easily treated with a quick laser procedure.  
+        Regular follow-up ensures any such issues are caught early.  
+        Overall, the results of cataract surgery are long-lasting and stable.
+      </p>
+    </details>
+
+    <details class="faq-item">
+      <summary>What diet is good for recovery?</summary>
+      <p>
+        A nutrient-rich diet supports healing and long-term eye health.  
+        Include green leafy vegetables, citrus fruits, carrots, sweet potatoes, and fish rich in omega-3.  
+        Stay hydrated and avoid alcohol and processed foods.  
+        Vitamins A, C, and E play a key role in eye tissue repair.  
+        Consult your doctor if you have diabetes or other dietary needs.
+      </p>
+    </details>
+
+  </div>
+</section>
+<h2 style="text-align: center;">MEET OUR RENOWNED SPECIALISTS</h2>
+<p style="text-align: center;">Consult With The Finest Doctors In Your City</p>
+ 
+
+  <div class="specialist-carousel">
+    {% comment %} <button class="arrow left">❮</button> {% endcomment %}
+
+    <div class="specialist-cards">
+      <div class="specialist-card">
+        <img src="{% static 'images/Dr_Giridhar_MBBS_MD.jpeg' %}" alt="Doctor 1" />
+        <h3>Dr GIRIGHAR</h3>
+        <p> MBBS MD</p>
+        <button class="call-btn_1" onclick="window.location.href='tel:+917624845408'">📞 Call Us</button>
+      </div>
+
+      <div class="specialist-card">
+        <img src="{% static 'images/Dr_Venkatesh_MBBS_MD.jpeg' %}" alt="Doctor 2" />
+        <h3>Dr VENKATESH </h3>
+        <p>MBBS MD</p>
+        <button class="call-btn_1" onclick="window.location.href='tel:+917624845408'">📞 Call Us</button>
+      </div>
+
+      <div class="specialist-card">
+        <img src="{% static 'images/DR_KEERTHI_RAJ_MBBS_MS.jpeg' %}" alt="Doctor 3" />
+        <h3>DR KEERTHI RAJ </h3>
+        <p>MBBS MS</p>
+        <button class="call-btn_1" onclick="window.location.href='tel:+917624845408'">📞 Call Us</button>
+      </div>
+
+      <div class="specialist-card">
+        <img src="{% static 'images/founder.jpeg' %}" alt="Doctor 4" />
+        <h3>Dr. Javaji Ravi Prasad</h3>
+          <p>MBBS, MD</p>
+        <button class="call-btn_1" onclick="window.location.href='tel:+917624845408'">📞 Call Us</button>
+      </div>
+    </div>
+
+    {% comment %} <button class="arrow right">❯</button> {% endcomment %}
+  </div>
+</section>
+
+<section class="roadmap-image-section">
+  <picture>
+    <source media="(max-width: 768px)" srcset="{% static 'images/roadmap_vertical.png' %}" />
+    <img src="{% static 'images/roadmap2.png' %}" alt="Roadmap" class="roadmap-image" />
+  </picture>
+</section>
+
+<footer class="main-footer">
+    <div class="footer-content">
+      <!-- Left: Logo & Description -->
+      <div class="footer-left">
+        <img src="{%static 'images/logo.png' %}" alt="Logo" class="footer-logo" />
+        <p>Your trusted healthcare partner delivering top-quality services with compassion and care.</p>
+      </div>
+
+       <div class="footer-links">
+        <h4>Popular Treatments</h4>
+        <ul>
+          <li><a href={% url 'lipoma' %}>Lipoma Removal</a></li>
+          <li><a href={% url 'varicose_vein' %}>Varicose Vein</a></li>
+          <li><a href={% url 'kidney_stone' %}>Kidney Stone</a></li>
+          <li> <a href={% url 'circumcision' %}>Circumcision</a></li>
+          <li> <a href={% url 'fissure_complete' %}>Fistula</a></li>
+           <li> <a href={% url 'gynecomastia' %}>Gynecomastia</a></li>
+
+        </ul>
+      </div>
+
+      <!-- Center: Links -->
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href={% url 'piles' %} >Surgery</a></li>
+          <li><a href={% url 'scan' %}>Scan</a></li>
+          <li> <a href="{% url 'about' %}">About us</a></li>
+          <li> <a href = "{% url 'aushman' %}">Ayushman</a></li>
+
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="{% url 'privacyview' %}">Privacy Policy</a></li>
+          <li><a href="{% url 'Term_condition' %}">Terms and conditions</a></li>
+
+        </ul>
+      </div>
+
+      <!-- Right: Contact + Social + Email -->
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>1388,4th Cross Rd,Vijaynagar,Chandra Layout,Attigupee,Bangalore, Karnataka 560040</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/share/1LeXVmTe3B/"><img src="{%static 'images/Vector_1.png' %}" alt="Facebook" /></a>
+          <!-- <a href="href="javascript:void(0);" onclick="openPopup()""><img src="{%static 'images/Group_31.png'%}" alt="Twitter" /></a> -->
+          <a href="https://www.instagram.com/rite.surgery_1?igsh=YXFvcjBvM2tiNjNy"><img src="{%static 'images/Group_32.png' %}" alt="Instagram" /></a>
+        </div>
+        <form class="email-form">
+          <input type="email" placeholder="Your email address" />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+      <a href="https://wa.me/7624845408" target="_blank" class="whatsapp-link" aria-label="Chat on WhatsApp">
+        <div class="icon-label">
+          <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 258">
+            <path fill="#25D366" d="M5.46 127.46c-.01 21.68 5.66 42.84 16.43 61.5L4.43 252.7l65.23-17.1a123 123 0 0 0 58.8 14.97h.05c67.82 0 123.02-55.18 123.05-123.01c.01-32.87-12.78-63.77-36.01-87.03c-23.23-23.25-54.13-36.06-87.04-36.08c-67.82 0-123.02 55.18-123.05 123.01z"/>
+            <path fill="#FFF" d="M96.68 74.15c-2.39-5.3-4.9-5.41-7.17-5.5c-1.86-.08-3.98-.07-6.1-.07c-2.12 0-5.58.8-8.49 3.98c-2.92 3.19-11.15 10.89-11.15 26.56s11.41 30.81 13 32.94c1.6 2.12 22.03 35.31 54.41 48.07c26.9 10.61 32.38 8.5 38.22 7.97c5.84-.53 18.84-7.7 21.5-15.14c2.65-7.44 2.65-13.81 1.86-15.14c-.8-1.33-2.92-2.12-6.11-3.72c-3.19-1.6-18.84-9.3-21.76-10.36c-2.92-1.06-5.04-1.59-7.17 1.6c-2.12 3.18-8.22 10.36-10.08 12.48c-1.86 2.13-3.72 2.39-6.9.8c-3.19-1.6-13.44-4.96-25.61-15.81c-9.47-8.44-15.86-18.87-17.72-22.06c-1.86-3.18-.2-4.91 1.4-6.5c1.43-1.43 3.19-3.72 4.78-5.58c1.59-1.86 2.12-3.19 3.18-5.31c1.06-2.13.53-3.99-.27-5.58c-.79-1.6-6.98-17.34-9.82-23.64z"/>
+          </svg>
+          <span class="blinking-border">Chat with us</span>
+        </div>
+      </a>
+
+
+    </div>
+
+    <!-- Divider + Copyright -->
+    <hr />
+    <div class="footer-bottom">
+      <p>© 2025 Your Company. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
+  <script src="{% static 'js/appointment.js' %}"></script>
+</body>
+</html>

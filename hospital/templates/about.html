@@ -1,0 +1,600 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Rite Surgery</title>
+  <link rel="stylesheet" href="{% static 'css/all_subdropdowns.css' %}" />
+  <script src="js/option.js" defer></script>
+  <script src="js/popup.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  
+  <style>
+    body {
+      margin: 0;
+      padding-top: 80px;
+      font-family: Arial, sans-serif;
+    }
+    .leader-section {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      margin: 40px auto;
+      max-width: 1100px;
+      align-items: flex-start;
+      padding: 0 20px;
+    }
+    .leader-section img {
+      width: 280px;
+      height: auto;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .leader-content {
+      flex: 1;
+    }
+    .leader-content h2 {
+      margin-top: 0;
+      color: #035f5b;
+    }
+    .leader-content p {
+      font-size: 16px;
+      color: #333;
+      line-height: 1.7;
+    }
+    
+    @media (max-width: 768px) {
+      .leader-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .leader-content {
+        text-align: left;
+      }
+    }
+  
+@keyframes softGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background: linear-gradient(-45deg, #d4f6ef, #cce9ff, #e6fffa, #d0f0ff);
+  background-size: 300% 300%;
+  animation: softGradient 8s ease infinite;
+}
+
+/* Floating Bubbles */
+.bubble {
+  position: absolute;
+  bottom: -100px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: rise 15s linear infinite;
+}
+@keyframes rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+.animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background: linear-gradient(-45deg, #d4f6ef, #cce9ff, #e6fffa, #d0f0ff);
+  background-size: 300% 300%;
+  animation: softGradient 6s ease infinite;
+
+}
+
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .popup-overlay.active {
+      display: flex;
+    }
+    .popup-image {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+    .popup-close {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      color: #fff;
+      cursor: pointer;
+    }
+    .section-block {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #f8f8f8;
+      border-radius: 12px;
+    }
+    .section-block h2 {
+      color: #047857;
+      text-align: center;
+    }
+    .section-block ul {
+      padding-left: 20px;
+    }
+    .leader-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease-in-out;
+  will-change: transform, opacity;
+}
+
+.leader-section.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-in-text {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.blink-text {
+  animation: blinkEffect 2s steps(2, start) infinite;
+}
+
+@keyframes blinkEffect {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.image-banner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 100%;
+  padding: 20px;
+}
+
+.image-row {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.banner-img {
+  flex: 1;
+  height: 250px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.banner-img-full {
+  width: 100%;
+  height: 250px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+  </style>
+</head>
+<body style="margin: 0; padding: 50px 0 0 0;">
+
+  <div class="animated-bg"></div>
+  <div style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(-45deg, #1abc9c, #3498db, #1abc9c, #3498db);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+">
+</div>
+<div class="animated-bg">
+  <!-- Floating Bubbles -->
+  <div class="bubble" style="width: 20px; height: 20px; left: 10%; animation-delay: 0s;"></div>
+  <div class="bubble" style="width: 30px; height: 30px; left: 25%; animation-delay: 2s;"></div>
+  <div class="bubble" style="width: 15px; height: 15px; left: 40%; animation-delay: 4s;"></div>
+  <div class="bubble" style="width: 25px; height: 25px; left: 60%; animation-delay: 6s;"></div>
+  <div class="bubble" style="width: 35px; height: 35px; left: 80%; animation-delay: 8s;"></div>
+</div>
+
+  <nav class="navbar" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 20px; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.1); position: fixed; top: 0; width: 100%; z-index: 1000; flex-wrap: wrap;">
+  <!-- Logo -->
+  <div style="display: flex; align-items: center;">
+    <img src="{% static 'images/logo.png' %}" alt="Logo" style="height: 50px; margin-right: 20px;" />
+  </div>
+  
+
+  <!-- Menu -->
+  <div class="nav-menu" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
+    <a href="{% url 'home' %}" style="text-decoration: none; color: #333;">Home</a>
+    <a href="#" style="text-decoration: none; color: #333;">Treatment</a>
+    <a href="{% url 'scan' %}" style="text-decoration: none; color: #333;">Scan</a>
+    <a href="{% url 'about' %}" style="text-decoration: none; color: #333;">About us</a>
+    <a href="{% url 'aushman' %}" style="text-decoration: none; color: #333;">Ayushman</a>
+  </div>
+
+  <!-- Icons -->
+  <div class="nav-icons" style="display: flex; align-items: center; gap: 15px;">
+    <!-- Location Icon -->
+    <i class="fas fa-map-marker-alt" style="font-size: 20px; color: #035f5b; cursor: pointer;" title="Location" onclick="showLocation()"></i>
+
+    <!-- Language Icon -->
+    <i class="fas fa-language" style="font-size: 20px; color: #035f5b;" title="Language: English"></i>
+
+    <!-- Call Icon -->
+    <a href="tel:+919999999999" title="Call Now">
+      <i class="fas fa-phone" style="font-size: 20px; color: #035f5b;"></i>
+    </a>
+  </div>
+</nav>
+
+  <section style="padding: 40px 20px; text-align: center;">
+    <h1 style="color: #035f5b;">About Our Hospital</h1>
+    <p style="max-width: 900px; margin: auto; font-size: 17px; line-height: 1.8;">
+      <strong>Sri Vinayaka Hospital</strong> was established 25 years ago to provide high-quality medical care at affordable costs.
+      Rite Surgery was established to extend this mission across the Bengaluru. We are proud to deliver a seamless and stress-free surgical experience "Citywide".
+    </p>
+  </section>
+
+  <section>
+<div style="text-align: center; max-width: 900px; margin: 40px auto; padding: 20px; background: #f2fafa; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+  <h2 class="blink-text" style="color: #035f5b; font-size: 28px; margin-bottom: 20px;">Our Vision</h2>
+  <p style="font-size: 17px; line-height: 1.8; color: #03444d; font-weight: 500;">
+    At <span style="color: #047857; font-weight: 600;">Rite Surgery</span>, our vision is to transform how India experiences surgical care.<br>
+    We aim to make quality treatment <span style="color: #047857;">at affordable cost</span>.<br>
+    Through expert doctors, updated surgical treatment, and personalized support,<br>
+    we ensure every patient receives <span style="color: #047857;">safe, transparent, and compassionate care</span>.<br>
+    Our goal is to become India’s most <strong style="color: #035f5b;">trusted surgical care platform</strong>.
+  </p>
+</div>
+</div>
+
+<div class="section-block" style="text-align: center;">
+  <h2 class="blink-text">Our Mission</h2>
+  <p style="font-size: 17px; line-height: 1.8; max-width: 800px; margin: auto;">
+    To empower patients with accurate knowledge, enable easy discovery of the best doctors and hospitals, 
+    and ensure better health outcomes through personalized, end-to-end care.
+  </p>
+
+  <!-- Icons/Highlights -->
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px;">
+    <div style="flex: 1 1 200px; max-width: 250px;">
+      <img src="{% static 'images/Expert_Doctors.png' %}" alt="Expert Doctors" style="width: 80px;" />
+      <h4>Expert Doctors</h4>
+      <p style="font-size: 14px;">Experienced professionals guiding each step of your care.</p>
+    </div>
+    <div style="flex: 1 1 200px; max-width: 250px;">
+      <img src="{% static 'images/Top_Hospitals.jpeg' %}" alt="Top Hospitals" style="width: 80px;" />
+      <h4>Top Hospitals</h4>
+      <p style="font-size: 14px;">Access quality care across the best healthcare facilities.</p>
+    </div>
+    <div style="flex: 1 1 200px; max-width: 250px;">
+      <img src="{% static 'images/shared_image.png' %}" alt="Patient Support" style="width: 80px;" />
+      <h4>Patient-First Support</h4>
+      <p style="font-size: 14px;">Guidance from consultation to recovery, every step.</p>
+    </div>
+  </div>
+
+</section>
+
+
+  <section class="leader-section">
+    <img src="{% static 'images/founder.jpeg' %}" alt="Founder" onclick="openImage(this.src)" />
+    <div class="leader-content">
+      <h2>Founder</h2>
+      <p class="fade-in-text" style="animation-delay: 1.0s;"><strong>Dr. Javaji Ravi Prasad </strong><br>MD Radiologist</p>
+      <p class="fade-in-text" style="animation-delay: 0.2s;">He is a visionary leader with over 35 years of experience and Professor in Radiology at Raja Rajeshwari Medical College and postgraduate teacher with over 30 years of teaching experience. He founded Sri Vinayaka Hospital and Raghavendra Diagnostic Center 25 years ago. Vinayaka Hospital is equipped with comprehensive surgical facilities, including a C-arm, ICU, and strong support from a well-established diagnostic center..</p>
+    </div>
+  </section>
+  
+<section class="leader-section">
+    <img src="{% static 'images/siddharth_md.jpeg' %}" alt="Managing Director" onclick="openImage(this.src)" />
+    <div class="leader-content">
+      <h2>Managing Director</h2>
+      
+      <p class="fade-in-text" style="animation-delay: 1.0s;"><strong>Mr.Siharath Ravi Javaji</strong><br>BBM, MBA</p>
+      <p class="fade-in-text" style="animation-delay: 0.2s;">oversees daily operations and ensures quality assurance across departments. With his background in healthcare administration, he has shaped transparent and efficient care model. His goal: Top Class health care Mr. Siharath Ravi Javaji is the Managing Director and Administrator of the hospital. With strong knowledge of the healthcare industry, he is dedicated to providing quality healthcare and surgical treatments at affordable costs through our empaneled network.</p>
+    </div>
+  </section>
+
+  <section class="leader-section">
+    <img src="{% static 'images/manoj_ceo.jpeg' %}" alt="CEO" onclick="openImage(this.src)" />
+    <div class="leader-content">
+      <h2>CEO</h2>
+      <p class="fade-in-text" style="animation-delay: 1.0s;"><strong>Mr. Manoj Gowda A</strong><br></p>
+      <p class="fade-in-text" style="animation-delay: 0.2s;">Mr. Manojgowda A, brings over 6 years of experience in the healthcare industry. He began his journey as a Ass. Manager at Ashraya Hospital, where he gained hands-on experience in hospital operations and patient care. Later, he served as the Insurance Coordinator at Shantha Hospital, developing a strong understanding of healthcare financing and patient support.
+
+With a vision to simplify surgical care and patient support, Manoj successfully managed Health Care packages in 4 well-established hospitals, building a strong network in the healthcare system. His dedication to bridging the gap between patients and treatment access forms the core of RiteSurgery mission.
+
+Under his leadership, RiteSurgery will continues to grow as a trusted platform for patients seeking transparent pricing, no-cost EMI options, and insurance-assisted surgeries near their location.</p>
+      
+    </div>
+  </section>
+
+  <section class="leader-section">
+    <img src="{% static 'images/shared_image.png' %}" alt="Partner" onclick="openImage(this.src)" />
+    <div class="leader-content">
+      <h2>Partner</h2>
+      <p class="fade-in-text" style="animation-delay: 1.0s;"><strong>Dr. G.R. Dhamini</strong><br></p>
+      <p class="fade-in-text" style="animation-delay: 0.2s;">I completed my MBBS graduation in 2022 and am currently serving at Sri Vinayaka Multi Speciality Hospital, Chandra Layout, Bangalore, with a deep commitment to providing quality healthcare to the community. With a strong focus on patient care and clinical excellence, I strive to make a meaningful impact in every life I touch. As a dedicated partner of Rite Surgery, I work closely to ensure advanced, affordable surgical treatments are accessible to all. Together, we aim to bring compassionate and quality-driven care to those who need it most.</p>
+      
+    </div>
+  </section>
+
+  
+
+  <!-- Popup -->
+<div style="background: linear-gradient(to right, #e0f7f5, #f2fdfc); padding: 40px 20px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08); margin: 40px auto; max-width: 1000px; text-align: center;">
+  <h3 style="color: #047857; font-size: 26px; margin-bottom: 20px; font-family: 'Segoe UI', sans-serif;">Get to Know Us</h3>
+  <p style="font-size: 17px; line-height: 1.8; color: #333; font-family: 'Segoe UI', sans-serif; max-width: 850px; margin: 0 auto;">
+    <strong style="color: #00b89c;">At Rite Surgery, our greatest strength is our people.</strong>
+    From skilled surgeons and compassionate nurses to dedicated coordinators and support staff, every team member is committed to providing world-class care with empathy and precision. We build an environment rooted in trust., collaboration, and Reliable dedication to patient well-being — ensuring your healthcare journey is smooth, safe, and successful at every step.
+  </p>
+
+
+
+  
+</div>
+</div>
+
+
+<div style="background: linear-gradient(to bottom right, #d4f6ef, #cce9ff); color: #033e4f; border-radius: 20px; padding: 40px 20px; margin: 50px auto; max-width: 1200px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 30px;">
+  
+  <!-- Left: Image -->
+  <div style="flex: 1 1 300px; max-width: 500px;">
+    <img src="{% static 'images/call_us.jpeg' %}" alt="Contact Support" style="width: 100%; border-radius: 15px; object-fit: cover;" />
+  </div>
+
+  <!-- Right: Content with Button & Animation -->
+  <div style="flex: 1 1 300px; max-width: 600px; text-align: center;">
+    <h2 style="font-size: 28px; margin-bottom: 15px;">Need Help? We're Just a Call Away!</h2>
+    <p style="font-size: 16px; margin-bottom: 25px;">
+      Our support team is available to guide you through every step — from consultations to post-surgery care. Reach out for personalized assistance anytime.
+    </p>
+
+    <!-- Contact Us Button -->
+    <a href="tel:+9172040 99115" style="
+      display: inline-block;
+      padding: 12px 25px;
+      font-size: 16px;
+      background-color: #035f5b;
+      color: white;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+      transition: background-color 0.3s ease;
+    " onmouseover="this.style.backgroundColor='#024f4a'" onmouseout="this.style.backgroundColor='#035f5b'">
+      📞 Contact Us
+    </a>
+
+    <!-- Animated Phone Icon -->
+    
+  </div>
+</div>
+
+
+
+<div style="background: linear-gradient(to bottom right, #1abc9c, #3498db); color: #fff; border-radius: 20px; padding: 40px 20px; margin: 50px auto; max-width: 1200px; display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+  
+  <!-- Left: Image Grid -->
+ <!-- Image Gallery -->
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 30px;">
+    <img src="{% static 'images/storey_fou.jpeg' %}" alt="Staff 1" style="width: 200px; height: 200px; object-fit: cover; border-radius: 10px;" />
+    <img src="{% static 'images/storey_dir.jpeg' %}" alt="Staff 2" style="width: 200px; height: 200px; object-fit: cover; border-radius: 10px;" />
+    <img src="{% static 'images/storey_manoj.jpeg' %}" alt="Staff 3" style="width: 200px; height: 200px; object-fit: cover; border-radius: 10px;" />
+  </div>
+
+  <!-- Right: Story Text -->
+  <div style="flex: 1 1 300px; max-width: 600px;">
+    <h2 style="font-weight: bold; font-size: 28px; margin-bottom: 20px;">Our Story</h2>
+    <p style="font-size: 16px; line-height: 1.7;">
+      Founded with the mission to simplify surgery and healthcare access in India, Rite Surgery was born from real-world patient struggles — confusion, long waits, lack of transparent support, and fear. Our founders saw the need for personalized, guided care that removes patient stress and puts compassion first.
+      <br><br>
+      With a passionate, young team, we built Rite Surgery to make surgeries easier — from diagnosis to discharge. We partner with top hospitals, expert doctors, and care navigators to ensure every patient receives safe, affordable, and human-first treatment, without hassle.
+    </p>
+  </div>
+</div>
+
+<div style="background: linear-gradient(to bottom right, #d4f6ef, #cce9ff); color: #033e4f; border-radius: 20px; padding: 40px 20px; margin: 50px auto; max-width: 1200px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 30px;">
+  
+ 
+ <!-- Left: Image -->
+  <div style="flex: 1 1 300px; max-width: 500px;">
+    <img src="{% static 'images/Why_ChooseUs.jpeg' %}" alt="Contact Support" style="width: 100%; border-radius: 15px; object-fit: cover;" />
+  </div>
+
+
+
+ <div style="max-width: 1100px; margin: 40px auto; padding: 30px 20px; background: #f0fcf9; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
+  <h2 style="text-align: center; color: #00b89c; font-size: 26px; margin-bottom: 30px; font-family: 'Segoe UI', sans-serif;">Why Choose Us?</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+    
+    <div style="display: flex; align-items: flex-start; gap: 15px;">
+      <i class="fas fa-user-md" style="color: #00b89c; font-size: 24px;"></i>
+      <span>Experienced and qualified medical professionals</span>
+    </div>
+
+    <div style="display: flex; align-items: flex-start; gap: 15px;">
+      <i class="fas fa-microscope" style="color: #00b89c; font-size: 24px;"></i>
+      <span>Advanced medical technology and equipment</span>
+    </div>
+
+    <div style="display: flex; align-items: flex-start; gap: 15px;">
+      <i class="fas fa-heartbeat" style="color: #00b89c; font-size: 24px;"></i>
+      <span>Compassionate, patient-focused care</span>
+    </div>
+
+    <div style="display: flex; align-items: flex-start; gap: 15px;">
+      <i class="fas fa-clinic-medical" style="color: #00b89c; font-size: 24px;"></i>
+      <span>Wide range of healthcare services</span>
+    </div>
+
+    <div style="display: flex; align-items: flex-start; gap: 15px;">
+      <i class="fas fa-map-marker-alt" style="color: #00b89c; font-size: 24px;"></i>
+      <span>Easy access and convenient location</span>
+    </div>
+
+    <div style="display: flex; align-items: flex-start; gap: 15px;">
+      <i class="fas fa-rupee-sign" style="color: #00b89c; font-size: 24px;"></i>
+      <span>Affordable surgery packages</span>
+    </div>
+
+    <div style="display: flex; align-items: flex-start; gap: 15px;">
+      <i class="fas fa-ambulance" style="color: #00b89c; font-size: 24px;"></i>
+      <span>24/7 emergency support</span>
+    </div>
+
+    <div style="display: flex; align-items: flex-start; gap: 15px;">
+      <i class="fas fa-user-nurse" style="color: #00b89c; font-size: 24px;"></i>
+      <span>Specialist consultations</span>
+    </div>
+
+  </div>
+</div>
+
+  <!-- Footer from piles.html -->
+<footer class="main-footer">
+    <div class="footer-content">
+      <!-- Left: Logo & Description -->
+      <div class="footer-left">
+        <img src="{%static 'images/logo.png' %}" alt="Logo" class="footer-logo" />
+        <p>Your trusted healthcare partner delivering top-quality services with compassion and care.</p>
+      </div>
+
+       <div class="footer-links">
+        <h4>Popular Treatments</h4>
+        <ul>
+          <li><a href={% url 'lipoma' %}>Lipoma Removal</a></li>
+          <li><a href={% url 'varicose_vein' %}>Varicose Vein</a></li>
+          <li><a href={% url 'kidney_stone' %}>Kidney Stone</a></li>
+          <li> <a href={% url 'circumcision' %}>Circumcision</a></li>
+          <li> <a href={% url 'fissure_complete' %}>Fistula</a></li>
+           <li> <a href={% url 'gynecomastia' %}>Gynecomastia</a></li>
+
+        </ul>
+      </div>
+
+      <!-- Center: Links -->
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href={% url 'piles' %} >Surgery</a></li>
+          <li><a href={% url 'scan' %}>Scan</a></li>
+          <li> <a href="{% url 'about' %}">About us</a></li>
+          <li> <a href = "{% url 'aushman' %}">Ayushman</a></li>
+
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="{% url 'privacyview' %}">Privacy Policy</a></li>
+          <li><a href="{% url 'Term_condition' %}">Terms and conditions</a></li>
+
+        </ul>
+      </div>
+
+      <!-- Right: Contact + Social + Email -->
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>1388,4th Cross Rd,Vijaynagar,Chandra Layout,Attigupee,Bangalore, Karnataka 560040</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/share/1LeXVmTe3B/"><img src="{%static 'images/Vector_1.png' %}" alt="Facebook" /></a>
+          <!-- <a href="href="javascript:void(0);" onclick="openPopup()""><img src="{%static 'images/Group_31.png'%}" alt="Twitter" /></a> -->
+          <a href="https://www.instagram.com/rite.surgery_1?igsh=YXFvcjBvM2tiNjNy"><img src="{%static 'images/Group_32.png' %}" alt="Instagram" /></a>
+        </div>
+        <form class="email-form">
+          <input type="email" placeholder="Your email address" />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+      <a href="https://wa.me/7624845408" target="_blank" class="whatsapp-link" aria-label="Chat on WhatsApp">
+        <div class="icon-label">
+          <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 258">
+            <path fill="#25D366" d="M5.46 127.46c-.01 21.68 5.66 42.84 16.43 61.5L4.43 252.7l65.23-17.1a123 123 0 0 0 58.8 14.97h.05c67.82 0 123.02-55.18 123.05-123.01c.01-32.87-12.78-63.77-36.01-87.03c-23.23-23.25-54.13-36.06-87.04-36.08c-67.82 0-123.02 55.18-123.05 123.01z"/>
+            <path fill="#FFF" d="M96.68 74.15c-2.39-5.3-4.9-5.41-7.17-5.5c-1.86-.08-3.98-.07-6.1-.07c-2.12 0-5.58.8-8.49 3.98c-2.92 3.19-11.15 10.89-11.15 26.56s11.41 30.81 13 32.94c1.6 2.12 22.03 35.31 54.41 48.07c26.9 10.61 32.38 8.5 38.22 7.97c5.84-.53 18.84-7.7 21.5-15.14c2.65-7.44 2.65-13.81 1.86-15.14c-.8-1.33-2.92-2.12-6.11-3.72c-3.19-1.6-18.84-9.3-21.76-10.36c-2.92-1.06-5.04-1.59-7.17 1.6c-2.12 3.18-8.22 10.36-10.08 12.48c-1.86 2.13-3.72 2.39-6.9.8c-3.19-1.6-13.44-4.96-25.61-15.81c-9.47-8.44-15.86-18.87-17.72-22.06c-1.86-3.18-.2-4.91 1.4-6.5c1.43-1.43 3.19-3.72 4.78-5.58c1.59-1.86 2.12-3.19 3.18-5.31c1.06-2.13.53-3.99-.27-5.58c-.79-1.6-6.98-17.34-9.82-23.64z"/>
+          </svg>
+          <span class="blinking-border">Chat with us</span>
+        </div>
+      </a>
+
+
+    </div>
+
+    <!-- Divider + Copyright -->
+    <hr />
+    <div class="footer-bottom">
+      <p>© 2025 Your Company. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function openImage(src) {
+      document.getElementById("popupImage").src = src;
+      document.getElementById("popup").classList.add("active");
+    }
+    function closeImage() {
+      document.getElementById("popup").classList.remove("active");
+    }
+
+    function showLocation() {
+     alert("Default location is Bangalore");
+    }
+     const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+      }
+    });
+  }, {
+    threshold: 0.2
+  });
+
+  document.querySelectorAll('.leader-section').forEach(section => {
+    observer.observe(section);
+  });
+  </script>
+</body>
+</html>

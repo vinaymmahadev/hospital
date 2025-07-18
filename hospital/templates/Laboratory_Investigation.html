@@ -1,0 +1,432 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rite Surgery | Scans Booking</title>
+  <link rel="stylesheet" href="{% static 'css/scan.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .modal { display:none; position:fixed; z-index:99; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.4); }
+    .modal-content { background:#fff; margin:10% auto; padding:20px; width:90%; max-width:400px; border-radius:10px; position:relative; }
+    .modal-content input { width:100%; padding:10px; margin-bottom:10px; border-radius:6px; border:1px solid #ccc; }
+    .submit-btn { width:100%; background:#00d4a0; color:white; padding:10px; border:none; border-radius:6px; cursor:pointer; font-size:16px; }
+    .close-modal { position:absolute; top:10px; right:15px; font-size:24px; cursor:pointer; }
+    .upload-label { color: yellow; font-weight: bold; display: block; margin-bottom: 5px; }
+  </style>
+</head>
+<div class="modal" id="consultationModal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closePopup()">&times;</span>
+    <h2>Book Your Consultation</h2>
+    <input type="text" id="popup-name" placeholder="Name">
+    <input type="tel" id="popup-phone" placeholder="Mobile No">
+    <input type="email" id="popup-email" placeholder="Email ID">
+    <div id="popup-error" style="color:red; display:none; margin-bottom:10px;">Please fill all fields.</div>
+    <button class="submit-btn" onclick="validatePopupForm()">Book</button>
+  </div>
+</div>
+
+<body>
+  <header class="topbar">
+    <p>Book Laboratory Investigations Now and get Up to 60% off </p>
+    <button class="offer-btn" onclick="document.getElementById('popupForm').style.display='block'">Get offer!</button>
+    <span class="close" onclick="this.parentElement.style.display='none'">&times;</span>
+  </header>
+
+  <div class="header-main">
+    <img src="{%static  'images/logo.png' %}" alt="Logo" class="logo" >
+    <div class="header-right">
+      <button onclick="window.location.href='{% url 'home' %}'" class="btn" >Home</button>
+      <div class="icon-label"><i class="fas fa-map-marker-alt"></i> Bangalore</div>
+      <div class="icon-label"><i class="fas fa-language"></i> English</div>
+      <a href="tel:+919709706555" class="call-btn"><i class="fas fa-phone"></i> +91 7624 845 408</a>
+    </div>
+  </div>
+
+  <section class="hero-section">
+    <div class="hero-left">
+      <h1>Book Affordable, Quick Laboratory Investigations Near You</h1>
+      <p>Unlock 60% discount on Full Body Checkup, Diabetes Care Checkup, Women’s Health Checkup, SmartCare: Complete Body Checkup.</p>
+      <div class="hero-features">
+        <div><i class="fa fa-user-md"></i> Experienced Radiologists</div>
+        <div><i class="fa fa-microchip"></i> Latest Technology</div>
+        <div><i class="fa fa-tags"></i> Exclusive Discounts</div>
+        <div><i class="fa fa-clock"></i> Fast & Accurate Reports</div>
+      </div>
+    </div>
+    <div id="form-message" style="display: none;" class="form-alert"></div>
+
+   <div class="hero-right">
+  <input type="text" id="booking-name" placeholder="Name*">
+  <input type="tel" id="booking-phone" placeholder="Phone Number*">
+  <input type="email" id="booking-email" placeholder="Email ID (Optional)">
+  <select id="booking-location">
+    <option selected disabled value="">Location</option>
+    <option>Bangalore</option>
+    <option>others</option>
+  </select>
+  <label class="upload-label">Upload Prescription (Optional)</label>
+  <input type="file">
+  <button onclick="handleBooking()">Get 60% off now!</button>
+</div>
+
+  </section>
+
+  <section class="scan-grid">
+    <div class="scan-card">
+      <img src="{% static 'images/Body_Checkup.png' %}" alt="Comprehensive Full Body Checkup">
+      <h4>Comprehensive Full Body Checkup Available in Bangalore</h4>
+      <ul>
+        <li>Reports within 3hr</li>
+        <li>Covers Multiple Blood and Urine Parameters</li>
+        <li>Evaluates Overall Health and Detects Disease Risks</li>
+      </ul>
+      <div class="price">Starts <span class="old-price">₹7000</span> ₹3649</div>
+      <button class="book-btn" onclick="openPopup()">Book Now</button>
+
+    </div>
+    <div class="scan-card">
+      <img src="{% static 'images/Advanced_Diabetes _Checkup.png' %}" alt="Advanced Diabetes Care Checkup">
+      <h4>Advanced Diabetes Care Checkup Available in Bangalore</h4>
+      <ul>
+        <li>Reports within 3hr</li>
+        <li>Measures: Essential parameters for diabetes screening</li>
+        <li>Identifies: Onset of Diabetes and Pre-diabetic conditions</li>
+      </ul>
+      <div class="price">Starts <span class="old-price">₹7999</span> ₹1549</div>
+      <button class="book-btn" onclick="openPopup()">Book Now</button>
+
+    </div>
+    <div class="scan-card">
+      <img src="{% static 'images/Essential_Checkup.png' %}" alt="Essential Women’s Health CheckupUltrasound">
+      <h4>Essential Women’s Health Checkup Available in Bangalore</h4>
+      <ul>
+        <li>Reports within 3hr</li>
+        <li>Measures: Blood levels related to reproductive and general health</li>
+        <li>Identifies: Women’s well-being and endocrine system irregularities</li>
+      </ul>
+      <div class="price">Starts <span class="old-price">₹4000</span> ₹1549</div>
+      <button class="book-btn" onclick="openPopup()">Book Now</button>
+
+    </div>
+    <div class="scan-card">
+      <img src="{% static 'images/SmartCare_Complete_Body_Checkup.png' %}" alt="SmartCare: Complete Body Checkup">
+      <h4>SmartCare: Complete Body Checkup for Better Health- Available in Bangalore</h4>
+      <ul>
+        <li>Reports within 3hr</li>
+        <li>Included Tests: Kidney and Liver Function, Urine R/M</li>
+        <li>CBC, Electrolytes, Uric Acid, Calcium, and Protein Levels.</li>
+      </ul>
+      <div class="price">Starts <span class="old-price">₹1200</span> ₹499</div>
+      <button class="book-btn" onclick="openPopup()">Book Now</button>
+
+    </div>
+  </section>
+
+ <section style="padding: 60px 20px; background: linear-gradient(to right, #d4f6ef, #cce9ff);">
+  <h2 style="text-align: center; font-size: 28px; color: #035f5b; font-weight: bold; margin-bottom: 40px;">
+    Rite Surgery Makes Surgery <span style="color: #047857;">Stress-Free</span> with <br>Full <span style="color: #047857;">Insurance</span> & <span style="color: #047857;">EMI</span> Options
+  </h2>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; align-items: center; max-width: 1200px; margin: auto;">
+    
+    <!-- Insurance Card -->
+    <div style="
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      flex: 1 1 300px;
+      max-width: 300px;
+    " onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+      <img src="{% static 'images/insurance.jpg' %}" alt="Insurance" style="width: 100%; height: auto; display: block;" />
+    </div>
+
+    <!-- EMI Card -->
+    <div style="
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      flex: 1 1 300px;
+      max-width: 300px;
+    " onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+      <img src="{% static 'images/emi.png' %}" alt="EMI" style="width: 100%; height: auto; display: block;" />
+    </div>
+
+  </div>
+</section>
+
+<section class="how-it-works-custom">
+  <h2 class="how-title">Step-by-Step – Let’s begin your healthcare journey</h2>
+  <div class="how-content">
+    <div class="how-image">
+      <img src="{% static 'images/Step-by-Step.jpeg' %}" alt="Doctor Scanning" />
+    </div>
+    <div class="how-steps">
+      <div class="step-box"><span>01</span> Choose Your Scan</div>
+      <div class="step-box"><span>02</span> Complete the Form</div>
+      <div class="step-box"><span>03</span> Get Your Confirmation</div>
+      <div class="step-box"><span>04</span> Attend Your Scan Appointment</div>
+      <div class="step-box"><span>05</span> Receive Fast Reports</div>
+    </div>
+  </div>
+</section>
+
+
+ <section class="reviews-modern">
+  <h2 class="review-heading">What Our Customers Say</h2>
+  <div class="review-grid">
+    <div class="review-card">
+      <img src="{% static 'images/user1.png' %}" alt="User 1">
+      <p>Siddharth K. | HSR Layout</p>
+      <p class="review-text">"Very convenient and accurate lab reports!"
+Booked a full body checkup with Rite Surgery. The technician came home early morning, was polite and hygienic. Got my reports the same evening on WhatsApp. Reliable and very professional service in Bangalore.</p>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="review-card">
+      <img src="{% static 'images/user1.png' %}" alt="User 1">
+      <p> Rohini D. | BTM Layout</p>
+      <p class="review-text">"Home sample collection was a lifesaver"
+I had fever and couldn’t go to a lab. Rite Surgery arranged for a home visit within an hour. Got my blood test done and results delivered same day. Staff was trained and the process was smooth.</p>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="review-card">
+      <img src="{% static 'images/user1.png' %}" alt="User 1">
+      <p> Megha S. | Jalahalli</p>
+      <p class="review-text">"Affordable diagnostics with great service"
+Compared to other labs, Rite Surgery gave me very competitive pricing for a master health checkup. No hidden charges. Plus, they guided me through the entire test preparation. Highly recommend in Bangalore.</p>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="review-card">
+      <img src="{% static 'images/user1.png' %}" alt="User 1">
+      <p> Praveen G. | Bellandur</p>
+      <p class="review-text">"Reliable reports & friendly staff"
+I had a thyroid and lipid profile test done. Staff arrived on time, explained everything clearly, and I received an email report within hours. They also have doctors available for online review. Will definitely use again.</p>
+      <div class="stars">★★★★★</div>
+    </div>
+  </div>
+</section>
+
+<section style="padding: 60px 20px; background: #f2f9fb; text-align: center;">
+  <h2 style="font-size: 28px; color: #035f5b; margin-bottom: 15px;">Road Map – Rite Surgery</h2>
+  <p style="font-size: 16px; color: #444; max-width: 800px; margin: 0 auto 20px;">
+    Our journey is shaped by one mission: delivering safe, affordable, and advanced surgery experiences across Bengaluru.<br>
+    Here’s a visual path of how we’re building the future of surgical care — step by step.
+  </p>
+
+  <!-- Road Map Image -->
+  <div style="margin-top: 30px;">
+    <img src="{% static 'images/roadmap2.png' %}" alt="Roadmap" style="
+      width: 100%;
+      max-width: 1000px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    "/>
+  </div>
+</section>
+
+ <section class="faq-section">
+  <h2 class="faq-heading-modern">Frequently Asked Questions and Answers</h2>
+
+  
+
+  <details>
+  <summary>How does Rite Surgery ensure patient trust?</summary>
+  <p>We build trust through transparency, medical accuracy, and compassionate service. Every lab we partner with is verified, and all reports are shared securely and quickly. Our support team is always available to answer your queries. You can track every step of your test process with clarity and ease. We prioritize your comfort and confidence at every stage.</p>
+</details>
+
+<details>
+  <summary>What kind of technology do you use?</summary>
+  <p>Rite Surgery uses advanced, hospital-grade diagnostic equipment for all tests. Our partner labs follow high-end protocols and use automated analyzers to ensure minimal error. Online booking, digital prescriptions, and real-time updates are part of our seamless tech ecosystem. It helps reduce waiting time and boosts overall efficiency.</p>
+</details>
+
+<details>
+  <summary>Do I get help before and after the test?</summary>
+  <p>Yes, absolutely. From choosing the right test to understanding your report, our care coordinators are with you at every step. We provide pre-test instructions, prescription pickup, and post-report guidance if required. Elderly or first-time patients receive special attention. We aim to make the experience as simple and stress-free as possible.</p>
+</details>
+
+  <details>
+    <summary>Comprehensive Full Body Checkup</summary>
+    <p>This checkup is ideal for those looking to monitor their overall health. It includes essential blood and urine parameters that help in early disease detection. Reports are typically generated within 3 hours. It’s suitable for all age groups and helps identify risks before symptoms arise. Our team ensures a hassle-free sample collection and fast processing.</p>
+  </details>
+
+  <details>
+    <summary>Advanced Diabetes Care Checkup</summary>
+    <p>This package is specially designed for individuals with diabetes or those at risk. It includes tests to measure blood sugar, HbA1c, and other vital markers. Early detection through this checkup can help prevent complications and manage the condition better. The reports are accurate and quick, available within 3 hours. Home collection and consultation support are also included.</p>
+  </details>
+
+  <details>
+    <summary>Women’s Health Checkup</summary>
+    <p>This checkup covers key health indicators specific to women, including reproductive and hormonal health. It evaluates thyroid, PCOS-related parameters, and overall well-being. Ideal for early detection of issues and routine health tracking. The package is tailored for different age groups with expert consultation if needed. Results are delivered quickly and discreetly.</p>
+  </details>
+
+  <details>
+    <summary>SmartCare: Complete Body Checkup</summary>
+    <p>SmartCare is a full-body health evaluation covering liver, kidney, CBC, and other key functions. It’s a budget-friendly yet comprehensive package for regular monitoring. Suitable for young adults, working professionals, and the elderly alike. Test results are quick and precise, delivered digitally within hours. It ensures peace of mind with proactive health management.</p>
+  </details>
+</section>
+
+ <footer class="main-footer">
+    <div class="footer-content">
+      <!-- Left: Logo & Description -->
+      <div class="footer-left">
+        <img src="{%static 'images/logo.png' %}" alt="Logo" class="footer-logo" />
+        <p>Your trusted healthcare partner delivering top-quality services with compassion and care.</p>
+      </div>
+
+       <div class="footer-links">
+        <h4>Popular Treatments</h4>
+        <ul>
+          <li><a href={% url 'lipoma' %}>Lipoma Removal</a></li>
+          <li><a href={% url 'varicose_vein' %}>Varicose Vein</a></li>
+          <li><a href={% url 'kidney_stone' %}>Kidney Stone</a></li>
+          <li> <a href={% url 'circumcision' %}>Circumcision</a></li>
+          <li> <a href={% url 'fissure_complete' %}>Fistula</a></li>
+           <li> <a href={% url 'gynecomastia' %}>Gynecomastia</a></li>
+
+        </ul>
+      </div>
+
+      <!-- Center: Links -->
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href={% url 'piles' %} >Surgery</a></li>
+          <li><a href={% url 'scan' %}>Scan</a></li>
+          <li> <a href="{% url 'about' %}">About us</a></li>
+          <li> <a href = "{% url 'aushman' %}">Ayushman</a></li>
+
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="{% url 'privacyview' %}">Privacy Policy</a></li>
+          <li><a href="{% url 'Term_condition' %}">Terms and conditions</a></li>
+
+        </ul>
+      </div>
+
+      <!-- Right: Contact + Social + Email -->
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>1388,4th Cross Rd,Vijaynagar,Chandra Layout,Attigupee,Bangalore, Karnataka 560040</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/share/1LeXVmTe3B/"><img src="{%static 'images/Vector_1.png' %}" alt="Facebook" /></a>
+          <!-- <a href="href="javascript:void(0);" onclick="openPopup()""><img src="{%static 'images/Group_31.png'%}" alt="Twitter" /></a> -->
+          <a href="https://www.instagram.com/rite.surgery_1?igsh=YXFvcjBvM2tiNjNy"><img src="{%static 'images/Group_32.png' %}" alt="Instagram" /></a>
+        </div>
+        <form class="email-form">
+          <input type="email" placeholder="Your email address" />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+      <a href="https://wa.me/7624845408" target="_blank" class="whatsapp-link" aria-label="Chat on WhatsApp">
+        <div class="icon-label">
+          <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 258">
+            <path fill="#25D366" d="M5.46 127.46c-.01 21.68 5.66 42.84 16.43 61.5L4.43 252.7l65.23-17.1a123 123 0 0 0 58.8 14.97h.05c67.82 0 123.02-55.18 123.05-123.01c.01-32.87-12.78-63.77-36.01-87.03c-23.23-23.25-54.13-36.06-87.04-36.08c-67.82 0-123.02 55.18-123.05 123.01z"/>
+            <path fill="#FFF" d="M96.68 74.15c-2.39-5.3-4.9-5.41-7.17-5.5c-1.86-.08-3.98-.07-6.1-.07c-2.12 0-5.58.8-8.49 3.98c-2.92 3.19-11.15 10.89-11.15 26.56s11.41 30.81 13 32.94c1.6 2.12 22.03 35.31 54.41 48.07c26.9 10.61 32.38 8.5 38.22 7.97c5.84-.53 18.84-7.7 21.5-15.14c2.65-7.44 2.65-13.81 1.86-15.14c-.8-1.33-2.92-2.12-6.11-3.72c-3.19-1.6-18.84-9.3-21.76-10.36c-2.92-1.06-5.04-1.59-7.17 1.6c-2.12 3.18-8.22 10.36-10.08 12.48c-1.86 2.13-3.72 2.39-6.9.8c-3.19-1.6-13.44-4.96-25.61-15.81c-9.47-8.44-15.86-18.87-17.72-22.06c-1.86-3.18-.2-4.91 1.4-6.5c1.43-1.43 3.19-3.72 4.78-5.58c1.59-1.86 2.12-3.19 3.18-5.31c1.06-2.13.53-3.99-.27-5.58c-.79-1.6-6.98-17.34-9.82-23.64z"/>
+          </svg>
+          <span class="blinking-border">Chat with us</span>
+        </div>
+      </a>
+
+
+    </div>
+
+    <!-- Divider + Copyright -->
+    <hr />
+    <div class="footer-bottom">
+      <p>© 2025 Your Company. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="popupForm" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="document.getElementById('popupForm').style.display='none'">&times;</span>
+    <h3>Book Your Scan</h3>
+    <input type="text" id="popup-name" placeholder="Name*">
+    <div id="nameError" class="form-error">Please enter your name</div>
+    <input type="tel" id="popup-phone" placeholder="Phone Number*">
+    <div id="phoneError" class="form-error">Please enter your phone number</div>
+    <input type="email" id="popup-email" placeholder="Email ID*">
+    <div id="emailError" class="form-error">Please enter your email</div>
+    <button class="submit-btn" onclick="validatePopupForm()">Book Now</button>
+  </div>
+</div>
+
+
+<script>
+function openPopup() {
+  document.getElementById('consultationModal').style.display = 'block';
+}
+
+function closePopup() {
+  document.getElementById('consultationModal').style.display = 'none';
+}
+
+function validatePopupForm() {
+  const name = document.getElementById('popup-name').value.trim();
+  const phone = document.getElementById('popup-phone').value.trim();
+  const email = document.getElementById('popup-email').value.trim();
+  const error = document.getElementById('popup-error');
+
+  if (!name || !phone || !email) {
+    error.style.display = 'block';
+  } else {
+    error.style.display = 'none';
+    alert("Form submitted successfully!");
+    closePopup();
+  }
+}
+
+
+// Close popup when clicking outside modal
+window.onclick = function(event) {
+  const modal = document.getElementById('consultationModal');
+  if (event.target == modal) {
+    closePopup();
+  }
+}
+
+function handleBooking() {
+  const name = document.getElementById('booking-name').value.trim();
+  const phone = document.getElementById('booking-phone').value.trim();
+  const email = document.getElementById('booking-email').value.trim();
+  const location = document.getElementById('booking-location').value;
+
+  const messageBox = document.getElementById('form-message');
+  let missingFields = [];
+
+  if (!name) missingFields.push("Name");
+  if (!phone) missingFields.push("Phone Number");
+  
+  if (!location) missingFields.push("Location");
+
+  if (missingFields.length > 0) {
+    messageBox.className = 'form-alert';
+    messageBox.innerHTML = "👋 <strong>Hello!</strong> You are missing the following detail(s):<br>• " + missingFields.join("<br>• ");
+    messageBox.style.display = 'block';
+  } else {
+    messageBox.className = 'form-alert success';
+    messageBox.innerHTML = "🎉 <strong>Booking Successful!</strong><br>Thank you for choosing Rite Surgery.";
+    messageBox.style.display = 'block';
+
+    // Clear fields
+    document.getElementById('booking-name').value = '';
+    document.getElementById('booking-phone').value = '';
+    document.getElementById('booking-email').value = '';
+    document.getElementById('booking-location').value = '';
+  }
+}
+</script>
+
+</body>
+</html>

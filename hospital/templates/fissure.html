@@ -1,0 +1,311 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{%static 'css/piles.css' %}">
+    <script src="{% static 'js/option.js' %}"></script>
+</head>
+<body>
+    <section class="treatment-section">
+         <nav class="navbar">
+  <div class="left">
+    <img src="{%static 'images/logo.png'%}" alt="Logo">
+  </div>
+
+  <!-- White background only for center links -->
+  <div class="center-wrapper">
+       
+          <div class="center">
+            <a href="{% url 'home' %}">Home</a>
+            
+            <div class="dropdown">
+              <a  class="toggle-dropdown">surgery</a>
+
+              <div class="dropdown-content">
+                
+                <div class="sub-dropdown">
+                  <a class="toggle-dropdown sub-dropdown-toggle">Proctology</a>
+                  <div class="sub-dropdown-content">
+                    <a href="{% url 'piles' %}">Piles</a>
+                    <a href="{% url 'fissure' %}">Fissure</a>
+                    <a href="javascript:void(0);" onclick="openPopup()">Fistula</a>
+                  </div>
+                  <a  class="toggle-dropdown sub-dropdown-toggle">Laparoscopy</a>
+                  <div class="sub-dropdown-content">
+                    <a href="{% url 'hernia' %}">Hernia</a>
+                    <a href="{% url 'appendic' %}">Appendicitis</a>
+                    <a href="javascript:void(0);" onclick="openPopup()">Gallbladder Stone</a>
+                  </div>
+                  <a class="toggle-dropdown sub-dropdown-toggle">Urology</a>
+                  <div class="sub-dropdown-content">
+                    <a href="{% url 'circumcision' %}">Circumcision</a>
+                    <a href="{% url 'kidney_stone' %}">Kidney Stone</a>
+                   <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Stapler Circumcision</a>
+                  <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Hydrocele</a>
+                  <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Frenuloplasty</a>
+                  <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Genitourinary fistula</a>
+                  <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Kidney transplant</a>
+                  <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Prostate enlargement</a>
+                  </div>
+                  <a class="toggle-dropdown sub-dropdown-toggle">Cosmetic</a>
+                    <div class="sub-dropdown-content">
+                    <a href="{% url 'gynecomastia' %}">Gynecomastia</a>
+                    <a href="{% url 'lipoma' %}">Lipoma</a>
+                    <a href="javascript:void(0);" onclick="openPopup()">Mole Removal</a>
+                  </div>
+                  <a class="toggle-dropdown sub-dropdown-toggle">Orthopedics</a>
+                    <div class="sub-dropdown-content">
+                      <a href="{% url 'knee_replacement' %}">Knee replacement</a>
+                      <a href="{% url 'hip_replacement' %}">Hip replacement</a> 
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">ACL tear</a>
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Disc injury</a>
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Joint replacement</a>
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Knee Arthroscopy</a>
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Rotator cuff repair</a>
+                    </div>
+                  <a class="toggle-dropdown sub-dropdown-toggle">Ophthalmology</a>
+                    <div class="sub-dropdown-content">
+                      <a href="{% url 'cataract' %}">Cataract</a>
+                      <a href="{% url 'lasik' %}">Lasik Surgery</a> 
+                    </div>
+
+                  <a class="toggle-dropdown sub-dropdown-toggle">vascular</a>
+                   <div class="sub-dropdown-content">
+                      <a href="{% url 'varicocele' %}">Varicocele</a>
+                      <a href="{% url 'varicose_vein' %}">Varicose vein</a>
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Deep vein thrombosis (DVT)</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <a href="{% url 'laboratory_Investigation' %}">Laboratory Investigation</a>
+            <a href="{% url 'scan' %}">Scan</a>
+            <a href="{% url 'about' %}">About us</a>
+            <a href="{% url 'aushman' %}">Ayushman</a>
+          </div>
+        </div>
+
+  <div class="right">
+    <button onclick="openPopup()" >Book Now</button>
+  </div>
+</nav>
+  <div class="treatment-container">
+    
+    <!-- Left Form -->
+    <div class="treatment-form">
+      <h3>Book Your Consultant</h3>
+      <input type="text" placeholder="Enter your name" />
+      <input type="text" placeholder="📞 Phone Number" />
+      <input type="text" placeholder="Location" />
+      <input type="text" placeholder="Treatments" />
+      <button class="primary-btn" onclick="openPopup()">Book Now</button>
+    </div>
+
+    <!-- Center Content -->
+    <div class="treatment-content">
+      <h2>Anal Fissure Treatment in Bengaluru</h2>
+      <p>
+        We specialize in advanced laser fissure surgery in Bangalore, offering a safe, quick, and minimally invasive solution for chronic fissures. Our experienced surgeons use state-of-the-art laser technology to ensure faster recovery, minimal discomfort, and reduced chances of recurrence.
+At  Health, your comfort and well-being come first. From diagnosis to post-surgery care, our dedicated team is with you every step of the way—ensuring a smooth and stress-free experience.
+      </p>
+      <p class="features">
+    <span>✅ No cuts or stitches</span><br>
+    <span>✅ Same-day discharge</span><br>
+    <span>✅ Quick healing time</span><br>
+    <span>✅ Trusted by thousands of happy patients</span>
+</p>
+      <div class="cta-buttons">
+        <button class="primary-btn" onclick="openPopup()">Book Now</button>
+        <button class="secondary-btn">Get a callback</button>
+      </div>
+    </div>
+
+    <!-- Right Image -->
+    <div class="treatment-image">
+      <img src="{% static 'images/fissure.png' %}" alt="Piles Treatment" />
+    </div>
+
+  </div>
+</section>
+
+<section class="info-section">
+  <div class="info-container">
+
+    <!-- Left Image -->
+    <!-- <div class="info-image">
+      <img src="{% static 'images/side_fissure.png' %}" alt="Info Image">
+    </div> -->
+
+    <!-- Right Content -->
+    <section class="faq-section-modern" style="padding: 60px 20px; background: #f9fbfc;">
+      <h2 style="text-align: center; font-size: 28px; font-weight: bold; color: #00384e; margin-bottom: 40px;">
+        Frequently Asked Questions
+      </h2>
+
+  <div class="faq-container" style="max-width: 900px; margin: auto;">
+
+    <details class="faq-item">
+      <summary>What causes anal fissures?</summary>
+      <p>Anal fissures are typically caused by trauma to the anal canal during bowel movements, especially when passing large or hard stools. Chronic constipation, prolonged diarrhea, and excessive straining can also contribute. Sometimes, underlying conditions like Crohn’s disease or infections may be the root cause. Preventive care can reduce recurrence significantly.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Is fissure a serious medical issue?</summary>
+      <p>While not life-threatening, fissures can cause significant discomfort and complications if left untreated. Chronic fissures may lead to persistent pain, bleeding, and sphincter spasms. They may also become infected or result in skin tags. Early diagnosis and treatment reduce the risk of complications and long-term discomfort.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Can laser surgery permanently cure fissures?</summary>
+      <p>Laser surgery is a highly effective and minimally invasive method to treat chronic fissures. It offers permanent relief in most cases by precisely targeting the affected tissue without damaging surrounding areas. Healing is faster, and recurrence is rare when post-operative care and lifestyle changes are followed. It’s a safe and modern option preferred by surgeons.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Is the procedure painful?</summary>
+      <p>Laser fissure surgery is generally painless. It’s performed under anesthesia, so you won’t feel anything during the procedure. Post-surgical pain is minimal and managed with mild medication. Compared to conventional surgery, laser treatment causes significantly less tissue damage, leading to a faster and more comfortable recovery.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>How long does recovery take?</summary>
+      <p>Most patients recover within a few days to a week after laser surgery. They can resume normal activities after 24–48 hours, although strenuous tasks should be avoided initially. Proper diet, hydration, and hygiene are essential for smooth healing. Doctors typically recommend follow-up visits to ensure complete recovery and avoid recurrence.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Is insurance accepted for fissure surgery?</summary>
+      <p>Yes, most major health insurance providers cover laser fissure treatment. At Rite Surgery, we offer full assistance with insurance verification, documentation, and cashless claim processing. Ayushman Bharat and other government health schemes are also supported. Speak to our care coordinator for personalized guidance.</p>
+    </details>
+
+  </div>
+</section>
+
+  </div>
+</section>
+
+<section class="specialist-section">
+  <h2>MEET OUR RENOWNED SPECIALISTS</h2>
+  <p>Consult With The Finest Doctors In Your City</p>
+
+  <div class="specialist-carousel">
+    {% comment %} <button class="arrow left">❮</button> {% endcomment %}
+
+    <div class="specialist-cards">
+      <div class="specialist-card">
+        <img src="{% static 'images/Dr_Giridhar_MBBS_MD.jpeg' %}" alt="Doctor 1" />
+        <h3>Dr GIRIGHAR</h3>
+        <p> MBBS MD</p>
+        <button class="call-btn_1" onclick="window.location.href='tel:+917624845408'">📞 Call Us</button>
+      </div>
+
+      <div class="specialist-card">
+        <img src="{% static 'images/Dr_Venkatesh_MBBS_MD.jpeg' %}" alt="Doctor 2" />
+        <h3>Dr VENKATESH </h3>
+        <p>MBBS MD</p>
+        <button class="call-btn_1" onclick="window.location.href='tel:+917624845408'">📞 Call Us</button>
+      </div>
+
+      <div class="specialist-card">
+        <img src="{% static 'images/DR_KEERTHI_RAJ_MBBS_MS.jpeg' %}" alt="Doctor 3" />
+        <h3>DR KEERTHI RAJ </h3>
+        <p>MBBS MS</p>
+        <button class="call-btn_1" onclick="window.location.href='tel:+917624845408'">📞 Call Us</button>
+      </div>
+
+      <div class="specialist-card">
+        <img src="{% static 'images/founder.jpeg' %}" alt="Doctor 4" />
+     <h3>Dr. Javaji Ravi Prasad</h3>
+          <p>MBBS, MD</p>
+        <button class="call-btn_1" onclick="window.location.href='tel:+917624845408'">📞 Call Us</button>
+      </div>
+    </div>
+
+    {% comment %} <button class="arrow right">❯</button> {% endcomment %}
+  </div>
+</section>
+
+<section class="roadmap-image-section">
+  <picture>
+    <source media="(max-width: 768px)" srcset="{% static 'images/roadmap_vertical.png' %}" />
+    <img src="{% static 'images/roadmap2.png' %}" alt="Roadmap" class="roadmap-image" />
+  </picture>
+</section>
+
+<footer class="main-footer">
+    <div class="footer-content">
+      <!-- Left: Logo & Description -->
+      <div class="footer-left">
+        <img src="{%static 'images/logo.png' %}" alt="Logo" class="footer-logo" />
+        <p>Your trusted healthcare partner delivering top-quality services with compassion and care.</p>
+      </div>
+
+       <div class="footer-links">
+        <h4>Popular Treatments</h4>
+        <ul>
+          <li><a href={% url 'lipoma' %}>Lipoma Removal</a></li>
+          <li><a href={% url 'varicose_vein' %}>Varicose Vein</a></li>
+          <li><a href={% url 'kidney_stone' %}>Kidney Stone</a></li>
+          <li> <a href={% url 'circumcision' %}>Circumcision</a></li>
+          <li> <a href={% url 'fissure_complete' %}>Fistula</a></li>
+           <li> <a href={% url 'gynecomastia' %}>Gynecomastia</a></li>
+
+        </ul>
+      </div>
+
+      <!-- Center: Links -->
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href={% url 'piles' %} >Surgery</a></li>
+          <li><a href={% url 'scan' %}>Scan</a></li>
+          <li> <a href="{% url 'about' %}">About us</a></li>
+          <li> <a href = "{% url 'aushman' %}">Ayushman</a></li>
+
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="{% url 'privacyview' %}">Privacy Policy</a></li>
+          <li><a href="{% url 'Term_condition' %}">Terms and conditions</a></li>
+
+        </ul>
+      </div>
+
+      <!-- Right: Contact + Social + Email -->
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>1388,4th Cross Rd,Vijaynagar,Chandra Layout,Attigupee,Bangalore, Karnataka 560040</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/share/1LeXVmTe3B/"><img src="{%static 'images/Vector_1.png' %}" alt="Facebook" /></a>
+          <!-- <a href="href="javascript:void(0);" onclick="openPopup()""><img src="{%static 'images/Group_31.png'%}" alt="Twitter" /></a> -->
+          <a href="https://www.instagram.com/rite.surgery_1?igsh=YXFvcjBvM2tiNjNy"><img src="{%static 'images/Group_32.png' %}" alt="Instagram" /></a>
+        </div>
+        <form class="email-form">
+          <input type="email" placeholder="Your email address" />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+      <a href="https://wa.me/7624845408" target="_blank" class="whatsapp-link" aria-label="Chat on WhatsApp">
+        <div class="icon-label">
+          <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 258">
+            <path fill="#25D366" d="M5.46 127.46c-.01 21.68 5.66 42.84 16.43 61.5L4.43 252.7l65.23-17.1a123 123 0 0 0 58.8 14.97h.05c67.82 0 123.02-55.18 123.05-123.01c.01-32.87-12.78-63.77-36.01-87.03c-23.23-23.25-54.13-36.06-87.04-36.08c-67.82 0-123.02 55.18-123.05 123.01z"/>
+            <path fill="#FFF" d="M96.68 74.15c-2.39-5.3-4.9-5.41-7.17-5.5c-1.86-.08-3.98-.07-6.1-.07c-2.12 0-5.58.8-8.49 3.98c-2.92 3.19-11.15 10.89-11.15 26.56s11.41 30.81 13 32.94c1.6 2.12 22.03 35.31 54.41 48.07c26.9 10.61 32.38 8.5 38.22 7.97c5.84-.53 18.84-7.7 21.5-15.14c2.65-7.44 2.65-13.81 1.86-15.14c-.8-1.33-2.92-2.12-6.11-3.72c-3.19-1.6-18.84-9.3-21.76-10.36c-2.92-1.06-5.04-1.59-7.17 1.6c-2.12 3.18-8.22 10.36-10.08 12.48c-1.86 2.13-3.72 2.39-6.9.8c-3.19-1.6-13.44-4.96-25.61-15.81c-9.47-8.44-15.86-18.87-17.72-22.06c-1.86-3.18-.2-4.91 1.4-6.5c1.43-1.43 3.19-3.72 4.78-5.58c1.59-1.86 2.12-3.19 3.18-5.31c1.06-2.13.53-3.99-.27-5.58c-.79-1.6-6.98-17.34-9.82-23.64z"/>
+          </svg>
+          <span class="blinking-border">Chat with us</span>
+        </div>
+      </a>
+
+
+    </div>
+
+    <!-- Divider + Copyright -->
+    <hr />
+    <div class="footer-bottom">
+      <p>© 2025 Your Company. All rights reserved.</p>
+    </div>
+  </footer>
+
+{% include 'booknow.html' %}
+</body>
+</html>

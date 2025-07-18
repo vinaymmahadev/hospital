@@ -1,0 +1,554 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rite Surgery | Scans Booking</title>
+  <link rel="stylesheet" href="{% static 'css/scan.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .modal { display:none; position:fixed; z-index:99; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.4); }
+    .modal-content { background:#fff; margin:10% auto; padding:20px; width:90%; max-width:400px; border-radius:10px; position:relative; }
+    .modal-content input { width:100%; padding:10px; margin-bottom:10px; border-radius:6px; border:1px solid #ccc; }
+    .submit-btn { width:100%; background:#00d4a0; color:white; padding:10px; border:none; border-radius:6px; cursor:pointer; font-size:16px; }
+    .close-modal { position:absolute; top:10px; right:15px; font-size:24px; cursor:pointer; }
+    .upload-label { color: yellow; font-weight: bold; display: block; margin-bottom: 5px; }
+  </style>
+</head>
+<div class="modal" id="consultationModal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closePopup()">&times;</span>
+    <h2>Book Your Consultation</h2>
+    {% csrf_token %}
+    <input type="text" id="popup-name" placeholder="Name">
+    <input type="tel" id="popup-phone" placeholder="Mobile No">
+    <input type="email" id="popup-email" placeholder="Email ID">
+    <div id="popup-error" style="color:red; display:none; margin-bottom:10px;">Please fill all fields.</div>
+    <button class="submit-btn" onclick="validatePopupForm()">Book</button>
+  </div>
+</div>
+
+<body>
+  <header class="topbar">
+    <p>Book scan Now and get Up to 60% off on your first scan</p>
+    <button class="offer-btn" onclick="document.getElementById('popupForm').style.display='block'">Get offer!</button>
+    <span class="close" onclick="this.parentElement.style.display='none'">&times;</span>
+  </header>
+
+  <div class="header-main">
+    <img src="{% static 'images/logo.png' %}" alt="Rite Surgery Logo" class="logo">
+    <div class="header-right">
+      <button onclick="window.location.href='{% url 'home' %}'" class="btn" >Home</button>
+      <div class="icon-label"><i class="fas fa-map-marker-alt"></i> Bangalore</div>
+      <div class="icon-label"><i class="fas fa-language"></i> English</div>
+      <a href="tel:+917204099115" class="call-btn"><i class="fas fa-phone"></i> +91-7204099115</a>
+    </div>
+  </div>
+
+  <section class="hero-section">
+    <div class="hero-left">
+      <h1>Book Affordable, Quick Scans Near You</h1>
+      <p>Unlock 60% discount on MRI, CT, Ultrasound, PET, and more — with Rite Surgery’s trusted network of diagnostics.</p>
+      <div class="hero-features">
+        <div><i class="fa fa-user-md"></i> Experienced Radiologists</div>
+        <div><i class="fa fa-microchip"></i> Latest Technology</div>
+        <div><i class="fa fa-tags"></i> Exclusive Discounts</div>
+        <div><i class="fa fa-clock"></i> Fast & Accurate Reports</div>
+      </div>
+    </div>
+    <div id="form-message" style="display: none;" class="form-alert"></div>
+
+   <div class="hero-right">
+  <input type="text" id="booking-name" placeholder="Name*">
+  <input type="tel" id="booking-phone" placeholder="Phone Number*">
+  <input type="email" id="booking-email" placeholder="Email ID (Optional)">
+  <select id="booking-location">
+    <option selected disabled value="">Location</option>
+    <option>Bangalore</option>
+    <option>others</option>
+  </select>
+  <label class="upload-label">Upload Prescription (Optional)</label>
+  <input type="file">
+  <button onclick="handleBooking()">Get 60% off now!</button>
+</div>
+  </section>
+
+  <section class="scan-grid">
+    <div class="scan-card">
+      <img src="{% static 'images/mri-scanning.jpg' %}" alt="Comprehensive Full Body Checkup">
+      <h4>Get the Most Advanced MRI Scan in Bangalore</h4>
+      <ul>
+        <li>Quick appointments, minimal wait time, and fast report delivery.</li>
+        <li>Powered by cutting-edge technology for accurate diagnosis.</li>
+        <li>Trusted by top doctors and preferred by thousands of patients.</li>
+      </ul>
+      <div class="price">Starts <span class="old-price">₹7000</span> ₹3649</div>
+      <button class="book-btn" onclick="openPopup()">Book Now</button>
+
+    </div>
+    <div class="scan-card">
+      <img src="{% static 'images/ct-scan.jpg' %}" alt="Advanced Diabetes Care Checkup">
+      <h4>High-Precision CT Scanning in Bangalore</h4>
+      <ul>
+        <li>Reports delivered within 1–2 hours for most cases.</li>
+        <li>Quick, painless, and highly accurate diagnostic imaging.</li>
+        <li>Trusted by leading hospitals and experienced radiologists.</li>
+      </ul>
+      <div class="price">Starts <span class="old-price">₹7999</span> ₹1499</div>
+      <button class="book-btn" onclick="openPopup()">Book Now</button>
+
+    </div>
+    <div class="scan-card">
+      <img src="{% static 'images/ultrasound.jpg' %}" alt="Essential Women’s Health CheckupUltrasound">
+      <h4>Affordable & Accurate Ultrasound in Bangalore</h4>
+      <ul>
+        <li>Fast reports within 1–2 hours and same-day appointments.</li>
+        <li>Performed by expert sonologists using the latest machines.</li>
+        <li>Safe, painless, and ideal for pregnancy and organ screening.</li>
+      </ul>
+      <div class="price">Starts <span class="old-price">₹4000</span> ₹1200</div>
+      <button class="book-btn" onclick="openPopup()">Book Now</button>
+
+    </div>
+    <div class="scan-card">
+      <img src="{% static 'images/pet.jpg' %}" alt="SmartCare: Complete Body Checkup">
+      <h4>Advanced PET Scans in Bangalore for Early Detection</h4>
+      <ul>
+        <li>Fast report delivery within 6–12 hours with top accuracy.</li>
+        <li>Ideal for cancer diagnosis, staging, and monitoring.</li>
+        <li>Performed by expert nuclear medicine specialists.</li>
+      </ul>
+      <div class="price">Starts <span class="old-price">₹12000</span> ₹10000</div>
+      <button class="book-btn" onclick="openPopup()">Book Now</button>
+
+    </div>
+      <div class="scan-card">
+      <img src="{% static 'images/mammography_scan.jpg' %}" alt="SmartCare: Complete Body Checkup">
+      <h4>Accurate & Painless Mammography in Bangalore</h4>
+      <ul>
+        <li>Quick appointments with same-day report delivery.</li>
+        <li>Early breast cancer detection with advanced digital imaging.</li>
+        <li>Performed by female technicians for your comfort and privacy.</li>
+      </ul>
+      <div class="price">Starts <span class="old-price">₹3000</span> ₹1199</div>
+      <button class="book-btn" onclick="openPopup()">Book Now</button>
+
+    </div>
+  </section>
+
+  <section class="offers-section">
+  <div class="offer-box">
+    <img src="{% static 'images/insurance_banner_1.png' %}" alt="no queue" class="offer-img">
+    <button class="book-btn" onclick="document.getElementById('popupForm').style.display='block'">Book Now</button>
+  </div>
+  <div class="offer-box">
+    <img src="{% static 'images/emi_banner1.png' %}" alt="discount" class="offer-img">
+    <button class="book-btn" onclick="document.getElementById('popupForm').style.display='block'">Book Now</button>
+  </div>
+</section>
+
+<section class="how-it-works-custom">
+  <h2 class="how-title">Step-by-Step – Let’s begin your healthcare journey</h2>
+  <div class="how-content">
+    <div class="how-image">
+      <img src="{% static 'images/Step-by-Step.jpeg'%}" alt="Doctor Scanning" />
+    </div>
+    <div class="how-steps">
+      <div class="step-box"><span>01</span> Choose Your Scan</div>
+      <div class="step-box"><span>02</span> Complete the Form</div>
+      <div class="step-box"><span>03</span> Get Your Confirmation</div>
+      <div class="step-box"><span>04</span> Attend Your Scan Appointment</div>
+      <div class="step-box"><span>05</span> Receive Fast Reports</div>
+    </div>
+
+</section>
+
+
+ <section class="reviews-modern">
+  <h2 class="review-heading">What Our Customers Say</h2>
+  <div class="review-grid">
+    <div class="review-card">
+      <img src="{% static 'images/user1.png' %}" alt="User 1">
+      <p>Pooja V. | Marathahalli</p>
+     
+      <p class="review-text">"Top-notch care and timely surgery"
+I was struggling to find an affordable varicose vein surgery option. A friend recommended Rite Surgery. I’m so glad I listened! They arranged surgery in a nearby hospital, managed insurance, and even gave post-op support.
+</p>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="review-card">
+      <img src="{% static 'images/user1.png' %}" alt="User 2">
+      <p>Farhan A. | Banashankari</p> 
+      <p class="review-text">"Affordable and professional surgical experience"
+Had a minor hernia surgery done through Rite Surgery. They connected me to a top hospital in Bangalore, and I even got a No Cost EMI option. Best part was how responsive their team was before and after the surgery..</p>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="review-card">
+      <img src="{% static 'images/user1.png' %}" alt="User 3">
+      <p>Rakesh M. | Koramangala</p>
+      <p class="review-text">"Smooth gynecomastia surgery with no hassle"
+I was very nervous about getting gynecomastia surgery, but Rite Surgery made the process incredibly easy. From booking the surgery to insurance and hospital coordination, they handled everything professionally. Recovery was also smooth.</p>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="review-card">
+      <img src="{% static 'images/user1.png' %}" alt="User 4">
+
+      <p>ಲತಾ ಎಚ್. | Electronic City</p>
+      <p class="review-text">"ಸರ್ಜರಿ ನಂತರದ ಕೇರ್ ಕೂಡ ಅಚ್ಚುಕಟ್ಟಾಗಿದೆ"
+ನಾನು ಶಸ್ತ್ರಚಿಕಿತ್ಸೆ ಮಾಡಿಸಿಕೊಂಡ ಮೇಲೆ Rite Surgery ತಂಡ ಮರುಪರಿಶೀಲನೆಗೂ ಕರೆ ಮಾಡಿ ಹಿತವಚನ ಹೇಳಿದ್ರು. ಇಂತಹ ಸೇವೆ ಎಲ್ಲರಲ್ಲೂ ಸಿಗೋದಿಲ್ಲ. ತುಂಬಾ ಮೆಚ್ಚಿದೆ.</p>
+      <div class="stars">★★★★★</div>
+    </div>
+  </div>
+</section>
+
+<section style="padding: 60px 20px; background: #f2f9fb; text-align: center;">
+  <h2 style="font-size: 28px; color: #035f5b; margin-bottom: 15px;">Road Map – Rite Surgery</h2>
+  <p style="font-size: 16px; color: #444; max-width: 800px; margin: 0 auto 20px;">
+    Our journey is shaped by one mission: delivering safe, affordable, and advanced surgery experiences across India.<br>
+    Here’s a visual path of how we’re building the future of surgical care — step by step.
+  </p>
+
+  <!-- Road Map Image -->
+  <div style="margin-top: 30px;">
+    <img src="{% static 'images/roadmap2.png' %}" alt="Roadmap" style="
+      width: 100%;
+      max-width: 1000px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    "/>
+  </div>
+</section>
+
+  <section class="faq-section">
+    <h2 class="faq-heading-modern">Frequently Asked Questions and Answers</h2>
+
+    <details>
+  <summary>How does Rite Surgery ensure patient trust?</summary>
+  <p>We build trust through transparency, medical accuracy, and compassionate service. Every lab we partner with is verified, and all reports are shared securely and quickly. Our support team is always available to answer your queries. You can track every step of your test process with clarity and ease. We prioritize your comfort and confidence at every stage.</p>
+</details>
+
+<details>
+  <summary>What kind of technology do you use?</summary>
+  <p>Rite Surgery uses advanced, hospital-grade diagnostic equipment for all tests. Our partner labs follow high-end protocols and use automated analyzers to ensure minimal error. Online booking, digital prescriptions, and real-time updates are part of our seamless tech ecosystem. It helps reduce waiting time and boosts overall efficiency.</p>
+</details>
+
+<details>
+  <summary>Do I get help before and after the test?</summary>
+  <p>Yes, absolutely. From choosing the right test to understanding your report, our care coordinators are with you at every step. We provide pre-test instructions, prescription pickup, and post-report guidance if required. Elderly or first-time patients receive special attention. We aim to make the experience as simple and stress-free as possible.</p>
+</details>
+    <details><summary>Can I book a scan without a prescription?</summary><p>Yes, a prescription is optional for most scans. However, it is recommended if your doctor has advised specific tests. Having one can speed up your appointment and help ensure correct tests are booked. Insurance claims may require prescriptions too. Our support team can assist you in understanding what’s needed. Always check in advance to avoid delays.</p></details>
+    <details><summary>What is the cost of different scans?</summary><p>The price varies based on scan type, machine used, and lab. MRI starts at Rs. 3500, CT at Rs. 1500, and Ultrasound at Rs. 1200. Discounts are applied instantly when you book through us. You may also be eligible for insurance support. Contact our helpline for the exact rates near your location. We strive to provide the most affordable options with high-quality reports.</p></details>
+    <details><summary>Can I choose a preferred diagnostic center?</summary><p>Yes, you can choose from our list of verified partner labs. We work with top NABL-accredited centers across Bangalore. While booking, our team will guide you to select one near your home. You can also suggest if you already have a preferred place. We’ll do our best to accommodate your request depending on availability and service standards.</p></details>
+    <details><summary>Is there any pickup service for elderly patients?</summary><p>Yes, we offer free pickup and drop for elderly patients, especially those above 60 years. Our team ensures they are comfortable and accompanied. Pickup is usually arranged within 12 hours of booking. Please share relevant details during your appointment confirmation. We ensure every patient has a stress-free and safe diagnostic experience.</p></details>
+    <details><summary>How fast do I get the reports?</summary><p>Most scan reports are delivered within 12–24 hours. Critical scans like CT/MRI can be expedited in emergencies. Reports are sent via WhatsApp/email and physical copies can be arranged. Our team follows up with you post scan to ensure you receive all documents. If you have any concerns, our helpline is always available to support you immediately.</p></details>
+  </section>
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <!-- Left: Logo & Description -->
+      <div class="footer-left">
+        <img src="{%static 'images/logo.png' %}" alt="Logo" class="footer-logo" />
+        <p>Your trusted healthcare partner delivering top-quality services with compassion and care.</p>
+      </div>
+
+       <div class="footer-links">
+        <h4>Popular Treatments</h4>
+        <ul>
+          <li><a href={% url 'lipoma' %}>Lipoma Removal</a></li>
+          <li><a href={% url 'varicose_vein' %}>Varicose Vein</a></li>
+          <li><a href={% url 'kidney_stone' %}>Kidney Stone</a></li>
+          <li> <a href={% url 'circumcision' %}>Circumcision</a></li>
+          <li> <a href={% url 'fissure_complete' %}>Fistula</a></li>
+           <li> <a href={% url 'gynecomastia' %}>Gynecomastia</a></li>
+
+        </ul>
+      </div>
+
+      <!-- Center: Links -->
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href={% url 'piles' %} >Surgery</a></li>
+          <li><a href={% url 'scan' %}>Scan</a></li>
+          <li> <a href="{% url 'about' %}">About us</a></li>
+          <li> <a href = "{% url 'aushman' %}">Ayushman</a></li>
+
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="{% url 'privacyview' %}">Privacy Policy</a></li>
+          <li><a href="{% url 'Term_condition' %}">Terms and conditions</a></li>
+
+        </ul>
+      </div>
+
+      <!-- Right: Contact + Social + Email -->
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>1388,4th Cross Rd,Vijaynagar,Chandra Layout,Attigupee,Bangalore, Karnataka 560040</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/share/1LeXVmTe3B/"><img src="{%static 'images/Vector_1.png' %}" alt="Facebook" /></a>
+          <!-- <a href="href="javascript:void(0);" onclick="openPopup()""><img src="{%static 'images/Group_31.png'%}" alt="Twitter" /></a> -->
+          <a href="https://www.instagram.com/rite.surgery_1?igsh=YXFvcjBvM2tiNjNy"><img src="{%static 'images/Group_31.png' %}" alt="Instagram" /></a>
+        </div>
+        <form class="email-form">
+          <input type="email" placeholder="Your email address" />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+      <a href="https://wa.me/your-number" class="whatsapp-link"
+        style="display: inline-flex; align-items: center; text-decoration: none; color: href="javascript:void(0);" onclick="openPopup()"25D366;">
+        <!-- WhatsApp SVG Icon - Logo Only, No Background -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="50" viewBox="0 0 256 258">
+          <defs>
+            <linearGradient id="logosWhatsappIcon0" x1="50%" x2="50%" y1="100%" y2="0%">
+              <stop offset="0%" stop-color="href="javascript:void(0);" onclick="openPopup()"1faf38" />
+              <stop offset="100%" stop-color="href="javascript:void(0);" onclick="openPopup()"60d669" />
+            </linearGradient>
+            <linearGradient id="logosWhatsappIcon1" x1="50%" x2="50%" y1="100%" y2="0%">
+              <stop offset="0%" stop-color="href="javascript:void(0);" onclick="openPopup()"f9f9f9" />
+              <stop offset="100%" stop-color="href="javascript:void(0);" onclick="openPopup()"fff" />
+            </linearGradient>
+          </defs>
+          <path fill="url(href="javascript:void(0);" onclick="openPopup()"logosWhatsappIcon0)"
+            d="M5.463 127.456c-.006 21.677 5.658 42.843 16.428 61.499L4.433 252.697l65.232-17.104a123 123 0 0 0 58.8 14.97h.054c67.815 0 123.018-55.183 123.047-123.01c.013-32.867-12.775-63.773-36.009-87.025c-23.23-23.25-54.125-36.061-87.043-36.076c-67.823 0-123.022 55.18-123.05 123.004" />
+          <path fill="url(href="javascript:void(0);" onclick="openPopup()"logosWhatsappIcon1)"
+            d="M1.07 127.416c-.007 22.457 5.86 44.38 17.014 63.704L0 257.147l67.571-17.717c18.618 10.151 39.58 15.503 60.91 15.511h.055c70.248 0 127.434-57.168 127.464-127.423c.012-34.048-13.236-66.065-37.3-90.15C194.633 13.286 162.633.014 128.536 0C58.276 0 1.099 57.16 1.071 127.416m40.24 60.376l-2.523-4.005c-10.606-16.864-16.204-36.352-16.196-56.363C22.614 69.029 70.138 21.52 128.576 21.52c28.3.012 54.896 11.044 74.9 31.06c20.003 20.018 31.01 46.628 31.003 74.93c-.026 58.395-47.551 105.91-105.943 105.91h-.042c-19.013-.01-37.66-5.116-53.922-14.765l-3.87-2.295l-40.098 10.513z" />
+          <path fill="href="javascript:void(0);" onclick="openPopup()"fff"
+            d="M96.678 74.148c-2.386-5.303-4.897-5.41-7.166-5.503c-1.858-.08-3.982-.074-6.104-.074c-2.124 0-5.575.799-8.492 3.984c-2.92 3.188-11.148 10.892-11.148 26.561s11.413 30.813 13.004 32.94c1.593 2.123 22.033 35.307 54.405 48.073c26.904 10.609 32.379 8.499 38.218 7.967c5.84-.53 18.844-7.702 21.497-15.139c2.655-7.436 2.655-13.81 1.859-15.142c-.796-1.327-2.92-2.124-6.105-3.716s-18.844-9.298-21.763-10.361c-2.92-1.062-5.043-1.592-7.167 1.597c-2.124 3.184-8.223 10.356-10.082 12.48c-1.857 2.129-3.716 2.394-6.9.801c-3.187-1.598-13.444-4.957-25.613-15.806c-9.468-8.442-15.86-18.867-17.718-22.056c-1.858-3.184-.199-4.91 1.398-6.497c1.431-1.427 3.186-3.719 4.78-5.578c1.588-1.86 2.118-3.187 3.18-5.311c1.063-2.126.531-3.986-.264-5.579c-.798-1.593-6.987-17.343-9.819-23.64" />
+        </svg>
+      </a>
+
+
+    </div>
+
+    <!-- Divider + Copyright -->
+    <hr />
+    <footer class="main-footer">
+    <div class="footer-content">
+      <!-- Left: Logo & Description -->
+      <div class="footer-left">
+        <img src="{%static 'images/logo.png' %}" alt="Logo" class="footer-logo" />
+        <p>Your trusted healthcare partner delivering top-quality services with compassion and care.</p>
+      </div>
+
+       <div class="footer-links">
+        <h4>Popular Treatments</h4>
+        <ul>
+          <li><a href={% url 'lipoma' %}>Lipoma Removal</a></li>
+          <li><a href={% url 'varicose_vein' %}>Varicose Vein</a></li>
+          <li><a href={% url 'kidney_stone' %}>Kidney Stone</a></li>
+          <li> <a href={% url 'circumcision' %}>Circumcision</a></li>
+          <li> <a href={% url 'fissure_complete' %}>Fistula</a></li>
+           <li> <a href={% url 'gynecomastia' %}>Gynecomastia</a></li>
+
+        </ul>
+      </div>
+
+      <!-- Center: Links -->
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href={% url 'piles' %} >Surgery</a></li>
+          <li><a href={% url 'scan' %}>Scan</a></li>
+          <li> <a href="{% url 'about' %}">About us</a></li>
+          <li> <a href = "{% url 'aushman' %}">Ayushman</a></li>
+
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="{% url 'privacyview' %}">Privacy Policy</a></li>
+          <li><a href="{% url 'Term_condition' %}">Terms and conditions</a></li>
+
+        </ul>
+      </div>
+
+      <!-- Right: Contact + Social + Email -->
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>1388,4th Cross Rd,Vijaynagar,Chandra Layout,Attigupee,Bangalore, Karnataka 560040</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/share/1LeXVmTe3B/"><img src="{%static 'images/Vector_1.png' %}" alt="Facebook" /></a>
+          <!-- <a href="href="javascript:void(0);" onclick="openPopup()""><img src="{%static 'images/Group_31.png'%}" alt="Twitter" /></a> -->
+          <a href="https://www.instagram.com/rite.surgery_1?igsh=YXFvcjBvM2tiNjNy"><img src="{%static 'images/Group_32.png' %}" alt="Instagram" /></a>
+        </div>
+        <form class="email-form">
+          <input type="email" placeholder="Your email address" />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+      <a href="https://wa.me/7624845408" target="_blank" class="whatsapp-link" aria-label="Chat on WhatsApp">
+        <div class="icon-label">
+          <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 258">
+            <path fill="#25D366" d="M5.46 127.46c-.01 21.68 5.66 42.84 16.43 61.5L4.43 252.7l65.23-17.1a123 123 0 0 0 58.8 14.97h.05c67.82 0 123.02-55.18 123.05-123.01c.01-32.87-12.78-63.77-36.01-87.03c-23.23-23.25-54.13-36.06-87.04-36.08c-67.82 0-123.02 55.18-123.05 123.01z"/>
+            <path fill="#FFF" d="M96.68 74.15c-2.39-5.3-4.9-5.41-7.17-5.5c-1.86-.08-3.98-.07-6.1-.07c-2.12 0-5.58.8-8.49 3.98c-2.92 3.19-11.15 10.89-11.15 26.56s11.41 30.81 13 32.94c1.6 2.12 22.03 35.31 54.41 48.07c26.9 10.61 32.38 8.5 38.22 7.97c5.84-.53 18.84-7.7 21.5-15.14c2.65-7.44 2.65-13.81 1.86-15.14c-.8-1.33-2.92-2.12-6.11-3.72c-3.19-1.6-18.84-9.3-21.76-10.36c-2.92-1.06-5.04-1.59-7.17 1.6c-2.12 3.18-8.22 10.36-10.08 12.48c-1.86 2.13-3.72 2.39-6.9.8c-3.19-1.6-13.44-4.96-25.61-15.81c-9.47-8.44-15.86-18.87-17.72-22.06c-1.86-3.18-.2-4.91 1.4-6.5c1.43-1.43 3.19-3.72 4.78-5.58c1.59-1.86 2.12-3.19 3.18-5.31c1.06-2.13.53-3.99-.27-5.58c-.79-1.6-6.98-17.34-9.82-23.64z"/>
+          </svg>
+          <span class="blinking-border">Chat with us</span>
+        </div>
+      </a>
+
+
+    </div>
+
+    <!-- Divider + Copyright -->
+    <hr />
+    <div class="footer-bottom">
+      <p>© 2025 Your Company. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="popupForm" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="document.getElementById('popupForm').style.display='none'">&times;</span>
+    <h3>Book Your Scan</h3>
+    <input type="text" id="popup-name" placeholder="Name*">
+    <div id="nameError" class="form-error">Please enter your name</div>
+    <input type="tel" id="popup-phone" placeholder="Phone Number*">
+    <div id="phoneError" class="form-error">Please enter your phone number</div>
+    <input type="email" id="popup-email" placeholder="Email ID*">
+    <div id="emailError" class="form-error">Please enter your email</div>
+    <button class="submit-btn" onclick="validatePopupForm()">Book Now</button>
+  </div>
+</div>
+
+
+<script>
+function openPopup() {
+  document.getElementById('consultationModal').style.display = 'block';
+}
+
+function closePopup() {
+  document.getElementById('consultationModal').style.display = 'none';
+}
+
+function validatePopupForm() {
+  const name = document.getElementById('popup-name').value.trim();
+  const phone = document.getElementById('popup-phone').value.trim();
+  const email = document.getElementById('popup-email').value.trim();
+  const error = document.getElementById('popup-error');
+
+  if (!name || !phone || !email) {
+    error.style.display = 'block';
+    return; // Stop if validation fails
+  } else {
+    error.style.display = 'none';
+  }
+
+  const appointmentData = {
+    name: name,
+    phone: phone,
+    email: email,
+    location: "Popup Inquiry"  // optional — or change based on your form
+  };
+
+  fetch('/appointment/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': getCSRFToken()  // this function should be defined globally
+    },
+    body: JSON.stringify(appointmentData)
+  })
+  .then(response => {
+    if (response.ok) {
+      alert("🎉 Booking submitted successfully!");
+
+      // Clear popup form fields
+      document.getElementById('popup-name').value = '';
+      document.getElementById('popup-phone').value = '';
+      document.getElementById('popup-email').value = '';
+
+      closePopup();
+    } else {
+      alert(' Submission failed.');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('⚠️ Something went wrong.');
+  });
+}
+
+
+// Close popup when clicking outside modal
+window.onclick = function(event) {
+  const modal = document.getElementById('consultationModal');
+  if (event.target == modal) {
+    closePopup();
+  }
+}
+
+ function getCSRFToken() {
+    return document.querySelector('[name=csrfmiddlewaretoken]').value;
+  }
+
+function handleBooking() {
+  const name = document.getElementById('booking-name').value.trim();
+  const phone = document.getElementById('booking-phone').value.trim();
+  const email = document.getElementById('booking-email').value.trim();
+  const location = document.getElementById('booking-location').value;
+
+  const messageBox = document.getElementById('form-message');
+  let missingFields = [];
+
+  if (!name) missingFields.push("Name");
+  if (!phone) missingFields.push("Phone Number");
+  if (!location) missingFields.push("Location");
+
+  if (missingFields.length > 0) {
+    messageBox.className = 'form-alert';
+    messageBox.innerHTML = "👋 <strong>Hello!</strong> You are missing the following detail(s):<br>• " + missingFields.join("<br>• ");
+    messageBox.style.display = 'block';
+  } else {
+    // Prepare data object for sending
+    const appointmentData = {
+      name: name,
+      phone: phone,
+      email: email,
+      location: location
+    };
+
+    
+    fetch('/appointment/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCSRFToken() 
+      },
+      body: JSON.stringify(appointmentData)
+    })
+    .then(response => {
+      if (response.ok) {
+        messageBox.className = 'form-alert success';
+        messageBox.innerHTML = "🎉 <strong>Booking Successful!</strong><br>Thank you for choosing Rite Surgery.";
+        messageBox.style.display = 'block';
+
+        // Clear fields
+        document.getElementById('booking-name').value = '';
+        document.getElementById('booking-phone').value = '';
+        document.getElementById('booking-email').value = '';
+        document.getElementById('booking-location').value = '';
+      } else {
+        alert('Submission failed.');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Something went wrong.');
+    });
+  }
+}
+
+
+
+</script>
+
+</body>
+</html>

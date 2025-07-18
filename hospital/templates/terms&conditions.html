@@ -1,0 +1,275 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Conditions - Rite Surgery</title>
+  <link rel="stylesheet" href="{% static 'css/all_subdropdowns.css' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8fafc;
+      padding-top: 80px;
+    }
+    main {
+      max-width: 1100px;
+      margin: auto;
+      background: #ffffff;
+      padding: 40px 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+    }
+    h1, h2 {
+      color: #0f766e;
+    }
+    p, ul, li {
+      font-size: 16px;
+      color: #333;
+      line-height: 1.7;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    .highlight {
+      background: #d1fae5;
+      color: #065f46;
+      padding: 3px 6px;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+    .back-btn {
+      margin-top: 30px;
+      display: inline-block;
+      background: #0f766e;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    @media (max-width: 768px) {
+      main {
+        padding: 25px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header from piles.html -->
+  <nav class="navbar">
+    <div class="left">
+      <img src="{% static 'images/logo.png' %}" alt="Logo" />
+    </div>
+    <div class="center-wrapper">
+       
+          <div class="center">
+            <a href="{% url 'home' %}">Home</a>
+            
+            <div class="dropdown">
+              <a href="href="javascript:void(0);" onclick="openPopup()"" class="toggle-dropdown">surgery</a>
+
+              <div class="dropdown-content">
+                
+                {% comment %} <a href="{% url 'piles' %}">Piles</a>
+                <a href="{% url 'fissure' %}">Fissure</a> {% endcomment %}
+
+                <div class="sub-dropdown">
+                  <a href="href="javascript:void(0);" onclick="openPopup()"" class="toggle-dropdown sub-dropdown-toggle">Proctology</a>
+                  <div class="sub-dropdown-content">
+                    <a href="{% url 'piles' %}">Piles</a>
+                    <a href="{% url 'fissure' %}">Fissure</a>
+                    <a href="javascript:void(0);" onclick="openPopup()">Fistula</a>
+                  </div>
+                  <a href="href="javascript:void(0);" onclick="openPopup()"" class="toggle-dropdown sub-dropdown-toggle">Laparoscopy</a>
+                  <div class="sub-dropdown-content">
+                    <a href="{% url 'hernia' %}">Hernia</a>
+                    <a href="{% url 'appendic' %}">Appendicitis</a>
+                    <a href="{% url 'lipoma' %}">Gallbladder Stone</a>
+                  </div>
+                  <a href="href="javascript:void(0);" onclick="openPopup()"" class="toggle-dropdown sub-dropdown-toggle">Urology</a>
+                  <div class="sub-dropdown-content">
+                    <a href="{% url 'circumcision' %}">Circumcision</a>
+                    <a href="{% url 'kidney_stone' %}">Kidney Stone</a>
+                    <a href="{% url 'varicocele' %}">Varicocele</a>
+                   <a href="href="javascript:void(0);" onclick="openPopup()"" class="popup-link">Stapler Circumcision</a>
+                  <a href="href="javascript:void(0);" onclick="openPopup()"" class="popup-link">Hydrocele</a>
+                  <a href="href="javascript:void(0);" onclick="openPopup()"" class="popup-link">Frenuloplasty</a>
+                  <a href="href="javascript:void(0);" onclick="openPopup()"" class="popup-link">Genitourinary fistula</a>
+                  <a href="href="javascript:void(0);" onclick="openPopup()"" class="popup-link">Kidney transplant</a>
+                  <a href="href="javascript:void(0);" onclick="openPopup()"" class="popup-link">Prostate enlargement</a>
+                  </div>
+                  <a href="href="javascript:void(0);" onclick="openPopup()"" class="toggle-dropdown sub-dropdown-toggle">Cosmetic</a>
+                    <div class="sub-dropdown-content">
+                    <a href="{% url 'gynecomastia' %}">Gynecomastia (cosmetic/ plastic surgery)</a>
+                  </div>
+                  <a href="href="javascript:void(0);" onclick="openPopup()"" class="toggle-dropdown sub-dropdown-toggle">Orthopedics</a>
+                    <div class="sub-dropdown-content">
+                      <a href="{% url 'knee_replacement' %}">Knee replacement</a>
+                      <a href="{% url 'hip_replacement' %}">Hip replacement</a> 
+                      <a href="href="javascript:void(0);" onclick="openPopup()"" class="popup-link">ACL tear</a>
+                      <a href="href="javascript:void(0);" onclick="openPopup()"" class="popup-link">Disc injury</a>
+                      <a href="href="javascript:void(0);" onclick="openPopup()"" class="popup-link">Joint replacement</a>
+                      <a href="href="javascript:void(0);" onclick="openPopup()"" class="popup-link">Knee Arthroscopy</a>
+                      <a href="href="javascript:void(0);" onclick="openPopup()"" class="popup-link">Rotator cuff repair</a>
+                    </div>
+                  <a href="href="javascript:void(0);" onclick="openPopup()"" class="toggle-dropdown sub-dropdown-toggle">Ophthalmology</a>
+                    <div class="sub-dropdown-content">
+                      <a href="{% url 'cataract' %}">Cataract</a>
+                      <a href="{% url 'lasik' %}">Lasik Surgery</a> 
+                    </div>
+
+                  <a href="href="javascript:void(0);" onclick="openPopup()"" class="toggle-dropdown sub-dropdown-toggle">vascular</a>
+                   <div class="sub-dropdown-content">
+                      <a href="{% url 'cataract' %}">Varicose_vein</a>
+                      <a href="href="javascript:void(0);" onclick="openPopup()"" class="popup-link">Deep vein thrombosis (DVT)</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <a href="{% url 'laboratory_Investigation' %}">Laboratory Investigation</a>
+            <a href="{% url 'scan' %}">Scan</a>
+            <a href="{% url 'about' %}">About us</a>
+            <a href="{% url 'aushman' %}">Ayushman</a>
+          </div>
+        </div>
+  </nav>
+
+  <main>
+    <h1>Terms and Conditions</h1>
+    <p>Effective Date: July 2025</p>
+
+    <h2>1. Legal Identity & Ownership</h2>
+    <p>This website, <strong>www.ritesurgery.com</strong>, is legally owned and managed by <span class="highlight">Dr. Siddarth</span>, Founder and Director of Sri Vinayaka Hospital. All operations, content, and services reflect his authority, ethics, and medical governance.</p>
+
+    <h2>2. Agreement to Terms</h2>
+    <p>By accessing or using our services, you agree to be legally bound by these Terms and Conditions. If you do not agree, please discontinue use of the platform.</p>
+
+    <h2>3. Medical Disclaimers</h2>
+    <p>All medical content is for informational purposes only. It is not intended to replace medical consultation. Always consult a certified healthcare provider for diagnosis and treatment.</p>
+
+    <h2>4. Eligibility</h2>
+    <ul>
+      <li>Users must be 18+ or have parental/guardian supervision</li>
+      <li>All personal details submitted must be true and verifiable</li>
+    </ul>
+
+    <h2>5. Consultations, Appointments & Surgery</h2>
+    <ul>
+      <li>Appointments are subject to doctor availability and verification</li>
+      <li>Surgical procedures require prior physical evaluation</li>
+      <li>Patients must adhere to pre- and post-procedure guidance</li>
+    </ul>
+
+    <h2>6. Payment & Refunds</h2>
+    <ul>
+      <li>All fees are processed securely via trusted gateways</li>
+      <li>Refunds are governed by medical judgment and service policies</li>
+      <li>Pricing is case-based and may vary with condition and care required</li>
+    </ul>
+
+    <h2>7. Privacy & Data Protection</h2>
+    <p>We handle all personal data in accordance with our <a href="{% url 'privacyview' %}">Privacy Policy</a>. By using this site, you consent to our data practices.</p>
+
+    <h2>8. Limitation of Liability</h2>
+    <p>Rite Surgery is not liable for external events, service delays, technical failures, or user non-compliance that affect outcomes. Liability is limited to extent permitted by law.</p>
+
+    <h2>9. Intellectual Property</h2>
+    <p>All branding, designs, content, and visuals are property of <span class="highlight">Dr. Siddarth</span> and Sri Vinayaka Hospital. Unauthorized use or reproduction is strictly prohibited.</p>
+
+    <h2>10. Data Privacy</h2>
+    <p>We are commited to maintainning user data confidentiality. your personal and medical data is collected with consent ,stored securely, and only share with internal or partner clinical teams. For full details, reffer to our <a href="{% url 'privacyview' %}">Privacy Policy.</a></p>
+
+    <h2>11. Modifications</h2>
+    <p>We reserve the right to amend these terms at any time. Continued use implies acceptance of the most recent version posted here.</p>
+
+    <h2>12. Contact Information</h2>
+    <p>Have questions about these terms? Reach out to:</p>
+    <p>
+      <strong>Dr. Siddarth</strong><br>
+      Sri Vinayaka Hospital, Bengaluru<br>
+      Email: <a href="mailto:support@ritesurgery.com">support@ritesurgery.com</a><br>
+      Phone: +91-XXXXXXXXXX
+    </p>
+
+    <a href="{% url 'home' %}" class="back-btn">Back to Home</a>
+  </main>
+
+  <!-- Footer from piles.html -->
+  <footer class="main-footer">
+    <div class="footer-content">
+      <!-- Left: Logo & Description -->
+      <div class="footer-left">
+        <img src="{%static 'images/logo.png' %}" alt="Logo" class="footer-logo" />
+        <p>Your trusted healthcare partner delivering top-quality services with compassion and care.</p>
+      </div>
+
+       <div class="footer-links">
+        <h4>Popular Treatments</h4>
+        <ul>
+          <li><a href={% url 'lipoma' %}>Lipoma Removal</a></li>
+          <li><a href={% url 'varicose_vein' %}>Varicose Vein</a></li>
+          <li><a href={% url 'kidney_stone' %}>Kidney Stone</a></li>
+          <li> <a href={% url 'circumcision' %}>Circumcision</a></li>
+          <li> <a href={% url 'fissure_complete' %}>Fistula</a></li>
+           <li> <a href={% url 'gynecomastia' %}>Gynecomastia</a></li>
+
+        </ul>
+      </div>
+
+      <!-- Center: Links -->
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href={% url 'piles' %} >Surgery</a></li>
+          <li><a href={% url 'scan' %}>Scan</a></li>
+          <li> <a href="{% url 'about' %}">About us</a></li>
+          <li> <a href = "{% url 'aushman' %}">Ayushman</a></li>
+
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="{% url 'privacyview' %}">Privacy Policy</a></li>
+          <li><a href="{% url 'Term_condition' %}">Terms and conditions</a></li>
+
+        </ul>
+      </div>
+
+      <!-- Right: Contact + Social + Email -->
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>1388,4th Cross Rd,Vijaynagar,Chandra Layout,Attigupee,Bangalore, Karnataka 560040</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/share/1LeXVmTe3B/"><img src="{%static 'images/Vector_1.png' %}" alt="Facebook" /></a>
+          <!-- <a href="href="javascript:void(0);" onclick="openPopup()""><img src="{%static 'images/Group_31.png'%}" alt="Twitter" /></a> -->
+          <a href="https://www.instagram.com/rite.surgery_1?igsh=YXFvcjBvM2tiNjNy"><img src="{%static 'images/Group_32.png' %}" alt="Instagram" /></a>
+        </div>
+        <form class="email-form">
+          <input type="email" placeholder="Your email address" />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+      <a href="https://wa.me/7624845408" target="_blank" class="whatsapp-link" aria-label="Chat on WhatsApp">
+        <div class="icon-label">
+          <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 258">
+            <path fill="#25D366" d="M5.46 127.46c-.01 21.68 5.66 42.84 16.43 61.5L4.43 252.7l65.23-17.1a123 123 0 0 0 58.8 14.97h.05c67.82 0 123.02-55.18 123.05-123.01c.01-32.87-12.78-63.77-36.01-87.03c-23.23-23.25-54.13-36.06-87.04-36.08c-67.82 0-123.02 55.18-123.05 123.01z"/>
+            <path fill="#FFF" d="M96.68 74.15c-2.39-5.3-4.9-5.41-7.17-5.5c-1.86-.08-3.98-.07-6.1-.07c-2.12 0-5.58.8-8.49 3.98c-2.92 3.19-11.15 10.89-11.15 26.56s11.41 30.81 13 32.94c1.6 2.12 22.03 35.31 54.41 48.07c26.9 10.61 32.38 8.5 38.22 7.97c5.84-.53 18.84-7.7 21.5-15.14c2.65-7.44 2.65-13.81 1.86-15.14c-.8-1.33-2.92-2.12-6.11-3.72c-3.19-1.6-18.84-9.3-21.76-10.36c-2.92-1.06-5.04-1.59-7.17 1.6c-2.12 3.18-8.22 10.36-10.08 12.48c-1.86 2.13-3.72 2.39-6.9.8c-3.19-1.6-13.44-4.96-25.61-15.81c-9.47-8.44-15.86-18.87-17.72-22.06c-1.86-3.18-.2-4.91 1.4-6.5c1.43-1.43 3.19-3.72 4.78-5.58c1.59-1.86 2.12-3.19 3.18-5.31c1.06-2.13.53-3.99-.27-5.58c-.79-1.6-6.98-17.34-9.82-23.64z"/>
+          </svg>
+          <span class="blinking-border">Chat with us</span>
+        </div>
+      </a>
+
+
+    </div>
+
+    <!-- Divider + Copyright -->
+    <hr />
+    <div class="footer-bottom">
+      <p>© 2025 Your Company. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
