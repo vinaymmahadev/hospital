@@ -27,9 +27,12 @@ function handleClick(event) {
     const bookingData = {
         name: document.getElementById('name').value.trim(),
         phone_number: document.getElementById('phone_number').value.trim(),
+        treatment :document.getElementById('treatment')?.value.trim(),
         location: document.getElementById('location').value.trim(),
-    
+        
     };
+    const treatment = document.getElementById('treatment')?.value.trim();
+console.log("Treatment value:", treatment);
 
         const missingFields = [];
 
@@ -42,7 +45,9 @@ function handleClick(event) {
     if (!bookingData.location) {
         missingFields.push('location');
     }
-   
+    if (!bookingData.treatment) {
+        missingFields.push('treatment');
+    }
 
     if (missingFields.length > 0) {
         alert('Please fill in the required field(s): ' + missingFields.join(', '));
