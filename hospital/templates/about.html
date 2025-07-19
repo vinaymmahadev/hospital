@@ -509,7 +509,7 @@ Under his leadership, RiteSurgery will continues to grow as a trusted platform f
 </div>
 
   <!-- Footer from piles.html -->
-<footer class="main-footer">
+  <footer class="main-footer">
     <div class="footer-content">
       <!-- Left: Logo & Description -->
       <div class="footer-left">
@@ -534,8 +534,8 @@ Under his leadership, RiteSurgery will continues to grow as a trusted platform f
       <div class="footer-links">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href={% url 'piles' %} >Surgery</a></li>
-          <li><a href={% url 'scan' %}>Scan</a></li>
+          <li><a href="{% url 'laboratory_Investigation' %}">laboratory Investigation</a></li>
+          <li><a href="{% url 'scan' %}>">Scan</a></li>
           <li> <a href="{% url 'about' %}">About us</a></li>
           <li> <a href = "{% url 'aushman' %}">Ayushman</a></li>
 
@@ -558,13 +558,10 @@ Under his leadership, RiteSurgery will continues to grow as a trusted platform f
           <a href="https://www.facebook.com/share/1LeXVmTe3B/"><img src="{%static 'images/Vector_1.png' %}" alt="Facebook" /></a>
           <!-- <a href="href="javascript:void(0);" onclick="openPopup()""><img src="{%static 'images/Group_31.png'%}" alt="Twitter" /></a> -->
           <a href="https://www.instagram.com/rite.surgery_1?igsh=YXFvcjBvM2tiNjNy"><img src="{%static 'images/Group_32.png' %}" alt="Instagram" /></a>
-        </div>
         <div class="email-form">
   <input type="email" id="userEmail" placeholder="Your email address" required />
   <button type="button" onclick="openMailClient()">Send</button>
 </div>
-
-      </div>
       <a href="https://wa.me/7624845408" target="_blank" class="whatsapp-link" aria-label="Chat on WhatsApp">
         <div class="icon-label">
           <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 258">

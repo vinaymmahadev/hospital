@@ -32,8 +32,8 @@ SECRET_KEY = 'django-insecure-n9k*#tc@-xi386x_fcj&3)0mu0x)q-3o&xat$@)$lhl!zw0*35
 ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://hospital-hospital-a400.up.railway.app',
-    'https://rite-hospital-production-d5.up.railway.app'
+    'https://ritesurgery.up.railway.app',
+    'https://www.ritesurgery.com'
 ]
 
 DEBUG = False

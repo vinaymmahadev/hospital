@@ -444,11 +444,11 @@
           <!-- <a href="href="javascript:void(0);" onclick="openPopup()""><img src="{%static 'images/Group_31.png'%}" alt="Twitter" /></a> -->
           <a href="https://www.instagram.com/rite.surgery_1?igsh=YXFvcjBvM2tiNjNy"><img src="{%static 'images/Group_32.png' %}" alt="Instagram" /></a>
         </div>
-        <form class="email-form">
-          <input type="email" placeholder="Your email address" />
-          <button type="submit">Send</button>
-        </form>
-      </div>
+       <div class="email-form">
+  <input type="email" id="userEmail" placeholder="Your email address" required />
+  <button type="button" onclick="openMailClient()">Send</button>
+</div>
+
       <a href="https://wa.me/7624845408" target="_blank" class="whatsapp-link" aria-label="Chat on WhatsApp">
         <div class="icon-label">
           <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 258">
@@ -468,6 +468,23 @@
       <p>© 2025 Your Company. All rights reserved.</p>
     </div>
   </footer>
+<script>
+  function openMailClient() {
+    const userEmail = document.getElementById("userEmail").value.trim();
+    
+    if (userEmail === "") {
+      alert("Please enter your email address.");
+      return;
+    }
+
+    // Compose mailto link
+    const subject = encodeURIComponent("Query from Rite Surgery Website");
+    const body = encodeURIComponent(`Hi Rite Surgery Team,\n\nI have a query regarding your services. Please get in touch with me at: ${userEmail}\n\nThank you!`);
+    
+    // Open user's email client
+    window.location.href = `mailto:ritesurgery@gmail.com?subject=${subject}&body=${body}`;
+  }
+</script>
 
 </body>
 </html>

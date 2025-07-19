@@ -90,17 +90,7 @@ header.topbar {
   align-items: center;
   gap: 20px;
 }
-.icon-label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 14px;
-  color: #333;
-  cursor: pointer;
-}
-.icon-label i {
-  color: #00d4a0;
-}
+
 .call-btn {
   background: #00d4a0;
   color: #fff;
@@ -994,7 +984,6 @@ hr {
 
 }
 
-
 .whatsapp-link {
   position: fixed;
   top: 86%;
@@ -1008,8 +997,8 @@ hr {
 }
 
 .whatsapp-icon {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   fill: #25D366;
 }
 
@@ -1029,6 +1018,47 @@ hr {
 .icon-label i {
   color: #00d4a0;
 }
+
+.fa-phone:before {
+    content: "\f095";
+}
+
+.blinking-border {
+    padding: 8px 16px;
+    border: 1px solid transparent; /* Needed for gradient border */
+    border-radius: 30px;
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(45deg, #00ff99, #0066ff) border-box;
+    box-shadow: 0 0 12px 2px rgba(0, 255, 153, 0.6);
+    animation: blink-border 3s ease-in-out infinite;
+    display: inline-block;
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Animation for glowing effect */
+@keyframes blinking-border {
+    0%, 100% {
+        box-shadow: 0 0 12px 2px rgba(0, 255, 153, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 18px 4px rgba(0, 102, 255, 0.7);
+    }
+}
+
+
+/* Animation keyframes */
+@keyframes blinking-border {
+    0%, 100% {
+        border-color: green;
+    }
+    50% {
+        border-color: transparent;
+    }
+}
+
 
 .fa-phone:before {
     content: "\f095";
@@ -1092,3 +1122,4 @@ hr {
     display: flex;
   }
 }
+

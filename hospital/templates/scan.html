@@ -246,65 +246,13 @@ I was very nervous about getting gynecomastia surgery, but Rite Surgery made the
     <details><summary>How fast do I get the reports?</summary><p>Most scan reports are delivered within 12–24 hours. Critical scans like CT/MRI can be expedited in emergencies. Reports are sent via WhatsApp/email and physical copies can be arranged. Our team follows up with you post scan to ensure you receive all documents. If you have any concerns, our helpline is always available to support you immediately.</p></details>
   </section>
 
-  <footer class="main-footer">
-    <div class="footer-content">
-      <!-- Left: Logo & Description -->
-      <div class="footer-left">
-        <img src="{%static 'images/logo.png' %}" alt="Logo" class="footer-logo" />
-        <p>Your trusted healthcare partner delivering top-quality services with compassion and care.</p>
-      </div>
+  
 
-       <div class="footer-links">
-        <h4>Popular Treatments</h4>
-        <ul>
-          <li><a href={% url 'lipoma' %}>Lipoma Removal</a></li>
-          <li><a href={% url 'varicose_vein' %}>Varicose Vein</a></li>
-          <li><a href={% url 'kidney_stone' %}>Kidney Stone</a></li>
-          <li> <a href={% url 'circumcision' %}>Circumcision</a></li>
-          <li> <a href={% url 'fissure_complete' %}>Fistula</a></li>
-           <li> <a href={% url 'gynecomastia' %}>Gynecomastia</a></li>
-
-        </ul>
-      </div>
-
-      <!-- Center: Links -->
-      <div class="footer-links">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href={% url 'piles' %} >Surgery</a></li>
-          <li><a href={% url 'scan' %}>Scan</a></li>
-          <li> <a href="{% url 'about' %}">About us</a></li>
-          <li> <a href = "{% url 'aushman' %}">Ayushman</a></li>
-
-        </ul>
-      </div>
-      <div class="footer-links">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="{% url 'privacyview' %}">Privacy Policy</a></li>
-          <li><a href="{% url 'Term_condition' %}">Terms and conditions</a></li>
-
-        </ul>
-      </div>
-
-      <!-- Right: Contact + Social + Email -->
-      <div class="footer-contact">
-        <h4>Contact Us</h4>
-        <p>1388,4th Cross Rd,Vijaynagar,Chandra Layout,Attigupee,Bangalore, Karnataka 560040</p>
-        <div class="social-icons">
-          <a href="https://www.facebook.com/share/1LeXVmTe3B/"><img src="{%static 'images/Vector_1.png' %}" alt="Facebook" /></a>
-          <!-- <a href="href="javascript:void(0);" onclick="openPopup()""><img src="{%static 'images/Group_31.png'%}" alt="Twitter" /></a> -->
-          <a href="https://www.instagram.com/rite.surgery_1?igsh=YXFvcjBvM2tiNjNy"><img src="{%static 'images/Group_31.png' %}" alt="Instagram" /></a>
-        </div>
-        <form class="email-form">
-          <input type="email" placeholder="Your email address" />
-          <button type="submit">Send</button>
-        </form>
-      </div>
+     
       <a href="https://wa.me/your-number" class="whatsapp-link"
         style="display: inline-flex; align-items: center; text-decoration: none; color: href="javascript:void(0);" onclick="openPopup()"25D366;">
         <!-- WhatsApp SVG Icon - Logo Only, No Background -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="50" viewBox="0 0 256 258">
+        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="50" viewBox="0 0 256 258">
           <defs>
             <linearGradient id="logosWhatsappIcon0" x1="50%" x2="50%" y1="100%" y2="0%">
               <stop offset="0%" stop-color="href="javascript:void(0);" onclick="openPopup()"1faf38" />
@@ -329,7 +277,7 @@ I was very nervous about getting gynecomastia surgery, but Rite Surgery made the
 
     <!-- Divider + Copyright -->
     <hr />
-    <footer class="main-footer">
+     <footer class="main-footer">
     <div class="footer-content">
       <!-- Left: Logo & Description -->
       <div class="footer-left">
@@ -354,8 +302,8 @@ I was very nervous about getting gynecomastia surgery, but Rite Surgery made the
       <div class="footer-links">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href={% url 'piles' %} >Surgery</a></li>
-          <li><a href={% url 'scan' %}>Scan</a></li>
+          <li><a href="{% url 'laboratory_Investigation' %}">laboratory Investigation</a></li>
+          <li><a href="{% url 'scan' %}>">Scan</a></li>
           <li> <a href="{% url 'about' %}">About us</a></li>
           <li> <a href = "{% url 'aushman' %}">Ayushman</a></li>
 
@@ -378,19 +326,17 @@ I was very nervous about getting gynecomastia surgery, but Rite Surgery made the
           <a href="https://www.facebook.com/share/1LeXVmTe3B/"><img src="{%static 'images/Vector_1.png' %}" alt="Facebook" /></a>
           <!-- <a href="href="javascript:void(0);" onclick="openPopup()""><img src="{%static 'images/Group_31.png'%}" alt="Twitter" /></a> -->
           <a href="https://www.instagram.com/rite.surgery_1?igsh=YXFvcjBvM2tiNjNy"><img src="{%static 'images/Group_32.png' %}" alt="Instagram" /></a>
-        </div>
-        <form class="email-form">
-          <input type="email" placeholder="Your email address" />
-          <button type="submit">Send</button>
-        </form>
-      </div>
+        <div class="email-form">
+  <input type="email" id="userEmail" placeholder="Your email address" required />
+  <button type="button" onclick="openMailClient()">Send</button>
+</div>
       <a href="https://wa.me/7624845408" target="_blank" class="whatsapp-link" aria-label="Chat on WhatsApp">
         <div class="icon-label">
           <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 258">
             <path fill="#25D366" d="M5.46 127.46c-.01 21.68 5.66 42.84 16.43 61.5L4.43 252.7l65.23-17.1a123 123 0 0 0 58.8 14.97h.05c67.82 0 123.02-55.18 123.05-123.01c.01-32.87-12.78-63.77-36.01-87.03c-23.23-23.25-54.13-36.06-87.04-36.08c-67.82 0-123.02 55.18-123.05 123.01z"/>
             <path fill="#FFF" d="M96.68 74.15c-2.39-5.3-4.9-5.41-7.17-5.5c-1.86-.08-3.98-.07-6.1-.07c-2.12 0-5.58.8-8.49 3.98c-2.92 3.19-11.15 10.89-11.15 26.56s11.41 30.81 13 32.94c1.6 2.12 22.03 35.31 54.41 48.07c26.9 10.61 32.38 8.5 38.22 7.97c5.84-.53 18.84-7.7 21.5-15.14c2.65-7.44 2.65-13.81 1.86-15.14c-.8-1.33-2.92-2.12-6.11-3.72c-3.19-1.6-18.84-9.3-21.76-10.36c-2.92-1.06-5.04-1.59-7.17 1.6c-2.12 3.18-8.22 10.36-10.08 12.48c-1.86 2.13-3.72 2.39-6.9.8c-3.19-1.6-13.44-4.96-25.61-15.81c-9.47-8.44-15.86-18.87-17.72-22.06c-1.86-3.18-.2-4.91 1.4-6.5c1.43-1.43 3.19-3.72 4.78-5.58c1.59-1.86 2.12-3.19 3.18-5.31c1.06-2.13.53-3.99-.27-5.58c-.79-1.6-6.98-17.34-9.82-23.64z"/>
           </svg>
-          <span class="blinking-border">Chat with us</span>
+          
         </div>
       </a>
 
@@ -406,15 +352,15 @@ I was very nervous about getting gynecomastia surgery, but Rite Surgery made the
 
   <div id="popupForm" class="modal">
   <div class="modal-content">
-    <span class="close-modal" onclick="document.getElementById('popupForm').style.display='none'">&times;</span>
-    <h3>Book Your Scan</h3>
-    <input type="text" id="popup-name" placeholder="Name*">
-    <div id="nameError" class="form-error">Please enter your name</div>
-    <input type="tel" id="popup-phone" placeholder="Phone Number*">
-    <div id="phoneError" class="form-error">Please enter your phone number</div>
-    <input type="email" id="popup-email" placeholder="Email ID*">
-    <div id="emailError" class="form-error">Please enter your email</div>
-    <button class="submit-btn" onclick="validatePopupForm()">Book Now</button>
+    <span class="close" onclick="document.getElementById('popupForm').style.display='none'">&times;</span>
+    <h2>Book Your Scan</h2>
+    <form onsubmit="return validateForm()" id="scanForm">
+      <input type="text" id="name" placeholder="Name*" required>
+      <input type="tel" id="phone" placeholder="Phone Number*" required>
+      <input type="email" id="email" placeholder="Email ID (Optional)">
+      <button type="submit" class="submit-btn">Book Now</button>
+    </form>
+    <p id="successMessage" style="display:none; color: green; font-weight: bold; margin-top: 10px;">Booked!</p>
   </div>
 </div>
 
@@ -546,8 +492,38 @@ function handleBooking() {
   }
 }
 
+  function openMailClient() {
+    const userEmail = document.getElementById("userEmail").value.trim();
+    
+    if (userEmail === "") {
+      alert("Please enter your email address.");
+      return;
+    }
 
+    // Compose mailto link
+    const subject = encodeURIComponent("Query from Rite Surgery Website");
+    const body = encodeURIComponent(`Hi Rite Surgery Team,\n\nI have a query regarding your services. Please get in touch with me at: ${userEmail}\n\nThank you!`);
+    
+    // Open user's email client
+    window.location.href = `mailto:ritesurgery@gmail.com?subject=${subject}&body=${body}`;
+  }
 
+  function validateForm() {
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+
+    if (!name || !phone) {
+      alert("Please fill out the required fields.");
+      return false;
+    }
+
+    // Hide form and show success message
+    document.getElementById('scanForm').style.display = 'none';
+    document.getElementById('successMessage').style.display = 'block';
+
+    return false; // prevent real form submission
+  }
+  
 </script>
 
 </body>
