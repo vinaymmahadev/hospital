@@ -95,7 +95,7 @@ class VaricoceleView(View):
         return render(request,"varicocele.html")
 class Varicose_veinView(View):
     def get(self,request):
-        return render(request,"Varicose_vein.html")
+        return render(request,"varicose_vein.html")
     
 class Laboratory_InvestigationView(View):
     def get(self,request):
