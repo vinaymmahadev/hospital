@@ -346,21 +346,21 @@ I was very nervous about getting gynecomastia surgery, but Rite Surgery made the
     <!-- Divider + Copyright -->
     <hr />
     <div class="footer-bottom">
-      <p>© 2025 Your Company. All rights reserved.</p>
+      <p>© 2025 ritesurgery. All rights reserved.</p>
     </div>
   </footer>
 
   <div id="popupForm" class="modal">
   <div class="modal-content">
     <span class="close" onclick="document.getElementById('popupForm').style.display='none'">&times;</span>
-    <h2>Book Your Scan</h2>
+    <h2>Confirm your Scanning</h2>
     <form onsubmit="return validateForm()" id="scanForm">
       <input type="text" id="name" placeholder="Name*" required>
       <input type="tel" id="phone" placeholder="Phone Number*" required>
       <input type="email" id="email" placeholder="Email ID (Optional)">
       <button type="submit" class="submit-btn">Book Now</button>
     </form>
-    <p id="successMessage" style="display:none; color: green; font-weight: bold; margin-top: 10px;">Booked!</p>
+    <p id="successMessage" style="display:none; color: green; font-weight: bold; margin-top: 10px;">Successfully Booked!</p>
   </div>
 </div>
 
@@ -380,46 +380,49 @@ function validatePopupForm() {
   const email = document.getElementById('popup-email').value.trim();
   const error = document.getElementById('popup-error');
 
-  if (!name || !phone || !email) {
+  // Proper validation
+  if (!name || !phone) {
+    error.innerText = "Please enter both name and phone number.";
     error.style.display = 'block';
-    return; // Stop if validation fails
-  } else {
-    error.style.display = 'none';
+    return false;
   }
+
+  error.style.display = 'none'; // Hide error if validation passes
 
   const appointmentData = {
     name: name,
-    phone: phone,
-    email: email,
-    location: "Popup Inquiry"  // optional — or change based on your form
+    phone_number: phone,
+    email_id: email,
+    location: "Popup Inquiry"
   };
 
   fetch('/appointment/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'X-CSRFToken': getCSRFToken()  // this function should be defined globally
+      'X-CSRFToken': getCSRFToken()
     },
     body: JSON.stringify(appointmentData)
   })
   .then(response => {
     if (response.ok) {
       alert("🎉 Booking submitted successfully!");
-
-      // Clear popup form fields
       document.getElementById('popup-name').value = '';
       document.getElementById('popup-phone').value = '';
       document.getElementById('popup-email').value = '';
-
       closePopup();
     } else {
-      alert(' Submission failed.');
+      response.json().then(data => {
+        alert("Submission failed: " + JSON.stringify(data));
+      });
     }
   })
   .catch(error => {
     console.error('Error:', error);
     alert('⚠️ Something went wrong.');
   });
+
+  return false; // prevent form from submitting traditionally
 }
 
 
@@ -456,7 +459,7 @@ function handleBooking() {
     // Prepare data object for sending
     const appointmentData = {
       name: name,
-      phone: phone,
+      phone_number: phone,
       email: email,
       location: location
     };

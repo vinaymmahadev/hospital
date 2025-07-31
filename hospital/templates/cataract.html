@@ -160,7 +160,7 @@
         <input type="text" placeholder="📞 Phone Number" />
         <input type="text" placeholder="Location" />
         <input type="text" placeholder="Treatments" />
-        <button class="primary-btn book-now-btn">Book Now</button>
+        <button class="primary-btn">Book Now</button>
       </div>
 
       <div class="treatment-content">
@@ -198,7 +198,7 @@
       <form id="popupForm">
         {% csrf_token %}
         <input type="text" id="name" placeholder="Name">
-        <input type="email" id="email" placeholder="Email ID">
+        <input type="text" id="email" placeholder="Email ID (type 'null' if not available) or N">
         <input type="tel" id="mobile" placeholder="Mobile No">
         <p class="error-message" id="formError"></p>
         <button type="submit">Book</button>
@@ -383,6 +383,18 @@
         <button class="call-btn_1" onclick="window.location.href='tel:+917624845408'">📞 Call Us</button>
       </div>
     </div>
+     <div class="specialist-card">
+          <img src="{% static 'images\Dr._Deevish_N.jpeg' %}" alt="Doctor 5" />
+          <h3>Dr. Deevish N</h3>
+          <p>MBBS MS</p>
+          <button class="call-btn_1" onclick="window.location.href='tel:+917204099115'">📞 Call Us</button>
+        </div>
+         <div class="specialist-card">
+          <img src="{% static 'images/dr_balakrishna.jpeg' %}" alt="Doctor 6" />
+          <h3>Dr Balakrishna Mallu Naik</h3>
+          <p>MBBS MS</p>
+          <button class="call-btn_1" onclick="window.location.href='tel:+917204099115'">📞 Call Us</button>
+        </div>
 
     {% comment %} <button class="arrow right">❯</button> {% endcomment %}
   </div>
@@ -465,7 +477,7 @@
     <!-- Divider + Copyright -->
     <hr />
     <div class="footer-bottom">
-      <p>© 2025 Your Company. All rights reserved.</p>
+      <p>© 2025 ritesurgery. All rights reserved.</p>
     </div>
   </footer>
 <script>
@@ -484,6 +496,99 @@
     // Open user's email client
     window.location.href = `mailto:ritesurgery@gmail.com?subject=${subject}&body=${body}`;
   }
+   function initBookingForm() {
+  const bookBtn = document.querySelector('.primary-btn');
+
+  if (!bookBtn) {
+    console.error('Book Now button not found');
+    return;
+  }
+
+  // Create confirmation message element dynamically
+  const messageBox = document.createElement('div');
+  messageBox.style.display = 'none';
+  messageBox.style.color = 'green';
+  messageBox.style.fontWeight = 'bold';
+  messageBox.style.marginTop = '10px';
+
+  // Insert it just after the button
+  bookBtn.parentNode.appendChild(messageBox);
+
+  bookBtn.addEventListener('click', async function (event) {
+    event.preventDefault();
+
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]')?.value;
+
+    const name = document.querySelector('input[placeholder="Enter your name"]').value.trim();
+    const phone_number = document.querySelector('input[placeholder="📞 Phone Number"]').value.trim();
+    const location = document.querySelector('input[placeholder="Location"]').value.trim();
+    const treatment = document.querySelector('input[placeholder="Treatments"]').value.trim();
+
+    const payload = { name, phone_number, location, treatment };
+
+    // Check for empty fields
+    const missingFields = [];
+    for (const [key, value] of Object.entries(payload)) {
+      if (!value) missingFields.push(key);
+    }
+
+    if (missingFields.length > 0) {
+      messageBox.textContent = 'Please fill in: ' + missingFields.join(', ');
+      messageBox.style.color = 'red';
+      messageBox.style.display = 'block';
+      setTimeout(() => {
+        messageBox.style.display = 'none';
+      }, 3000);
+      return;
+    }
+
+    try {
+      const response = await fetch('/submit-booking/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrfToken || ''
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        messageBox.style.color = 'green';
+        messageBox.textContent = result.message || '✅ Booking submitted successfully!';
+        messageBox.style.display = 'block';
+
+        // Clear form fields
+        document.querySelectorAll('.treatment-form input').forEach(input => input.value = '');
+
+        // Hide after 3s
+        setTimeout(() => {
+          messageBox.style.display = 'none';
+          messageBox.textContent = '';
+        }, 3000);
+      } else {
+        messageBox.style.color = 'red';
+        messageBox.textContent = result.error || '❌ Submission failed.';
+        messageBox.style.display = 'block';
+
+        setTimeout(() => {
+          messageBox.style.display = 'none';
+        }, 3000);
+      }
+    } catch (error) {
+      messageBox.style.color = 'red';
+      messageBox.textContent = '⚠️ Network error: ' + error.message;
+      messageBox.style.display = 'block';
+
+      setTimeout(() => {
+        messageBox.style.display = 'none';
+      }, 3000);
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initBookingForm);
 </script>
 
 </body>

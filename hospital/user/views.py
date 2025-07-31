@@ -135,7 +135,8 @@ class AppointmentView(View):
             data = json.loads(request.body)
             name = data.get('name')
             phone = data.get('phone_number')
-            email_id = data.get('email_id')
+            email_id = data.get('email_id') or data.get('email')
+
 
             Appointment.objects.create(
                 name=name,
