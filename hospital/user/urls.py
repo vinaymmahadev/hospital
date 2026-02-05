@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Home,Bookingpop,ScanView,FissureView,PilesView,BookingView,PrivacyView,Term_conditionView,AushmanView,AboutView,AppendicitisView,Fissure_completeView,GynecomastiaView,CataractView,CircumcisionView,Knee_replacementView,Kidney_stoneView,HerniaView,Hip_replacementView,LasikView,LipomaView,VaricoceleView,Varicose_veinView,AppointmentView,Laboratory_InvestigationView
+from .views import Home,Bookingpop,ScanView,FissureView,PilesView,BookingView,PrivacyView,Term_conditionView,AushmanView,AboutView,AppendicitisView,Fissure_completeView,GynecomastiaView,CataractView,CircumcisionView,Knee_replacementView,Kidney_stoneView,HerniaView,Hip_replacementView,LasikView,LipomaView,VaricoceleView,Varicose_veinView,AppointmentView,Laboratory_InvestigationView, MtpView
 
 urlpatterns = [
 
@@ -26,6 +26,7 @@ urlpatterns = [
     path('lipoma/',LipomaView.as_view(),name='lipoma'),
     path('varicocele/',VaricoceleView.as_view(),name='varicocele'),
     path('varicose_vein/',Varicose_veinView.as_view(),name='varicose_vein'),
+    path('mtp/', MtpView.as_view(), name='mtp'),
     path('laboratory_investigation/',Laboratory_InvestigationView.as_view(),name='laboratory_Investigation'),
 
 

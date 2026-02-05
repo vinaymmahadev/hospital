@@ -1,0 +1,1018 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- SEO Title (MOST IMPORTANT) -->
+  <title>
+    Medical Termination of Pregnancy (MTP) in Bangalore | Safe & Legal Abortion Care
+  </title>
+
+  <!-- SEO Meta Description -->
+  <meta name="description" content="
+  Get safe, legal, and confidential Medical Termination of Pregnancy (MTP) in Bangalore.
+  Consult experienced gynecologists at licensed clinics as per the MTP Act.
+  Affordable, private, and ethical abortion care.
+  ">
+
+  <!-- SEO Keywords (still useful in India SEO) -->
+  <meta name="keywords" content="
+  Medical Termination of Pregnancy,
+  MTP in Bangalore,
+  Medical abortion in India,
+  Safe abortion clinic,
+  Legal abortion India,
+  Gynecologist for MTP,
+  Abortion with medicines
+  ">
+
+  <!-- Author & Trust -->
+  <meta name="author" content="Rite Surgery">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph (for WhatsApp, Facebook, LinkedIn) -->
+  <meta property="og:title" content="Medical Termination of Pregnancy (MTP) | Rite Surgery">
+  <meta property="og:description" content="Safe, legal and confidential medical abortion services by certified gynecologists at licensed clinics.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.ritesurgery.com/mtp">
+  <meta property="og:image" content="{% static 'images/mtp-banner.jpg' %}">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Medical Termination of Pregnancy (MTP)">
+  <meta name="twitter:description" content="Trusted and legal medical abortion services with privacy and care.">
+  <meta name="twitter:image" content="{% static 'images/mtp-banner.jpg' %}">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/all_subdropdowns.css' %}" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <!-- JS -->
+  <script src="{% static 'js/option.js' %}"></script>
+  <script src="{% static 'js/popup.js' %}"></script>
+
+</head>
+
+  <style>
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .popup-box {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      position: relative;
+      text-align: center;
+    }
+    .popup-box input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .popup-box button {
+      background: #3b0a77;
+      color: white;
+      padding: 10px;
+      border: none;
+      width: 100%;
+      border-radius: 6px;
+    }
+    .popup-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .error-message {
+      color: red;
+      font-size: 14px;
+    }
+    .faq-section details {
+      margin-bottom: 10px;
+    }
+    .faq-section summary {
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .faq-section p {
+      margin: 5px 0 15px;
+    }
+  </style>
+</head>
+<body>
+  <section class="treatment-section">
+    <nav class="navbar">
+      <div class="left">
+        <img src="{% static 'images/logo.png' %}" alt="Logo" />
+      </div>
+
+      <div class="center-wrapper">
+       
+          <div class="center">
+            <a href="{% url 'home' %}">Home</a>
+            
+            <div class="dropdown">
+              <a  class="toggle-dropdown">surgery</a>
+
+              <div class="dropdown-content">
+                
+                <div class="sub-dropdown">
+                  <a class="toggle-dropdown sub-dropdown-toggle">Proctology</a>
+                  <div class="sub-dropdown-content">
+                    <a href="{% url 'piles' %}">Piles</a>
+                    <a href="{% url 'fissure' %}">Fissure</a>
+                    <a href="javascript:void(0);" onclick="openPopup()">Fistula</a>
+                  </div>
+                  <a  class="toggle-dropdown sub-dropdown-toggle">Laparoscopy</a>
+                  <div class="sub-dropdown-content">
+                    <a href="{% url 'hernia' %}">Hernia</a>
+                    <a href="{% url 'appendic' %}">Appendicitis</a>
+                    <a href="javascript:void(0);" onclick="openPopup()">Gallbladder Stone</a>
+                  </div>
+                  <a class="toggle-dropdown sub-dropdown-toggle">Urology</a>
+                  <div class="sub-dropdown-content">
+                    <a href="{% url 'circumcision' %}">Circumcision</a>
+                    <a href="{% url 'kidney_stone' %}">Kidney Stone</a>
+                   <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Stapler Circumcision</a>
+                  <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Hydrocele</a>
+                  <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Frenuloplasty</a>
+                  <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Genitourinary fistula</a>
+                  <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Kidney transplant</a>
+                  <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Prostate enlargement</a>
+                  </div>
+                  <a class="toggle-dropdown sub-dropdown-toggle">Cosmetic</a>
+                    <div class="sub-dropdown-content">
+                    <a href="{% url 'gynecomastia' %}">Gynecomastia</a>
+                    <a href="{% url 'lipoma' %}">Lipoma</a>
+                    <a href="javascript:void(0);" onclick="openPopup()">Mole Removal</a>
+                  </div>
+                  <a class="toggle-dropdown sub-dropdown-toggle">Orthopedics</a>
+                    <div class="sub-dropdown-content">
+                      <a href="{% url 'knee_replacement' %}">Knee replacement</a>
+                      <a href="{% url 'hip_replacement' %}">Hip replacement</a> 
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">ACL tear</a>
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Disc injury</a>
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Joint replacement</a>
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Knee Arthroscopy</a>
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Rotator cuff repair</a>
+                    </div>
+                  <a class="toggle-dropdown sub-dropdown-toggle">Ophthalmology</a>
+                    <div class="sub-dropdown-content">
+                      <a href="{% url 'cataract' %}">Cataract</a>
+                      <a href="{% url 'lasik' %}">Lasik Surgery</a> 
+                    </div>
+
+                  <a class="toggle-dropdown sub-dropdown-toggle">vascular</a>
+                   <div class="sub-dropdown-content">
+                      <a href="{% url 'varicocele' %}">Varicocele</a>
+                      <a href="{% url 'varicose_vein' %}">Varicose vein</a>
+                      <a href="javascript:void(0);" onclick="openPopup()" class="popup-link">Deep vein thrombosis (DVT)</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <a href="{% url 'laboratory_Investigation' %}">Laboratory Investigation</a>
+            <a href="{% url 'scan' %}">Scan</a>
+            <a href="{% url 'about' %}">About us</a>
+            <a href="{% url 'aushman' %}">Ayushman</a>
+          </div>
+        </div>
+
+      <div class="right">
+        <button onclick="openPopup()" class="book-now-btn">Book Now</button>
+      </div>
+    </nav>
+
+        <div class="treatment-container">
+        <div class="treatment-form">
+            <h3>Book Your Consultant</h3>
+            <input type="text" placeholder="Enter your name" />
+            <input type="text" placeholder="📞 Phone Number" />
+            <input type="text" placeholder="Location" />
+            <input type="text" value="MTP (Medical Termination of Pregnancy)" readonly />
+            <button class="primary-btn">Book Now</button>
+        </div>
+
+        <div class="treatment-content">
+            <h2>Get Best MTP Treatment in Bangalore:<br>Find Top Doctors at Affordable Costs</h2>
+                <div style="
+                        display:inline-flex;
+                        align-items:center;
+                        gap:8px;
+                        margin:12px 0 18px 0;
+                        padding:8px 16px;
+                        font-size:15px;
+                        font-weight:700;
+                        color:#0a4f46;
+                        background:linear-gradient(90deg,#e8faf6,#dff5f0);
+                        border:1.5px solid #2fa89a;
+                        border-radius:999px;
+                        box-shadow:0 4px 12px rgba(47,168,154,0.25);
+                        line-height:1.4;
+                        max-width:100%;
+                        ">
+                        <span style="font-size:16px;">🛡️</span>
+                        <span>
+                            <strong style="color:#065e52;">NABH Accredited</strong>
+                            <span style="margin:0 6px;color:#2fa89a;">|</span>
+                            Govt. Approved Hospital
+                        </span>
+                </div>
+
+            <p>
+            Experiencing an unplanned pregnancy, delayed periods, or personal health concerns? It could be Medical Termination of Pregnancy — a medically approved procedure used to end early pregnancy safely and confidentially. At Rite Surgery, we specialize in safe medical abortion care that ensures comfort, privacy, and emotional well-being.
+            </p>
+
+            <p>
+            Our experienced gynecologists use approved medical abortion protocols and certified medicines that are highly safe, non-surgical, and involve very short recovery periods. From consultation to completion, our team ensures full support — including privacy assurance and post-procedure guidance.
+            <br>&nbsp;<br>&nbsp; <!-- 🔒 HEIGHT LOCK (DO NOT REMOVE) -->
+            </p>
+
+            <ul style="list-style: none; padding: 0; margin-top: 25px; color: #333; font-size: 16px;">
+            <li style="margin-bottom: 10px;">✔️ Medically Approved, Safe Procedures</li>
+            <li style="margin-bottom: 10px;">✔️ No Surgery, Minimal Discomfort</li>
+            <li style="margin-bottom: 10px;">✔️ Certified & Experienced Gynecologists</li>
+            <li style="margin-bottom: 10px;">✔️ Complete Privacy & Confidential Care</li>
+            <li style="margin-bottom: 10px;">✔️ Supportive Pre & Post Care Services</li>
+            </ul>
+
+            <div class="cta-buttons">
+            <button class="book-btn book-now-btn">Book Now</button>
+            <a href="tel:+919709706555"><button class="secondary-btn">Call Us</button></a>
+            </div>
+        </div>
+
+        <div class="treatment-image">
+            <img src="{% static 'images/mtp_treatment.png' %}" alt="MTP Treatment" />
+
+        </div>
+        </div>
+
+  </section>
+
+  <!-- Modern Popup Modal -->
+  <div class="popup-overlay" id="popup">
+    <div class="popup-box">
+      <span class="popup-close" id="popupClose">&times;</span>
+      <h2>Book Your Consultation</h2>
+      <form id="popupForm">
+        {% csrf_token %}
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="email" placeholder="Email ID (type 'null' if not available) or N">
+        <input type="tel" id="mobile" placeholder="Mobile No">
+        <p class="error-message" id="formError"></p>
+        <button type="submit">Book</button>
+      </form>
+    </div>
+  </div>
+  
+  
+  <style>
+  @media (max-width: 600px) {
+    .doctor-wrapper {
+      padding: 20px 10px !important;
+    }
+    .doctor-card {
+      width: 100% !important;
+      padding: 20px !important;
+    }
+    .doctor-header {
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+    }
+    .doctor-header img {
+      margin-bottom: 12px;
+    }
+    .doctor-stats {
+      flex-direction: column !important;
+      gap: 8px !important;
+      text-align: center !important;
+    }
+  }
+</style>
+
+<div class="doctor-wrapper" style="
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background: #f5f9fc;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+">
+
+  <div class="doctor-card" style="
+    width: 420px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    padding: 24px;
+  ">
+
+    <!-- Doctor Header -->
+    <div class="doctor-header" style="display: flex; gap: 18px; align-items: center;">
+      <img src="{% static 'images/doctor-gync.jpeg' %}" alt="Doctor Image"
+        style="
+          width: 90px;
+          height: 90px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 3px solid #0d6efd;
+        ">
+
+      <div>
+        <h3 style="margin: 0; font-size: 20px; color: #0b5ed7;">
+          Dr. Nayana M S
+        </h3>
+        <p style="margin: 4px 0 0; font-size: 14px; color: #555;">
+          MBBS, MS – Obstetrics & Gynaecology
+        </p>
+      </div>
+    </div>
+
+    <!-- Rating & Experience -->
+    <div class="doctor-stats" style="
+      display: flex;
+      justify-content: space-between;
+      margin-top: 18px;
+      font-size: 14px;
+      color: #444;
+    ">
+      <div>⭐ <strong>4.5 / 5</strong></div>
+      <div>🩺 <strong>8+ Years Experience</strong></div>
+    </div>
+
+    <!-- About Doctor -->
+    <p style="
+      margin-top: 16px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #333;
+    ">
+      Dr. Nayana M S is an experienced gynecologist specializing in women’s
+      reproductive health and safe medical termination of pregnancy. She is
+      known for her compassionate care, ethical medical practices, and
+      commitment to complete privacy, comfort, and patient safety.
+    </p>
+
+    <!-- Location -->
+    <p style="
+      font-size: 14px;
+      color: #666;
+      margin-top: 12px;
+    ">
+      📍 Chandra Layout, Bangalore
+    </p>
+
+    <!-- Call Button -->
+    <a href="tel:+917624845408" style="text-decoration: none;">
+      <div style="
+        margin-top: 20px;
+        background: #0d6efd;
+        color: #fff;
+        text-align: center;
+        padding: 14px;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: bold;
+      ">
+        📞 Call Now
+      </div>
+    </a>
+
+  </div>
+</div>
+
+
+<style>
+  @media (max-width: 600px) {
+    .about-varicocele {
+      padding: 25px 15px !important;
+    }
+    .about-varicocele h2 {
+      font-size: 22px !important;
+    }
+    .about-varicocele p {
+      font-size: 15px !important;
+      line-height: 1.6 !important;
+    }
+  }
+</style>
+
+<!-- What is Medical Termination of Pregnancy continues... -->
+<section class="about-varicocele" style="padding: 40px;">
+  <h2 style="text-align: center; font-size: 28px;">
+    What is Medical Termination of Pregnancy?
+  </h2>
+
+  <p style="max-width: 900px; margin: auto; font-size: 17px;">
+    Medical Termination of Pregnancy (MTP), also known as medical abortion, is a safe and non-surgical method used to end an early pregnancy with the help of prescribed medicines. Instead of a surgical procedure, this method uses two approved medications that work together to stop the pregnancy from continuing.
+  </p>
+
+  <p style="max-width: 900px; margin: auto; font-size: 17px; margin-top: 15px;">
+    Pregnancy depends on the hormone progesterone to grow and develop. The medicines used in medical abortion block the action of this hormone, preventing further development of the pregnancy. Medical abortion can be done soon after pregnancy is confirmed and is usually recommended up to the 8th or 9th week.
+  </p>
+
+  <p style="max-width: 900px; margin: auto; font-size: 17px; margin-top: 15px;">
+    MTP is considered a low-risk and minimally invasive option with a success rate of nearly 99% in early pregnancies. According to data reported by ScienceDirect, over 3.9 lakh medical terminations were recorded in India between April 2018 and March 2019, highlighting its widespread and safe usage among women of reproductive age.
+  </p>
+</section>
+
+
+
+<style>
+  @media (max-width: 768px) {
+    .mtp-info-bar {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      padding: 20px !important;
+      gap: 18px;
+    }
+    .mtp-divider {
+      display: none !important;
+    }
+    .mtp-item {
+      padding: 0 !important;
+    }
+  }
+</style>
+
+<div class="mtp-info-bar" style="
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fbff;
+  border: 1px solid #e3eefc;
+  border-radius: 14px;
+  padding: 22px 30px;
+  font-family: Arial, sans-serif;
+  max-width: 1100px;
+  margin: 30px auto;
+">
+
+  <div class="mtp-item" style="flex: 1; padding-right: 20px;">
+    <div style="font-size: 14px; color: #6b7280;">• Disease name</div>
+    <div style="font-size: 16px; font-weight: 600; color: #0b5ed7; margin-top: 6px;">
+      Medical Termination of Pregnancy (MTP)
+    </div>
+  </div>
+
+  <div class="mtp-divider" style="width: 1px; height: 45px; background: #e5e7eb;"></div>
+
+  <div class="mtp-item" style="flex: 1; padding: 0 20px;">
+    <div style="font-size: 14px; color: #6b7280;">• Surgery name</div>
+    <div style="font-size: 16px; font-weight: 600; color: #0b5ed7; margin-top: 6px;">
+      Abortion Through Medicine
+    </div>
+  </div>
+
+  <div class="mtp-divider" style="width: 1px; height: 45px; background: #e5e7eb;"></div>
+
+  <div class="mtp-item" style="flex: 1; padding: 0 20px;">
+    <div style="font-size: 14px; color: #6b7280;">• Duration</div>
+    <div style="font-size: 16px; font-weight: 600; color: #0b5ed7; margin-top: 6px;">
+      20–30 Minutes
+    </div>
+  </div>
+
+  <div class="mtp-divider" style="width: 1px; height: 45px; background: #e5e7eb;"></div>
+
+  <div class="mtp-item" style="flex: 1; padding-left: 20px;">
+    <div style="font-size: 14px; color: #6b7280;">• Treated by</div>
+    <div style="font-size: 16px; font-weight: 600; color: #0b5ed7; margin-top: 6px;">
+      Gynecologist
+    </div>
+  </div>
+
+</div>
+
+
+
+<style>
+  @media (max-width: 600px) {
+    .mtp-trust-box {
+      padding: 22px !important;
+      margin: 20px 12px !important;
+    }
+    .mtp-trust-box h2 {
+      font-size: 22px !important;
+      line-height: 1.3 !important;
+    }
+    .mtp-trust-box h3 {
+      font-size: 18px !important;
+    }
+    .mtp-trust-box p,
+    .mtp-trust-box li {
+      font-size: 15px !important;
+      line-height: 1.6 !important;
+    }
+  }
+</style>
+
+<div class="mtp-trust-box" style="
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 35px;
+  background: #f9fcff;
+  border: 1px solid #e2eefc;
+  border-radius: 16px;
+  font-family: Arial, sans-serif;
+  color: #333;
+">
+
+  <h2 style="font-size: 26px; color: #0b5ed7; margin-bottom: 15px;">
+    Rite Surgery – Trusted Healthcare Center for Safe Medical Termination of Pregnancy
+  </h2>
+
+  <p style="font-size: 16px; line-height: 1.7; margin-bottom: 15px;">
+    Medical termination of pregnancy is a sensitive and regulated medical procedure that requires expert care, safety, and strict adherence to legal guidelines. At Rite Surgery, we are committed to providing ethical, lawful, and patient-centric abortion care with the highest medical standards.
+  </p>
+
+  <p style="font-size: 16px; line-height: 1.7; margin-bottom: 15px;">
+    Rite Surgery works with licensed medical facilities and qualified gynecologists authorized to provide medical termination of pregnancy as per the provisions of the MTP Act and its latest amendments. Our focus is on delivering safe, affordable, and legally compliant abortion care while ensuring complete privacy and emotional support for every patient.
+  </p>
+
+  <p style="font-size: 16px; line-height: 1.7; margin-bottom: 25px;">
+    With experienced doctors, ethical medical practices, and patient-first care, Rite Surgery has become a trusted choice for women seeking confidential and responsible medical abortion services in India.
+  </p>
+
+  <h3 style="font-size: 20px; color: #0b5ed7; margin-bottom: 15px;">
+    Why choose Rite Surgery for Medical Termination of Pregnancy?
+  </h3>
+
+  <ul style="list-style: none; padding: 0; margin: 0; font-size: 16px;">
+    <li style="margin-bottom: 10px;">✔️ Safe, legal, and guideline-based abortion care</li>
+    <li style="margin-bottom: 10px;">✔️ Quick procedure with same-day discharge in most cases</li>
+    <li style="margin-bottom: 10px;">✔️ Experienced and compassionate gynecologists</li>
+    <li style="margin-bottom: 10px;">✔️ Modern clinics with approved medical protocols</li>
+    <li style="margin-bottom: 10px;">✔️ Complete confidentiality and privacy assured</li>
+  </ul>
+
+</div>
+
+<style>
+  @media (max-width: 600px) {
+    .mtp-process {
+      padding: 22px !important;
+      margin: 25px 12px !important;
+    }
+    .mtp-process h2 {
+      font-size: 22px !important;
+      line-height: 1.3 !important;
+    }
+    .mtp-process p,
+    .mtp-process li {
+      font-size: 15px !important;
+      line-height: 1.6 !important;
+    }
+  }
+</style>
+
+<section class="mtp-process" style="
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 40px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background: #ffffff;
+">
+
+  <h2 style="text-align:center; font-size:28px; color:#0b5ed7; margin-bottom:25px;">
+    What Happens During Medical Termination of Pregnancy (MTP)?
+  </h2>
+
+  <p style="font-size:16px; line-height:1.8; margin-bottom:18px;">
+    Medical termination of pregnancy is a step-by-step, medically supervised process carried out under the guidance of a qualified gynecologist. The procedure begins with a detailed consultation, during which the doctor evaluates your overall health and confirms the stage of pregnancy.
+  </p>
+
+  <p style="font-size:16px; line-height:1.8; margin-bottom:18px;">
+    As part of the assessment, blood tests and ultrasound scans may be advised to ensure that medical abortion is a safe and suitable option for you. Since abortion is a deeply personal decision, the gynecologist explains the procedure in detail, including possible physical and emotional changes, so you can make an informed choice.
+  </p>
+
+  <p style="font-size:16px; line-height:1.8; margin-bottom:18px;">
+    Before proceeding, your doctor will discuss pain expectations, aftercare, and recovery. You will then be asked to sign a consent form that clearly outlines the process and post-abortion guidelines.
+  </p>
+
+  <p style="font-size:16px; line-height:1.8; margin-bottom:18px;">
+    The medical abortion involves two approved medicines. The first tablet, Mifepristone, works by blocking the hormone progesterone, which is necessary for pregnancy to continue.
+  </p>
+
+  <p style="font-size:16px; line-height:1.8; margin-bottom:18px;">
+    After 24 to 48 hours, the second medicine, Misoprostol, is taken. This medicine helps soften the cervix and allows the uterus to expel the pregnancy tissue.
+  </p>
+
+  <p style="font-size:16px; line-height:1.8; margin-bottom:30px;">
+    Bleeding and cramping are common and may feel similar to a heavy menstrual period. If there is no bleeding within 24 hours after taking Misoprostol, contact your doctor immediately.
+  </p>
+
+  <h2 style="text-align:center; font-size:26px; color:#0b5ed7; margin-bottom:25px;">
+    How to Prepare for Medical Termination of Pregnancy
+  </h2>
+
+  <p style="font-size:16px; line-height:1.8; margin-bottom:18px;">
+    Preparing yourself both physically and emotionally can help make the process smoother and less stressful.
+  </p>
+
+  <ul style="font-size:16px; line-height:1.8; padding-left:20px;">
+    <li style="margin-bottom:12px;"><strong>Learn about the procedure:</strong> Speak openly with your doctor and understand what to expect.</li>
+    <li style="margin-bottom:12px;"><strong>Choose a qualified doctor:</strong> Always visit licensed clinics and certified gynecologists.</li>
+    <li style="margin-bottom:12px;"><strong>Allow yourself to feel:</strong> Every emotional response is valid.</li>
+    <li style="margin-bottom:12px;"><strong>Share only if you want to:</strong> Privacy is your right.</li>
+  </ul>
+
+</section>
+
+
+</section>
+<!-- FAQ Section -->
+<section class="faq-section-modern" style="padding: 60px 20px; background: #f9fbfc;">
+  <h2 style="text-align: center; font-size: 28px; font-weight: bold; color: #00384e; margin-bottom: 40px;">
+    Frequently Asked Questions
+  </h2>
+
+  <div class="faq-container" style="max-width: 900px; margin: auto;">
+    <details class="faq-item">
+      <summary>What is Medical Termination of Pregnancy (MTP)?</summary>
+      <p>
+        Medical Termination of Pregnancy (MTP) is a medically approved procedure to end an early pregnancy using prescribed medicines.  
+        It is a non-surgical method performed under the supervision of a certified gynecologist.  
+        The procedure works by blocking pregnancy-supporting hormones and inducing uterine contractions.  
+        MTP is commonly chosen for its safety, privacy, and effectiveness.  
+        At Rite Surgery, MTP is provided following all legal and medical guidelines.
+      </p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Is MTP safe?</summary>
+      <p>
+        Yes, MTP is a safe and low-risk procedure when done under medical supervision.  
+        It has a very high success rate when performed within the recommended gestational period.  
+        Complications are rare if guidelines are followed correctly.  
+        Proper consultation and follow-up ensure patient safety.  
+        Our gynecologists prioritize comfort, confidentiality, and well-being.
+      </p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Up to how many weeks can MTP be done?</summary>
+      <p>
+        Medical abortion is generally recommended up to 8–9 weeks of pregnancy.  
+        The exact eligibility depends on medical evaluation and ultrasound findings.  
+        Early consultation helps ensure safer outcomes.  
+        Beyond this period, alternative methods may be advised.  
+        Our doctors guide you with the safest available options.
+      </p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Does MTP require surgery?</summary>
+      <p>
+        No, medical termination of pregnancy does not involve surgery.  
+        It is done using approved abortion medicines as prescribed by a gynecologist.  
+        The process mimics a natural miscarriage.  
+        Hospital admission is usually not required.  
+        This makes MTP a preferred choice for early pregnancy termination.
+      </p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Will there be pain or bleeding?</summary>
+      <p>
+        Mild to moderate cramping and bleeding are normal during MTP.  
+        The experience is similar to heavy menstrual bleeding.  
+        Pain varies from person to person and can be managed with medication.  
+        Bleeding may last a few days to one or two weeks.  
+        Doctors provide guidance on what is normal and when to seek help.
+      </p>
+    </details>
+
+    <details class="faq-item">
+      <summary>How long does the MTP process take?</summary>
+      <p>
+        The consultation and medicine intake usually take about 20–30 minutes.  
+        The abortion process completes within a few hours to a couple of days after medication.  
+        Recovery is gradual and differs for each individual.  
+        Most women can resume normal activities within a day or two.  
+        Follow-up is advised to confirm completion.
+      </p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Is privacy maintained?</summary>
+      <p>
+        Yes, complete privacy and confidentiality are strictly maintained at Rite Surgery.  
+        Patient information is protected at every step of the process.  
+        Consultations and treatments are handled discreetly.  
+        Only authorized medical professionals are involved.  
+        Respect for patient dignity is our top priority.
+      </p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Is MTP legal in India?</summary>
+      <p>
+        Yes, MTP is legal in India under the Medical Termination of Pregnancy Act.  
+        It must be performed by a registered medical practitioner at a licensed facility.  
+        Legal limits depend on gestational age and medical conditions.  
+        All procedures at Rite Surgery comply with current legal amendments.  
+        Proper documentation and consent are followed.
+      </p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Is MTP covered by insurance?</summary>
+      <p>
+        Coverage for MTP may vary depending on the insurance provider and policy terms.  
+        Some plans cover abortion when medically indicated.  
+        Our support team can help clarify insurance eligibility.  
+        Transparent cost details are shared upfront.  
+        Affordable care options are also available.
+      </p>
+    </details>
+
+    <details class="faq-item">
+      <summary>What care is needed after MTP?</summary>
+      <p>
+        Rest and proper hydration are recommended after the procedure.  
+        Avoid heavy physical activity for a few days.  
+        Follow prescribed medications and hygiene instructions carefully.  
+        A follow-up visit helps confirm complete recovery.  
+        Emotional support is equally important and available if needed.
+      </p>
+    </details>
+
+  </div>
+</section>
+
+
+<h2 style="text-align: center;">MEET OUR RENOWNED SPECIALISTS</h2>
+<p style="text-align: center;">Consult With The Finest Doctors In Your City</p>
+ 
+
+  <div class="specialist-carousel">
+    {% comment %} <button class="arrow left">❮</button> {% endcomment %}
+
+   <div class="specialist-cards">
+      <div class="specialist-card">
+        <img src="{% static 'images/Dr_Giridhar_MBBS_MD.jpeg' %}" alt="Doctor 1" />
+        <h3>Dr GIRIGHAR</h3>
+        <p> MBBS MD</p>
+        <button class="call-btn_1" onclick="window.location.href='tel:+917624845408'">📞 Call Us</button>
+      </div>
+
+      <div class="specialist-card">
+        <img src="{% static 'images/Dr_Venkatesh_MBBS_MD.jpeg' %}" alt="Doctor 2" />
+        <h3>Dr VENKATESH </h3>
+        <p>MBBS MD</p>
+        <button class="call-btn_1" onclick="window.location.href='tel:+917624845408'">📞 Call Us</button>
+      </div>
+
+      <div class="specialist-card">
+        <img src="{% static 'images/DR_KEERTHI_RAJ_MBBS_MS.jpeg' %}" alt="Doctor 3" />
+        <h3>DR KEERTHI RAJ </h3>
+        <p>MBBS MS</p>
+        <button class="call-btn_1" onclick="window.location.href='tel:+917624845408'">📞 Call Us</button>
+      </div>
+
+      <div class="specialist-card">
+        <img src="{% static 'images/founder.jpeg' %}" alt="Doctor 4" />
+        <h3>Dr. Javaji Ravi Prasad</h3>
+          <p>MBBS, MD</p>
+        <button class="call-btn_1" onclick="window.location.href='tel:+917624845408'">📞 Call Us</button>
+      </div>
+    </div>
+     <div class="specialist-card">
+          <img src="{% static 'images\Dr._Deevish_N.jpeg' %}" alt="Doctor 5" />
+          <h3>Dr. Deevish N</h3>
+          <p>MBBS MS</p>
+          <button class="call-btn_1" onclick="window.location.href='tel:+917204099115'">📞 Call Us</button>
+        </div>
+         <div class="specialist-card">
+          <img src="{% static 'images/dr_balakrishna.jpeg' %}" alt="Doctor 6" />
+          <h3>Dr Balakrishna Mallu Naik</h3>
+          <p>MBBS MS</p>
+          <button class="call-btn_1" onclick="window.location.href='tel:+917204099115'">📞 Call Us</button>
+        </div>
+
+    {% comment %} <button class="arrow right">❯</button> {% endcomment %}
+  </div>
+</section>
+
+<section class="roadmap-image-section">
+  <picture>
+    <source media="(max-width: 768px)" srcset="{% static 'images/roadmap_vertical.png' %}" />
+    <img src="{% static 'images/roadmap2.png' %}" alt="Roadmap" class="roadmap-image" />
+  </picture>
+</section>
+
+<footer class="main-footer">
+    <div class="footer-content">
+      <!-- Left: Logo & Description -->
+      <div class="footer-left">
+        <img src="{%static 'images/logo.png' %}" alt="Logo" class="footer-logo" />
+        <p>Your trusted healthcare partner delivering top-quality services with compassion and care.</p>
+      </div>
+
+       <div class="footer-links">
+        <h4>Popular Treatments</h4>
+        <ul>
+          <li><a href={% url 'lipoma' %}>Lipoma Removal</a></li>
+          <li><a href={% url 'varicose_vein' %}>Varicose Vein</a></li>
+          <li><a href={% url 'kidney_stone' %}>Kidney Stone</a></li>
+          <li> <a href={% url 'circumcision' %}>Circumcision</a></li>
+          <li> <a href={% url 'fissure_complete' %}>Fistula</a></li>
+           <li> <a href={% url 'gynecomastia' %}>Gynecomastia</a></li>
+
+        </ul>
+      </div>
+
+      <!-- Center: Links -->
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href={% url 'piles' %} >Surgery</a></li>
+          <li><a href={% url 'scan' %}>Scan</a></li>
+          <li> <a href="{% url 'about' %}">About us</a></li>
+          <li> <a href = "{% url 'aushman' %}">Ayushman</a></li>
+
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="{% url 'privacyview' %}">Privacy Policy</a></li>
+          <li><a href="{% url 'Term_condition' %}">Terms and conditions</a></li>
+
+        </ul>
+      </div>
+
+      <!-- Right: Contact + Social + Email -->
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>1388,4th Cross Rd,Vijaynagar,Chandra Layout,Attigupee,Bangalore, Karnataka 560040</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/share/1LeXVmTe3B/"><img src="{%static 'images/Vector_1.png' %}" alt="Facebook" /></a>
+          <!-- <a href="href="javascript:void(0);" onclick="openPopup()""><img src="{%static 'images/Group_31.png'%}" alt="Twitter" /></a> -->
+          <a href="https://www.instagram.com/rite.surgery_1?igsh=YXFvcjBvM2tiNjNy"><img src="{%static 'images/Group_32.png' %}" alt="Instagram" /></a>
+        </div>
+    
+<div class="email-form">
+  <input type="email" id="userEmail" placeholder="Your email address" required />
+  <button type="button" onclick="openMailClient()">Send</button>
+</div>
+      <a href="https://wa.me/7624845408" target="_blank" class="whatsapp-link" aria-label="Chat on WhatsApp">
+        <div class="icon-label">
+          <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 258">
+            <path fill="#25D366" d="M5.46 127.46c-.01 21.68 5.66 42.84 16.43 61.5L4.43 252.7l65.23-17.1a123 123 0 0 0 58.8 14.97h.05c67.82 0 123.02-55.18 123.05-123.01c.01-32.87-12.78-63.77-36.01-87.03c-23.23-23.25-54.13-36.06-87.04-36.08c-67.82 0-123.02 55.18-123.05 123.01z"/>
+            <path fill="#FFF" d="M96.68 74.15c-2.39-5.3-4.9-5.41-7.17-5.5c-1.86-.08-3.98-.07-6.1-.07c-2.12 0-5.58.8-8.49 3.98c-2.92 3.19-11.15 10.89-11.15 26.56s11.41 30.81 13 32.94c1.6 2.12 22.03 35.31 54.41 48.07c26.9 10.61 32.38 8.5 38.22 7.97c5.84-.53 18.84-7.7 21.5-15.14c2.65-7.44 2.65-13.81 1.86-15.14c-.8-1.33-2.92-2.12-6.11-3.72c-3.19-1.6-18.84-9.3-21.76-10.36c-2.92-1.06-5.04-1.59-7.17 1.6c-2.12 3.18-8.22 10.36-10.08 12.48c-1.86 2.13-3.72 2.39-6.9.8c-3.19-1.6-13.44-4.96-25.61-15.81c-9.47-8.44-15.86-18.87-17.72-22.06c-1.86-3.18-.2-4.91 1.4-6.5c1.43-1.43 3.19-3.72 4.78-5.58c1.59-1.86 2.12-3.19 3.18-5.31c1.06-2.13.53-3.99-.27-5.58c-.79-1.6-6.98-17.34-9.82-23.64z"/>
+          </svg>
+          <span class="blinking-border">Chat with us</span>
+        </div>
+      </a>
+
+
+    </div>
+
+    <!-- Divider + Copyright -->
+    <hr />
+    <div class="footer-bottom">
+      <p>© 2025 ritesurgery. All rights reserved.</p>
+    </div>
+  </footer>
+
+<script>
+  function openMailClient() {
+    const userEmail = document.getElementById("userEmail").value.trim();
+    
+    if (userEmail === "") {
+      alert("Please enter your email address.");
+      return;
+    }
+
+    // Compose mailto link
+    const subject = encodeURIComponent("Query from Rite Surgery Website");
+    const body = encodeURIComponent(`Hi Rite Surgery Team,\n\nI have a query regarding your services. Please get in touch with me at: ${userEmail}\n\nThank you!`);
+    
+    // Open user's email client
+    window.location.href = `mailto:ritesurgery@gmail.com?subject=${subject}&body=${body}`;
+  }
+  function initBookingForm() {
+  const bookBtn = document.querySelector('.primary-btn');
+
+  if (!bookBtn) {
+    console.error('Book Now button not found');
+    return;
+  }
+
+  // Create confirmation message element dynamically
+  const messageBox = document.createElement('div');
+  messageBox.style.display = 'none';
+  messageBox.style.color = 'green';
+  messageBox.style.fontWeight = 'bold';
+  messageBox.style.marginTop = '10px';
+
+  // Insert it just after the button
+  bookBtn.parentNode.appendChild(messageBox);
+
+  bookBtn.addEventListener('click', async function (event) {
+    event.preventDefault();
+
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]')?.value;
+
+    const name = document.querySelector('input[placeholder="Enter your name"]').value.trim();
+    const phone_number = document.querySelector('input[placeholder="📞 Phone Number"]').value.trim();
+    const location = document.querySelector('input[placeholder="Location"]').value.trim();
+    const treatment = document.querySelector('input[placeholder="Treatments"]').value.trim();
+
+    const payload = { name, phone_number, location, treatment };
+
+    // Check for empty fields
+    const missingFields = [];
+    for (const [key, value] of Object.entries(payload)) {
+      if (!value) missingFields.push(key);
+    }
+
+    if (missingFields.length > 0) {
+      messageBox.textContent = 'Please fill in: ' + missingFields.join(', ');
+      messageBox.style.color = 'red';
+      messageBox.style.display = 'block';
+      setTimeout(() => {
+        messageBox.style.display = 'none';
+      }, 3000);
+      return;
+    }
+
+    try {
+      const response = await fetch('/submit-booking/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrfToken || ''
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        messageBox.style.color = 'green';
+        messageBox.textContent = result.message || '✅ Booking submitted successfully!';
+        messageBox.style.display = 'block';
+
+        // Clear form fields
+        document.querySelectorAll('.treatment-form input').forEach(input => input.value = '');
+
+        // Hide after 3s
+        setTimeout(() => {
+          messageBox.style.display = 'none';
+          messageBox.textContent = '';
+        }, 3000);
+      } else {
+        messageBox.style.color = 'red';
+        messageBox.textContent = result.error || '❌ Submission failed.';
+        messageBox.style.display = 'block';
+
+        setTimeout(() => {
+          messageBox.style.display = 'none';
+        }, 3000);
+      }
+    } catch (error) {
+      messageBox.style.color = 'red';
+      messageBox.textContent = '⚠️ Network error: ' + error.message;
+      messageBox.style.display = 'block';
+
+      setTimeout(() => {
+        messageBox.style.display = 'none';
+      }, 3000);
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initBookingForm);
+
+</script>
+</body>
+</html>
+  <!-- JS Logic -->
+  <script src="{% static 'js/appointment.js' %}"></script>
+</body>
+</html>

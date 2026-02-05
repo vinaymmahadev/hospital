@@ -3,6 +3,7 @@
   padding: 40px 40px;
   margin-left: 40px;
   margin-right: 40px;
+  align-items: flex-start; /* 🔥 THIS IS THE KEY */
   height: 100%;
 }
  .navbar {

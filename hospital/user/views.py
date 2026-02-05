@@ -101,6 +101,11 @@ class Laboratory_InvestigationView(View):
     def get(self,request):
         return render(request,"Laboratory_Investigation.html")
 
+class MtpView(View):
+    def get(self, request):
+        return render(request, "mtp.html")
+
+
 
 
 @method_decorator(csrf_exempt, name='dispatch')
