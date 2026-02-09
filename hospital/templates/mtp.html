@@ -8,25 +8,32 @@
 
   <!-- SEO Title (MOST IMPORTANT) -->
   <title>
-    Medical Termination of Pregnancy (MTP) in Bangalore | Safe & Legal Abortion Care
+    Pregnancy-Related Medical Consultation
+in Bangalore | Doctor-Led Medical Consultation
+
   </title>
 
   <!-- SEO Meta Description -->
   <meta name="description" content="
-  Get safe, legal, and confidential Medical Termination of Pregnancy (MTP) in Bangalore.
+  Get safe, legal, and confidential Pregnancy-Related Medical Consultation
+ in Bangalore.
   Consult experienced gynecologists at licensed clinics as per the MTP Act.
-  Affordable, private, and ethical abortion care.
+  Affordable, private, and Doctor-Led Medical Consultation
+.
   ">
 
   <!-- SEO Keywords (still useful in India SEO) -->
   <meta name="keywords" content="
   Medical Termination of Pregnancy,
   MTP in Bangalore,
-  Medical abortion in India,
-  Safe abortion clinic,
-  Legal abortion India,
+  Doctor-Led Medical Consultation
+ in India,
+  Doctor-Led Medical Consultation
+,
+  Doctor-Led Medical Consultation,
   Gynecologist for MTP,
-  Abortion with medicines
+  Doctor-Led Medical Consultation
+ with medicines
   ">
 
   <!-- Author & Trust -->
@@ -34,8 +41,10 @@
   <meta name="robots" content="index, follow">
 
   <!-- Open Graph (for WhatsApp, Facebook, LinkedIn) -->
-  <meta property="og:title" content="Medical Termination of Pregnancy (MTP) | Rite Surgery">
-  <meta property="og:description" content="Safe, legal and confidential medical abortion services by certified gynecologists at licensed clinics.">
+  <meta property="og:title" content="Pregnancy-Related Medical Consultation
+| Rite Surgery">
+  <meta property="og:description" content="Safe, legal and confidential Doctor-Led Medical Consultation
+ services by certified gynecologists at licensed clinics.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.ritesurgery.com/mtp">
   <meta property="og:image" content="{% static 'images/mtp-banner.jpg' %}">
@@ -43,8 +52,10 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Medical Termination of Pregnancy (MTP)">
-  <meta name="twitter:description" content="Trusted and legal medical abortion services with privacy and care.">
+  <meta name="twitter:title" content="Pregnancy-Related Medical Consultation
+">
+  <meta name="twitter:description" content="Trusted and legal Doctor-Led Medical Consultation
+ services with privacy and care.">
   <meta name="twitter:image" content="{% static 'images/mtp-banner.jpg' %}">
 
   <!-- CSS -->
@@ -72,37 +83,65 @@
             color: #333;
         }
 
- /* ===== HEADER ===== */
-/* ===== HEADER ===== */
-.main-header {
-    background: #efefef;
-    padding: 12px 30px;
+ .main-header {
+    background: #ffffff;
 }
 
-
-
-/* Flex container */
 .header-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 14px 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
-    margin: auto;
 }
 
-/* Logo container */
-.logo {
-    background: #ffffff;
-    padding: 8px 14px;
-    border-radius: 6px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+/* LOGO + NAME */
+.logo-name {
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
-/* Logo image */
-.logo img {
-    height: 65px;   /* increased from 45px */
+.logo-img {
+    height: 58px;
     width: auto;
-    display: block;
+}
+
+.hospital-name {
+    font-size: 32px;
+    font-weight: 800;
+    color: #0d47a1;
+    white-space: nowrap;
+}
+
+/* NAV */
+.main-nav {
+    display: flex;
+    gap: 26px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #0d47a1;
+}
+
+/* PHONE */
+.header-phone a {
+    background: #0b5cff;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+    .main-nav {
+        display: none;
+    }
 }
 
 
@@ -204,16 +243,23 @@
     letter-spacing: 0.5px;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-    .service-strip {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
 @media (max-width: 480px) {
     .service-strip {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .service {
+        font-size: 12px;
+        padding: 10px 4px;
+        min-height: 44px;
+    }
+
+    .header-title {
+        font-size: 17px;
+    }
+
+    .logo img {
+        height: 50px;
     }
 }
 
@@ -747,7 +793,6 @@
 /* Popup Modal Styles */
 /* Popup overlay */
 .booking-popup {
-  display: none;
   position: fixed;
   z-index: 9999;
   left: 0;
@@ -755,11 +800,14 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0,0,0,0.5);
-  display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
+
+  /* IMPORTANT */
+  display: none;   /* hidden by default */
 }
+
 
 /* Popup content box */
 .booking-content {
@@ -1281,32 +1329,31 @@
 
     </style>
 
-    <!-- Header & Navigation -->
-<!-- Header & Navigation -->
+{% load static %}
+
 <header class="main-header">
-<div class="header-container">
-    <div class="top-row">
-        <div class="nabh-animated-badge">
-            <span class="badge-icon">🏥</span> NABH Certified
+    <div class="header-container">
+
+        <!-- LEFT: Logo + Name -->
+        <div class="logo-name">
+            <img class="logo-img" src="{% static 'images/logom.png' %}" alt="Logo">
+            <span class="hospital-name">Rite Surgery</span>
         </div>
-        <div class="logo">
-            <img src="{% static 'images/logo.png' %}" alt="Logo">
+
+        <!-- CENTER: Navigation -->
+        <nav class="main-nav">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'laboratory_Investigation' %}">Laboratory Investigation</a>
+            <a href="{% url 'scan' %}">Scan</a>
+            <a href="{% url 'about' %}">About us</a>
+        </nav>
+
+        <!-- RIGHT: Phone -->
+        <div class="header-phone">
+            <a href="tel:+917624845408">📞 +91 7624845408</a>
         </div>
+
     </div>
-
-    <nav class="main-nav">
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'laboratory_Investigation' %}">Laboratory Investigation</a>
-        <a href="{% url 'scan' %}">Scan</a>
-        <a href="{% url 'about' %}">About us</a>
-
-    </nav>
-
-    <div class="header-phone">
-        <a href="tel:+919876543210">📞 +91 7624845408</a>
-    </div>
-</div>
-
 </header>
 
 
@@ -1362,72 +1409,98 @@
 
         <!-- LEFT: CONTENT -->
         <div class="mtp-left">
-            <h2>Medical Termination of Pregnancy (MTP)</h2>
+            <h2>Pregnancy-Related Medical Consultation</h2>
 
             <p>
-                Discovering that one is pregnant can be a cherished and emotional moment for parents-to-be.
-                However, in certain situations, continuing the pregnancy may not be safe due to risks to
-                the mother’s health, potential complications, or other medical reasons. In such cases,
-                pregnancy termination may be advised. This can be carried out either through prescribed
-                medications or a minor surgical procedure. In the early stages of pregnancy, termination
-                using medicines is generally considered a safer option, while pregnancies beyond 9 weeks
-                may require a surgical procedure such as Dilation and Curettage (D &amp; C) to ensure the
-                mother’s safety.
+            Discovering a pregnancy can be an emotional experience, and every individual’s situation
+            is unique. In certain circumstances, a woman may require professional medical guidance
+            due to health concerns or personal reasons. We provide confidential, doctor-led
+            consultations where a qualified medical professional carefully evaluates the patient’s
+            condition, medical history, and overall well-being. Based on this assessment, the doctor
+            explains appropriate and lawful medical care options in accordance with Indian medical
+            guidelines, ensuring safety, privacy, and informed decision-making at every step.
             </p>
 
 
-            <h3>What is Medical Termination of Pregnancy?</h3>
+
+            <h3>What Is Pregnancy-Related Medical Consultation?</h3>
                 <p>
-                    Medical Termination of Pregnancy (MTP) is a safe and medically approved method of ending a
-                    pregnancy under the supervision of a qualified gynecologist. It involves the use of
-                    specific medicines that help stop the pregnancy from continuing and allow the uterus
-                    to expel the pregnancy tissue naturally. MTP is commonly recommended during the early
-                    stages of pregnancy, usually within the first trimester. The procedure is planned
-                    carefully based on the woman’s health condition and pregnancy duration to ensure
-                    maximum safety and minimal complications.
+                Medical consultation for pregnancy-related care involves a confidential discussion
+                with a qualified gynecologist to understand the individual’s health condition and
+                medical needs. During the consultation, the doctor evaluates relevant factors such as
+                medical history and overall well-being, and provides professional guidance in line with
+                approved medical standards and legal guidelines in India. The focus is on ensuring
+                patient safety, privacy, and informed decision-making through doctor-led care.
                 </p>
 
 
-            <h3>Reasons for Medical Termination</h3>
-            <ul>
-                <li>Risk to the mother’s health or life</li>
-                <li>High-risk pregnancy or complications</li>
-                <li>Fetal or genetic abnormalities</li>
-                <li>Incomplete miscarriage</li>
-                <li>Unplanned or unwanted pregnancy</li>
-            </ul>
 
-            <p>
-    Every woman’s circumstances are unique, and the reasons for considering a pregnancy
-    termination can vary greatly. Choosing to undergo an abortion is a significant decision
-    that may have both physical and emotional impacts. It is important to consult a qualified
-    doctor who can guide you through the available options, explain the risks and benefits,
-    and ensure your safety. Seeking support from trusted family members or close friends
-    can also help you make an informed and confident decision.
-</p>
+          <h3>When Medical Consultation May Be Required</h3>
+          <ul>
+              <li>Concerns related to the mother’s health and well-being</li>
+              <li>Pregnancy-related medical complications that require expert guidance</li>
+              <li>Situations requiring evaluation by a qualified gynecologist</li>
+              <li>Cases where close medical monitoring is advised</li>
+              <li>Need for confidential, professional medical advice</li>
+          </ul>
+
+
+              <p>
+              Every individual’s situation is unique, and health-related decisions should always be
+              made with proper medical guidance. It is important to consult a qualified doctor who
+              can carefully assess the patient’s condition, explain medically appropriate care options,
+              and prioritize safety and privacy. Professional medical consultation helps individuals
+              understand their situation clearly and make informed decisions with confidence and
+              support.
+              </p>
+
 
 
         </div>
 
 
 
-        <!-- RIGHT: BOOKING FORM -->
-        <div class="mtp-right">
-            <p>Confidential • Safe • Doctor-guided</p>
+<!-- RIGHT: BOOKING FORM -->
+<div class="mtp-right">
+    <p>Confidential • Safe • Doctor-guided</p>
 
-            <form>
-                <div class="treatment-container">
-                <div class="treatment-form">
-                    <input type="text" placeholder="Enter your name" />
-                    <input type="text" placeholder="📞 Phone Number" />
-                    <input type="text" placeholder="Location" />
-                    <input type="text" value="Medical Termination of Pregnancy (MTP)" readonly>
-                    <button class="primary-btn">Book Now</button>
-                </div>
-            </form>
+    <form id="mtpBookingForm">
+        <div class="treatment-container">
+            <div class="treatment-form">
+
+                <input type="text" id="mtp_name" placeholder="Enter your name" required />
+
+               <input
+                  type="tel"
+                  id="mtp_phone"
+                  placeholder="📞 Phone Number"
+                  pattern="[0-9]{10}"
+                  maxlength="10"
+                  inputmode="numeric"
+                  required
+                />
+
+
+                <select id="mtp_location" required>
+                      <option value="">Select Location</option>
+                      <option value="Bangalore">Bangalore</option>
+                      <option value="Other">Other</option>
+                 </select>
+
+
+                <input type="text"
+                       id="mtp_treatment"
+                       value="Pregnancy-Related Medical Consultation
+"
+                       readonly />
+
+                <button type="submit" class="primary-btn">Book Now</button>
+
+            </div>
         </div>
+    </form>
+</div>
 
-    </div>
 </section>
 
 <!-- Doctor Section -->
@@ -1443,7 +1516,7 @@
       <h3>Dr. Nayana M S</h3>
 
       <p class="doctor-qualification">
-        MBBS, MS – Obstetrics & Gynaecology
+        MBBS, MS – Obstetrics & Gynaecology<br>🩺 8+ Years Experience
       </p>
 
       <div class="doctor-actions">
@@ -1477,40 +1550,44 @@
 </section>
 <section class="mtp-section">
   <div class="mtp-container">
-    <h2 class="mtp-title">How Is Medical Termination of Pregnancy (MTP) Performed?</h2>
+    <h2 class="mtp-title">How Does the Medical Consultation Process Work?</h2>
+<p class="mtp-intro">
+  Pregnancy-related medical care should always be approached with professional guidance.
+  We offer confidential, doctor-led consultations where a qualified medical expert evaluates
+  the individual’s health condition and provides appropriate medical advice in accordance
+  with approved clinical standards and legal guidelines in India.
+</p>
 
-    <p class="mtp-intro">
-      Medical Termination of Pregnancy (MTP) is a safe and legally approved procedure carried out under medical guidance.
-      The method chosen depends on the stage of pregnancy and is always decided after a detailed consultation with the doctor.
-    </p>
 
     <div class="mtp-content">
-      <h3 class="mtp-subtitle medical">Medical Abortion</h3>
-      <p>
-        Medical abortion is usually recommended during the early weeks of pregnancy, typically up to 9 weeks.
-        This method involves the use of prescribed oral medicines that help terminate the pregnancy naturally.
-      </p>
-      <p>
-        An MTP kit is provided by the doctor along with clear instructions. After taking the medication,
-        bleeding and mild cramps are a normal part of the process. A follow-up visit is important to ensure
-        the procedure is complete and recovery is on track.
-      </p>
+      <h3 class="mtp-subtitle medical">Doctor-Led Medical Consultation</h3>
+<p>
+Pregnancy-related medical concerns should always be addressed through a confidential
+consultation with a qualified doctor. During the consultation, the medical professional
+assesses the individual’s health condition and provides guidance based on approved
+medical standards and applicable legal guidelines in India.
+</p>
 
-      <h3 class="mtp-subtitle surgical">Surgical Abortion</h3>
-      <p>
-        When the pregnancy has progressed beyond 9 weeks, a surgical method may be advised.
-        These procedures are performed by experienced specialists in a controlled and safe medical setting.
-      </p>
+<p>
+The focus of medical care is on patient safety, privacy, and professional support.
+Doctors ensure that individuals receive appropriate medical advice, clear explanations,
+and necessary follow-up guidance as part of responsible and ethical healthcare practice.
+</p>
 
-      <p>
-        <strong>Suction Procedure:</strong> This method can be performed up to 15 weeks of pregnancy
-        and usually takes about 5 to 10 minutes.
-      </p>
+<h3 class="mtp-subtitle">Doctor-Guided Medical Care</h3>
+<p>
+Certain pregnancy-related medical situations may require evaluation by a qualified
+medical specialist. In such cases, a confidential consultation is conducted to assess
+the individual’s health condition and determine appropriate medical care in accordance
+with approved clinical practices and legal guidelines in India.
+</p>
 
-      <p>
-        <strong>Dilatation and Evacuation (D&E):</strong> Recommended after 13 weeks of pregnancy,
-        this procedure generally takes around 15 to 30 minutes and is carried out with utmost care.
-      </p>
+<p>
+All medical care is provided under professional supervision, with a strong focus on
+patient safety, privacy, and ethical healthcare standards. Doctors ensure that each
+individual receives clear guidance and appropriate follow-up support as part of
+responsible medical care.
+</p>
 
 
 
@@ -1520,70 +1597,139 @@
 
 <section class="mtp-wrapper">
 
-  <section class="mtp-block">
-    <h3>What Happens During a Medical Abortion?</h3>
-    <p>A medical abortion is a non-surgical method used to end an early pregnancy with the help of prescribed medicines. These medicines may be taken orally or vaginally, strictly under a doctor’s guidance, to ensure safety and effectiveness.</p>
-    <p>The process involves two medicines. The first medicine, Mifepristone, works by blocking the hormone progesterone, which is essential for continuing a pregnancy. When this hormone is blocked, the lining of the uterus becomes thin, preventing the pregnancy from growing further.</p>
-    <p>The second medicine, Misoprostol, is usually taken 24 to 48 hours after Mifepristone. This medicine causes the uterus to contract and helps in expelling the pregnancy tissue.</p>
-    <p>Some women may experience abdominal cramps, bleeding with blood clots, mild fever or chills, tiredness, nausea, diarrhea, dizziness, or vomiting. These effects are expected and vary from person to person.</p>
-  </section>
+<section class="mtp-block">
+  <h3>Doctor-Led Pregnancy Care Consultation</h3>
+  <p>
+    Pregnancy-related health concerns are addressed through a confidential consultation
+    with a qualified medical professional. During this consultation, the doctor carefully
+    reviews the individual’s medical history, health condition, and specific concerns to
+    provide appropriate medical guidance.
+  </p>
+  <p>
+    The consultation focuses on patient safety, privacy, and professional medical advice.
+    All guidance is provided in accordance with approved clinical practices and applicable
+    legal guidelines in India, ensuring ethical and responsible healthcare.
+  </p>
+  <p>
+    Individuals are encouraged to seek timely medical consultation to receive accurate
+    information, clear explanations, and ongoing support from experienced doctors.
+  </p>
+</section>
 
-  <section class="mtp-block">
-    <h3>What Is an MTP Kit?</h3>
-    <p>An MTP kit is used for medical termination of pregnancy during the early stages, usually between 7 and 9 weeks of gestation. The kit contains Mifepristone and Misoprostol, which work together to safely end the pregnancy.</p>
-    <p>Some women may experience nausea, abdominal pain, vomiting, or vaginal bleeding. A follow-up consultation is important to ensure the abortion is complete and recovery is normal.</p>
-  </section>
+<section class="mtp-block">
+  <h3>Confidential Medical Consultation</h3>
+  <p>
+    Pregnancy-related medical concerns should always be discussed with a qualified doctor
+    through a private and confidential consultation. During this process, the medical
+    professional carefully evaluates the individual’s health condition and provides
+    appropriate medical guidance based on approved clinical practices.
+  </p>
+  <p>
+    The focus of care is on patient safety, privacy, and professional support. Doctors ensure
+    that individuals receive clear information, ethical guidance, and necessary follow-up
+    advice in accordance with applicable medical standards and legal guidelines in India.
+  </p>
+</section>
 
-  <section class="mtp-block">
-    <h3>Who Can Conduct an Abortion?</h3>
-    <p>As per Indian law, a medical termination of pregnancy can only be performed by qualified medical professionals, including registered medical practitioners, trained obstetricians, and gynecologists with required experience.</p>
-  </section>
+<section class="mtp-block">
+  <h3>Qualified Medical Care</h3>
+  <p>
+    Pregnancy-related healthcare is provided under the supervision of qualified and
+    experienced medical professionals. All consultations are conducted by licensed
+    doctors who follow approved clinical practices and applicable medical guidelines
+    in India.
+  </p>
+</section>
 
-  <section class="mtp-block">
-    <h3>Who Is Eligible to Undergo MTP?</h3>
-    <p>Women who wish to terminate an unwanted pregnancy and are in the early stages, usually up to nine weeks, are eligible for medical abortion. In special circumstances defined by Indian law, abortion may be permitted up to 24 weeks after medical evaluation.</p>
-  </section>
+<section class="mtp-block">
+  <h3>Who Can Seek Medical Consultation</h3>
+  <p>
+    Any individual with pregnancy-related health concerns can seek a confidential
+    medical consultation. Doctors assess the patient’s condition and provide
+    appropriate guidance based on medical evaluation and professional standards.
+  </p>
+</section>
 
-  <section class="mtp-block">
-    <h3>Who Should Not or Cannot Undergo MTP?</h3>
-    <p>Medical abortion may not be suitable for everyone. It is not recommended in cases of advanced pregnancy beyond 20–24 weeks, ectopic pregnancy, allergy to abortion medicines, or certain medical conditions.</p>
-    <p>Women with blood clotting disorders, severe anaemia, seizure disorders, chronic illnesses, long-term steroid use, IUD in place, or serious heart, kidney, or blood pressure conditions should consult a specialist before opting for MTP.</p>
-  </section>
+<section class="mtp-block">
+  <h3>Importance of Medical Evaluation</h3>
+  <p>
+    A thorough medical evaluation is essential to ensure patient safety and appropriate
+    care. During consultation, doctors review medical history and health conditions to
+    determine suitable medical guidance.
+  </p>
+  <p>
+    This ensures that individuals receive responsible, ethical, and doctor-led care
+    with a strong focus on safety, privacy, and well-being.
+  </p>
+</section>
 
-  <section class="mtp-block">
-    <h3>What Are the Benefits of Medical Abortion?</h3>
-    <p>Medical abortion is safe and effective up to 9 weeks of pregnancy. It involves relatively mild pain, avoids surgery, feels more natural, and can often be completed at home with emotional support from loved ones.</p>
-  </section>
 
-  <section class="mtp-block">
-    <h3>What Are the Risks of Medical Abortion?</h3>
-    <p>When taken correctly, medical abortion is safe. However, improper use may cause incomplete abortion, heavy bleeding, digestive discomfort, diarrhea, allergic reactions, or vaginal infections.</p>
-    <p>Persistent fever, foul vaginal odor, or bleeding lasting more than 48 hours should be reported to a doctor immediately.</p>
-  </section>
+<section class="mtp-block">
+  <h3>Benefits of Doctor-Led Medical Consultation</h3>
+  <p>
+    Seeking professional medical consultation ensures that pregnancy-related health
+    concerns are addressed with expert guidance. Qualified doctors provide confidential,
+    personalized advice focused on patient safety, privacy, and well-being.
+  </p>
+</section>
 
-  <section class="mtp-block">
-    <h3>Recovery After MTP</h3>
-    <p>Mifepristone and Misoprostol are effective in up to 98% of cases. Most women start feeling better once bleeding reduces. Normal activities can be resumed after bleeding stops completely.</p>
-    <p>Adequate rest is advised. Consult your gynecologist if you experience severe bleeding, fever, vomiting, or unusual symptoms.</p>
-  </section>
+<section class="mtp-block">
+  <h3>Importance of Professional Medical Guidance</h3>
+  <p>
+    Medical guidance from a qualified healthcare professional helps individuals understand
+    their health condition clearly and receive appropriate care recommendations based on
+    approved clinical standards.
+  </p>
+  <p>
+    Consulting a doctor ensures responsible decision-making and reduces health risks
+    through proper medical evaluation and follow-up support.
+  </p>
+</section>
 
-  <section class="mtp-block">
-    <h3>What to Expect After a Medical Abortion?</h3>
-    <p>Bleeding and cramping are common and may last for several days, similar to menstruation. In most cases, bleeding reduces by the second or third week.</p>
-    <p>A follow-up visit or ultrasound scan may be scheduled within 2–5 weeks to confirm that the abortion is complete.</p>
-  </section>
+<section class="mtp-block">
+  <h3>After-Consultation Care and Support</h3>
+  <p>
+    Doctors provide clear guidance and necessary follow-up advice as part of ethical
+    healthcare practice. Ongoing medical support helps ensure patient safety and
+    confidence throughout the care process.
+  </p>
+  <p>
+    Individuals are encouraged to maintain communication with their healthcare provider
+    and seek professional advice whenever needed.
+  </p>
+</section>
 
-  <section class="mtp-block">
-    <h3>Is Medical Abortion Legal in India?</h3>
-    <p>Yes, medical abortion is legal in India under the Medical Termination of Pregnancy (MTP) Act, 1971. Approved medicines may be used up to 9 weeks of pregnancy.</p>
-    <p>The MTP Amendment Act, 2021 allows abortion up to 24 weeks in specific circumstances, based on medical opinion and with the woman’s consent.</p>
-  </section>
 
-  <section class="mtp-block">
-    <h3>What Is the Cost of Medical Termination of Pregnancy (MTP)?</h3>
-    <p>The cost of MTP varies depending on gestational age, medical condition, and treatment method. Please contact our healthcare team for detailed pricing information.</p>
-    <p><strong>Book your appointment today</strong> with our experts or send us an inquiry for personalized guidance.</p>
-  </section>
+<section class="mtp-block">
+  <h3>After-Consultation Medical Guidance</h3>
+  <p>
+    After a medical consultation, doctors provide appropriate guidance and support
+    tailored to the individual’s health needs. Clear instructions and follow-up
+    recommendations help ensure patient safety and well-being.
+  </p>
+</section>
+
+<section class="mtp-block">
+  <h3>Legal and Ethical Medical Care</h3>
+  <p>
+    All medical consultations and guidance are provided in accordance with applicable
+    medical standards and legal guidelines in India. Patient privacy, informed consent,
+    and ethical healthcare practices are strictly maintained.
+  </p>
+</section>
+
+<section class="mtp-block">
+  <h3>Consultation and Support Services</h3>
+  <p>
+    The scope of medical consultation and support may vary based on individual health
+    conditions and medical evaluation. Our healthcare team focuses on providing
+    transparent information and professional guidance during the consultation process.
+  </p>
+  <p>
+    To learn more or to schedule a confidential consultation, individuals are encouraged
+    to contact our medical support team.
+  </p>
+</section>
 
 </section>
 
@@ -1595,146 +1741,97 @@
   </h2>
 
   <div class="faq-container" style="max-width: 900px; margin: auto;">
+
     <details class="faq-item">
-      <summary>What is Medical Termination of Pregnancy (MTP)?</summary>
+      <summary>What type of medical support do you offer?</summary>
       <p>
-        Medical Termination of Pregnancy (MTP) is a medically approved procedure to end an early pregnancy using prescribed medicines.  
-        It is a non-surgical method performed under the supervision of a certified gynecologist.  
-        The procedure works by blocking pregnancy-supporting hormones and inducing uterine contractions.  
-        MTP is commonly chosen for its safety, privacy, and effectiveness.  
-        At Rite Surgery, MTP is provided following all legal and medical guidelines.
+        We provide confidential, doctor-led medical consultations for pregnancy-related
+        health concerns. Each consultation is conducted by qualified medical professionals
+        following approved clinical practices and ethical healthcare standards.
       </p>
     </details>
 
     <details class="faq-item">
-      <summary>Is MTP safe?</summary>
+      <summary>Who conducts the medical consultation?</summary>
       <p>
-        Yes, MTP is a safe and low-risk procedure when done under medical supervision.  
-        It has a very high success rate when performed within the recommended gestational period.  
-        Complications are rare if guidelines are followed correctly.  
-        Proper consultation and follow-up ensure patient safety.  
-        Our gynecologists prioritize comfort, confidentiality, and well-being.
+        All consultations are conducted by licensed and experienced doctors who follow
+        applicable medical guidelines in India. Patient safety and privacy are always
+        prioritized.
       </p>
     </details>
 
     <details class="faq-item">
-      <summary>Up to how many weeks can MTP be done?</summary>
+      <summary>Is my information kept private?</summary>
       <p>
-        Medical abortion is generally recommended up to 8–9 weeks of pregnancy.  
-        The exact eligibility depends on medical evaluation and ultrasound findings.  
-        Early consultation helps ensure safer outcomes.  
-        Beyond this period, alternative methods may be advised.  
-        Our doctors guide you with the safest available options.
+        Yes. Patient confidentiality is strictly maintained. All personal and medical
+        information is handled securely and shared only with authorized healthcare
+        professionals.
       </p>
     </details>
 
     <details class="faq-item">
-      <summary>Does MTP require surgery?</summary>
+      <summary>How does the consultation process work?</summary>
       <p>
-        No, medical termination of pregnancy does not involve surgery.  
-        It is done using approved abortion medicines as prescribed by a gynecologist.  
-        The process mimics a natural miscarriage.  
-        Hospital admission is usually not required.  
-        This makes MTP a preferred choice for early pregnancy termination.
+        During the consultation, the doctor reviews the individual’s health condition,
+        medical history, and concerns. Based on this evaluation, appropriate medical
+        guidance is provided in line with approved standards.
       </p>
     </details>
 
     <details class="faq-item">
-      <summary>Will there be pain or bleeding?</summary>
+      <summary>Is the consultation legally compliant?</summary>
       <p>
-        Mild to moderate cramping and bleeding are normal during MTP.  
-        The experience is similar to heavy menstrual bleeding.  
-        Pain varies from person to person and can be managed with medication.  
-        Bleeding may last a few days to one or two weeks.  
-        Doctors provide guidance on what is normal and when to seek help.
+        Yes. All medical consultations and guidance are provided in accordance with
+        applicable legal guidelines and ethical healthcare practices in India.
       </p>
     </details>
 
     <details class="faq-item">
-      <summary>How long does the MTP process take?</summary>
+      <summary>Will I receive follow-up guidance?</summary>
       <p>
-        The consultation and medicine intake usually take about 20–30 minutes.  
-        The abortion process completes within a few hours to a couple of days after medication.  
-        Recovery is gradual and differs for each individual.  
-        Most women can resume normal activities within a day or two.  
-        Follow-up is advised to confirm completion.
+        Doctors may provide follow-up recommendations when medically appropriate, ensuring
+        continuity of care and patient well-being.
       </p>
     </details>
 
     <details class="faq-item">
-      <summary>Is privacy maintained?</summary>
+      <summary>How can I book a consultation?</summary>
       <p>
-        Yes, complete privacy and confidentiality are strictly maintained at Rite Surgery.  
-        Patient information is protected at every step of the process.  
-        Consultations and treatments are handled discreetly.  
-        Only authorized medical professionals are involved.  
-        Respect for patient dignity is our top priority.
-      </p>
-    </details>
-
-    <details class="faq-item">
-      <summary>Is MTP legal in India?</summary>
-      <p>
-        Yes, MTP is legal in India under the Medical Termination of Pregnancy Act.  
-        It must be performed by a registered medical practitioner at a licensed facility.  
-        Legal limits depend on gestational age and medical conditions.  
-        All procedures at Rite Surgery comply with current legal amendments.  
-        Proper documentation and consent are followed.
-      </p>
-    </details>
-
-    <details class="faq-item">
-      <summary>Is MTP covered by insurance?</summary>
-      <p>
-        Coverage for MTP may vary depending on the insurance provider and policy terms.  
-        Some plans cover abortion when medically indicated.  
-        Our support team can help clarify insurance eligibility.  
-        Transparent cost details are shared upfront.  
-        Affordable care options are also available.
-      </p>
-    </details>
-
-    <details class="faq-item">
-      <summary>What care is needed after MTP?</summary>
-      <p>
-        Rest and proper hydration are recommended after the procedure.  
-        Avoid heavy physical activity for a few days.  
-        Follow prescribed medications and hygiene instructions carefully.  
-        A follow-up visit helps confirm complete recovery.  
-        Emotional support is equally important and available if needed.
+        You can book a confidential consultation by filling out the appointment form on
+        this page. Our medical support team will assist you promptly.
       </p>
     </details>
 
   </div>
 </section>
 
-<!-- Booking Popup Modal -->
 <div id="bookingPopup" class="booking-popup">
   <div class="booking-content">
     <span class="close-popup">&times;</span>
 
-    <h3 class="booking-title">Book Your Consultant</h3>
-    <p class="booking-subtitle">✅ Expert Doctors &nbsp; ✅ Insurance support &nbsp; ✅ Free transportation</p>
+    <h3>Book Consultation</h3>
+    <p class="booking-subtitle">Safe • Confidential • Doctor Guided</p>
 
-    <form class="booking-form">
+    <form id="bookingForm" class="booking-form">
+      {% csrf_token %}
+
       <label>Name</label>
-      <input type="text" class="booking-input" placeholder="Enter your Name" required>
+      <input type="text" id="name" class="booking-input" required>
 
       <label>Mobile</label>
-      <input type="text" class="booking-input" placeholder="+91 | phone number" required>
+      <input type="text" id="phone_number" class="booking-input" required>
 
       <label>Location</label>
-      <select class="booking-select" required>
+      <select id="location" class="booking-select" required>
         <option value="">Select Location</option>
-        <option>Bangalore</option>
-        <option>Other</option>
+        <option value="Bangalore">Bangalore</option>
+        <option value="Other">Other</option>
       </select>
 
       <label>Treatment</label>
-      <input type="text" class="booking-input" placeholder="Enter your surgery" required>
+      <input type="text" id="treatment" class="booking-input" required>
 
       <button type="submit" class="booking-btn">Book Your Consultant →</button>
-      <p class="booking-note">Easy EMI Options Available</p>
     </form>
   </div>
 </div>
@@ -1816,126 +1913,77 @@
     </div>
   </footer>
 
-    
 <script>
-  function openMailClient() {
-    const userEmail = document.getElementById("userEmail").value.trim();
-    
-    if (userEmail === "") {
-      alert("Please enter your email address.");
-      return;
+document.addEventListener("DOMContentLoaded", function () {
+
+    const popup = document.getElementById("bookingPopup");
+    const closeBtn = document.querySelector(".close-popup");
+    const form = document.getElementById("bookingForm");
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            document.cookie.split(';').forEach(cookie => {
+                cookie = cookie.trim();
+                if (cookie.startsWith(name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                }
+            });
+        }
+        return cookieValue;
     }
 
-    // Compose mailto link
-    const subject = encodeURIComponent("Query from Rite Surgery Website");
-    const body = encodeURIComponent(`Hi Rite Surgery Team,\n\nI have a query regarding your services. Please get in touch with me at: ${userEmail}\n\nThank you!`);
-    
-    // Open user's email client
-    window.location.href = `mailto:ritesurgery@gmail.com?subject=${subject}&body=${body}`;
-  }
-  function initBookingForm() {
-  const bookBtn = document.querySelector('.primary-btn');
+    const csrftoken = getCookie('csrftoken');
 
-  if (!bookBtn) {
-    console.error('Book Now button not found');
-    return;
-  }
-
-  // Create confirmation message element dynamically
-  const messageBox = document.createElement('div');
-  messageBox.style.display = 'none';
-  messageBox.style.color = 'green';
-  messageBox.style.fontWeight = 'bold';
-  messageBox.style.marginTop = '10px';
-
-  // Insert it just after the button
-  bookBtn.parentNode.appendChild(messageBox);
-
-  bookBtn.addEventListener('click', async function (event) {
-    event.preventDefault();
-
-    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]')?.value;
-
-    const name = document.querySelector('input[placeholder="Enter your name"]').value.trim();
-    const phone_number = document.querySelector('input[placeholder="📞 Phone Number"]').value.trim();
-    const location = document.querySelector('input[placeholder="Location"]').value.trim();
-    const treatment = document.querySelector('input[placeholder="Treatments"]').value.trim();
-
-    const payload = { name, phone_number, location, treatment };
-
-    // Check for empty fields
-    const missingFields = [];
-    for (const [key, value] of Object.entries(payload)) {
-      if (!value) missingFields.push(key);
+    function showPopup() {
+        popup.style.display = "flex";
     }
 
-    if (missingFields.length > 0) {
-      messageBox.textContent = 'Please fill in: ' + missingFields.join(', ');
-      messageBox.style.color = 'red';
-      messageBox.style.display = 'block';
-      setTimeout(() => {
-        messageBox.style.display = 'none';
-      }, 3000);
-      return;
+    function hidePopup() {
+        popup.style.display = "none";
     }
 
-    try {
-      const response = await fetch('/submit-booking/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken': csrfToken || ''
-        },
-        body: JSON.stringify(payload)
-      });
+    setTimeout(showPopup, 1000);
 
-      const result = await response.json();
+    setInterval(() => {
+        if (popup.style.display !== "flex") {
+            showPopup();
+        }
+    }, 20000);
 
-      if (response.ok) {
-        messageBox.style.color = 'green';
-        messageBox.textContent = result.message || '✅ Booking submitted successfully!';
-        messageBox.style.display = 'block';
+    closeBtn.addEventListener("click", hidePopup);
 
-        // Clear form fields
-        document.querySelectorAll('.treatment-form input').forEach(input => input.value = '');
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-        // Hide after 3s
-        setTimeout(() => {
-          messageBox.style.display = 'none';
-          messageBox.textContent = '';
-        }, 3000);
-      } else {
-        messageBox.style.color = 'red';
-        messageBox.textContent = result.error || '❌ Submission failed.';
-        messageBox.style.display = 'block';
+        const data = {
+            name: document.getElementById("name").value,
+            phone_number: document.getElementById("phone_number").value,
+            location: document.getElementById("location").value,
+            treatment: document.getElementById("treatment").value
+        };
 
-        setTimeout(() => {
-          messageBox.style.display = 'none';
-        }, 3000);
-      }
-    } catch (error) {
-      messageBox.style.color = 'red';
-      messageBox.textContent = '⚠️ Network error: ' + error.message;
-      messageBox.style.display = 'block';
+        fetch("{% url 'submit-booking' %}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": csrftoken
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(() => {
+            alert("Booking submitted successfully!");
+            form.reset();
+            hidePopup();
+        })
+        .catch(() => alert("Something went wrong"));
+    });
 
-      setTimeout(() => {
-        messageBox.style.display = 'none';
-      }, 3000);
-    }
-  });
-}
-
-document.addEventListener('DOMContentLoaded', initBookingForm);
-
-
-const viewBtn = document.getElementById('viewProfileBtn');
-const detailSection = document.getElementById('doctorDetail');
-
-viewBtn.addEventListener('click', () => {
-  detailSection.style.display = 'block';
-  detailSection.scrollIntoView({ behavior: 'smooth' });
 });
 </script>
+
+
 
 
      <script>
@@ -2029,29 +2077,59 @@ border:none; border-radius:5px; cursor:pointer;">Book Consultation</button>
 </script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const popup = document.getElementById('bookingPopup');
-  const closeBtn = document.querySelector('.close-popup');
+document.addEventListener("DOMContentLoaded", function () {
 
-  // Show popup after 10 seconds
-  setTimeout(() => {
-    popup.style.display = 'flex';
-  }, 10000);
+    const mtpForm = document.getElementById("mtpBookingForm");
 
-  // Close popup on X click
-  closeBtn.addEventListener('click', () => {
-    popup.style.display = 'none';
-  });
+    if (!mtpForm) return;
 
-  // Close popup if click outside content
-  window.addEventListener('click', (e) => {
-    if (e.target == popup) {
-      popup.style.display = 'none';
+    mtpForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const data = {
+            name: document.getElementById("mtp_name").value.trim(),
+            phone_number: document.getElementById("mtp_phone").value.trim(),
+            location: document.getElementById("mtp_location").value.trim(),
+            treatment: document.getElementById("mtp_treatment").value
+        };
+
+        fetch("{% url 'submit-booking' %}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": getCookie("csrftoken")
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => {
+            if (!res.ok) throw new Error("Failed");
+            return res.json();
+        })
+        .then(() => {
+            alert("✅ Booking submitted successfully!");
+            mtpForm.reset();
+            document.getElementById("mtp_treatment").value =
+                "Pregnancy-Related Medical Consultation";
+        })
+        .catch(() => {
+            alert("❌ Booking failed. Please try again.");
+        });
+    });
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            document.cookie.split(';').forEach(cookie => {
+                cookie = cookie.trim();
+                if (cookie.startsWith(name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                }
+            });
+        }
+        return cookieValue;
     }
-  });
 });
 </script>
-
 
   {% include 'booknow.html' %}
 </body>
