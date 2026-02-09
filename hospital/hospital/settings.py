@@ -64,6 +64,7 @@ MIDDLEWARE = [
 ]
 
 
+
 ROOT_URLCONF = 'hospital.urls'
 
 TEMPLATES = [
