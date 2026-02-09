@@ -71,41 +71,33 @@ in Bangalore | Doctor-Led Medical Consultation
 </head>
 
     <style>
-        /* ===== Page Reset ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
- .main-header {
+ /* ===== HEADER ===== */
+.main-header {
     background: #ffffff;
+    border-bottom: 1px solid #eee;
 }
 
 .header-container {
     max-width: 1200px;
     margin: auto;
-    padding: 14px 30px;
+    padding: 14px 24px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 40px;
 }
 
 /* LOGO + NAME */
 .logo-name {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
+    flex-shrink: 0;
 }
 
 .logo-img {
-    height: 58px;
+    height: 56px;          /* KEY FIX */
     width: auto;
+    display: block;
 }
 
 .hospital-name {
@@ -115,26 +107,34 @@ in Bangalore | Doctor-Led Medical Consultation
     white-space: nowrap;
 }
 
-/* NAV */
+/* NAVIGATION */
 .main-nav {
     display: flex;
-    gap: 26px;
+    gap: 28px;
+    flex-grow: 1;
 }
 
 .main-nav a {
     text-decoration: none;
+    font-size: 15.5px;
     font-weight: 600;
     color: #0d47a1;
+    padding: 6px 0;
 }
 
-/* PHONE */
+/* PHONE BUTTON */
 .header-phone a {
     background: #0b5cff;
     color: #fff;
     padding: 10px 18px;
     border-radius: 30px;
     text-decoration: none;
+    font-size: 16px;
     font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
 }
 
 /* MOBILE */
@@ -142,44 +142,6 @@ in Bangalore | Doctor-Led Medical Consultation
     .main-nav {
         display: none;
     }
-}
-
-
-/* Navigation */
-.main-nav {
-    display: flex;
-    gap: 25px;
-    margin-left: 40px;
-    flex-grow: 1;
-}
-.main-nav a {
-    color: #1a237e;        /* deep blue for contrast */
-    text-decoration: none;
-    font-size: 15.5px;
-    font-weight: 600;      /* semi-bold */
-    letter-spacing: 0.3px;
-    padding: 6px 0;
-}
-
-
-.main-nav a:hover {
-    border-bottom: 2px solid #fff;
-    padding-bottom: 2px;
-}
-
-/* Phone number */
-.header-phone a {
-    background: #ffffff;
-    color: #0d47a1;           /* deep blue */
-    font-size: 16.5px;
-    font-weight: 700;
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 30px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
 }
 
 /* Hover */
@@ -1336,7 +1298,7 @@ in Bangalore | Doctor-Led Medical Consultation
 
         <!-- LEFT: Logo + Name -->
         <div class="logo-name">
-            <img class="logo-img" src="{% static 'images/logo.png' %}" alt="Logo">
+            <img src="{% static 'images/logom.png' %}" alt="Logo" class="logo-img">
             <span class="hospital-name">Rite Surgery</span>
         </div>
 
